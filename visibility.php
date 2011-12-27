@@ -41,13 +41,13 @@ if ( $user->is_loaded() ) {
       $show = filter_var($_POST['show'], FILTER_SANITIZE_NUMBER_INT);
     }
     $list_id = filter_var($_POST['list'], FILTER_SANITIZE_NUMBER_INT);
-    echo $list_id;
-    echo $show;
+    //echo $list_id;
+    //echo $show;
     //var_dump(filter_var($show, FILTER_VALIDATE_INT));
     //die;
     if (filter_var($list_id, FILTER_VALIDATE_INT) && ($show == 0 || $show ==1)) {
         $query = "UPDATE lists SET public = " . $show . "  WHERE list_id = " . $list_id;
-        echo $query;
+        //echo $query;
         //die;
         mysql_query("UPDATE lists SET public = " . $show . "  WHERE list_id = " . $list_id );
     }
