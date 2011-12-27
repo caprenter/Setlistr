@@ -76,7 +76,7 @@ if (isset($list_id)){
                         position =" . $row['position'] .",
                         in_out = " . $row['in_out'] . ",	text = '" . $row['text'] . "'");
             mysql_query($query);
-            echo $query;  
+            //echo $query;  
             //die;         
           } 
           //Now insert the new record in the lists table
