@@ -1,0 +1,17 @@
+=Setlistr Installation=
+
+Place all the files on your webserver.
+Set up a MySQL database and import the database set up files from the /db directory.
+
+Update the database connection information in the following places:
+functions/connect.php
+phpUserClass/access.class.beta.php
+
+Set a 'site salt' in:
+phpUserClass/access.class.beta.php
+
+If you wish in phpUserClass/access.class.beta.php you can alter the way site passwords are generated and encrypted.
+
+You need to edit 'edit in place' javascript function for the editing of set list titles. In:
+javascript/script.js
+Find the //edit-in-place function and set the url appropriately.

@@ -1,0 +1,497 @@
+*{
+	/* Resetting the default styles of the page */
+	margin:0;
+	padding:0;
+}
+
+body{
+	/* Setting default text color, background and a font stack */
+	font-size:0.825em;
+	color:#666;
+	background-color:#fff;
+	font-family:'Cabin','Chango', Arial, Helvetica, sans-serif;
+}
+
+/* The todo items are grouped into an UL unordered list */
+
+ul.todoList{
+	width:450px;
+	position:relative;
+}
+
+ul.todoList li {
+	background-color:#F9F9F9;
+	border:1px solid #EEEEEE;
+	list-style:none;
+	margin:6px;
+	padding:6px 9px;
+	position:relative;
+	cursor:n-resize;
+
+	/* CSS3 text shadow and rounded corners: */
+	
+	text-shadow:1px 1px 0 white;
+	
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+}
+
+ul.todoList li:hover{
+	border-color:#9be0f9;
+	
+	/* CSS3 glow effect: */
+	-moz-box-shadow:0 0 5px #A6E5FD;
+	-webkit-box-shadow:0 0 5px #A6E5FD;
+	box-shadow:0 0 5px #A6E5FD;
+}
+
+ul.todoList li.break {
+	background-color:#aaa;
+}
+.todo .text {
+	color:#777777;
+	font-size:1.4em;
+}
+.break .text {
+color:#444;
+text-shadow:none;
+}
+/* The edit and delete buttons */
+.list-title .actions,
+.todo .actions,
+.break .actions {
+	position:absolute;
+	right:7px;
+	top:6px;
+}
+
+.list-title .actions a,
+.todo .actions a,
+.break .actions a {
+	display:block;
+	width:16px;
+	height:16px;
+	overflow:hidden;
+	float:left;
+	text-indent:-9999px;
+	margin:3px;
+}
+
+.list-title .actions a.edit,
+.todo .actions a.edit,
+.break .actions a.edit {
+	background:url("../img/edit.png") no-repeat center center;
+}
+
+.list-title .actions a.delete, 
+.todo .actions a.delete, 
+.break .actions a.delete {
+	background:url("../img/delete.png") no-repeat center center;
+}
+
+/* The edit textbox */
+
+.todo input{
+	border:1px solid #CCCCCC;
+	color:#666666;
+	font-family:Arial,Helvetica,sans-serif;
+	font-size:0.725em;
+	padding:3px 4px;
+	width:250px;
+}
+
+/* The Save and Cancel edit links: */
+
+.editTodo{
+	display:inline;
+	font-size:0.6em;
+	padding-left:9px;
+}
+
+.editTodo a{
+	font-weight:bold;
+}
+
+a.discardChanges{
+	color:#C00 !important;
+}
+
+a.saveChanges{
+	color:#4DB209 !important;
+}
+
+/* Overwriting some of the default jQuery UI styles */
+
+.ui-button,.ui-dialog-titlebar{
+	font-size:0.72em !important;
+}
+
+#dialog-confirm{
+	display:none;
+	font-size:0.9em;
+	padding:1em 1em 0;
+}
+
+#addButton {
+margin:0 10px 40px 0;
+}
+
+
+/* Green button class: */
+
+a.green-button, a.green-button:visited {
+border:1px solid #AAAAAA;
+color:black;
+display:block;
+float:left;
+font-size:10px;
+font-weight:bold;
+height:15px;
+padding:6px 5px 4px;
+text-shadow:1px 1px 1px #DDDDDD;
+}
+
+
+
+a.green-button:hover{
+	text-decoration:none;
+	background: #aaa;
+  text-shadow:none;
+}
+
+/* Orange button class: */
+
+a.orange-button, 
+a.orange-button:visited {
+border:1px solid #AAAAAA;
+color:black;
+display:block;
+float:left;
+font-size:10px;
+font-weight:bold;
+height:15px;
+padding:6px 5px 4px;
+text-shadow:1px 1px 1px #DDDDDD;
+}
+
+a, a:visited {
+color:#0196E3;
+outline:medium none;
+text-decoration:none;
+}
+
+a.orange-button:hover{
+	text-decoration:none;
+	background: #aaa;
+  text-shadow:none;
+}
+
+div.buttons {
+padding:20px 0 0 7px;
+}
+
+ul.inline, ul.inline li {
+display:inline;
+}
+
+
+
+/* The styles below are only necessary for the styling of the demo page: */
+
+#wrapper{
+	position:relative;
+	margin:0 auto;
+	width:960px;
+  margin-top:5px;
+
+}
+
+h1{
+	padding:20px 10px;
+	text-shadow:0 1px 1px white;
+	margin-bottom:20px;
+	font-size:26px;
+}
+
+h1,h2{
+	font-family:"Myriad Pro",Arial,Helvetica,sans-serif;
+}
+
+h2{
+	font-size:14px;
+	font-weight:normal;
+
+	
+	position:absolute;
+	right:40px;
+	top:40px;
+}
+
+.note{
+  clear:both;
+	font-size:12px;
+	font-style:italic;
+	padding:0 0 20px 10px;
+}
+
+a, a:visited {
+	color:#0196e3;
+	text-decoration:none;
+	outline:none;
+}
+
+a:hover{
+	text-decoration:underline;
+}
+
+a img{
+	border:none;
+}
+
+#save {
+background:none repeat scroll 0 0 #334455;
+border:1px solid #000000;
+clear:right;
+float:right;
+font-size:2em;
+margin-top:20px;
+padding:5px 20px;
+display:none;
+}
+
+#nav ul {
+list-style: none;
+float:right;
+margin:10px 0 0 0;
+display:inline;
+font-size:1.1em;
+}
+
+#nav ul li {
+display:inline;
+padding:2px;
+margin-left:5px;
+float:left;
+}
+
+.active-list {
+clear:left;
+margin:0 0 20px 0;
+padding:20px 10px 10px 10px;
+width:45%;
+float:left;
+}
+
+.column-left {
+clear:both;
+float:left;
+width:45%;
+}
+.column-right {
+float:right;
+width:45%;
+margin-right:10px;
+}
+
+.list-header {
+margin-right:-10px;
+text-align:right;
+}
+.reserve {
+text-align:right;
+margin: 20px 10px 0 0;
+}
+ul.todoList li.notice {
+  background-color:#fff;
+	border:none;
+	list-style:none;
+	margin:0 0 0 10px;
+	padding:0;
+	position:relative;
+	cursor:default;
+  
+	/* CSS3 text shadow and rounded corners: */
+	text-shadow:none;
+    -moz-border-radius:none;
+    -webkit-border-radius:none;
+	border-radius:none;
+}
+ul.todoList li.notice:hover{
+	border:none;
+  /* CSS3 glow effect: */
+	-moz-box-shadow:none;
+	-webkit-box-shadow:none;
+	box-shadow:none;
+}
+#main {
+padding-bottom:20px;
+min-height:500px;
+}
+#footer-wrapper {
+clear:both;
+border-top:1px solid #aaa;
+min-height:60px;
+}
+#footer {
+margin:0 auto;
+width:960px;
+padding:20px 10px;
+}
+
+img.avatar {
+border:1px solid #DDDDDD;
+margin-right:5px;
+padding:2px;
+position:relative;
+top:-2px;
+vertical-align:top;
+}
+#nav {
+float:left;
+width:100%;
+border-bottom:1px solid #ddd;
+}
+h1.title {
+float:left;
+width:30%;
+font-size:40px;
+margin-bottom:0;
+padding:0 10px 20px;
+}
+h4.list-title {
+font-size:1.2em;
+}
+#sortable2 .todo .text {
+color:#aaa;
+background:#fff;
+}
+#sortable2 li.todo  {
+background:#fff;
+}
+#sortable2 li.break {
+background-color:#ddd;
+}
+#sortable2 .break .text {
+color:#aaa;
+background:#ddd;
+}
+ form.login {
+ margin-left:13px;
+ }
+h2.user-action {
+position:relative;
+right:0;
+top:0;
+padding:0 0 10px 0;
+clear:both;
+font-size:26px;
+margin-left:13px;
+}
+.email {
+margin-left:24px;
+}
+p.notice {
+margin-left:10px;
+}
+#all-lists {
+float:left
+}
+select {
+background-color:#FFFFFF;
+border:2px solid #EEEEEE;
+width:240px;
+}
+.list-buttons li a {
+display:block;
+float:left;
+font-weight:bold;
+height:15px;
+padding:0;
+margin:0 5px;
+}
+.list-buttons {
+clear:left;
+float:left;
+margin-top:-30px;
+}
+.errors {
+background:none repeat scroll 0 0 yellow;
+border:1px solid red;
+font-size:1.1em;
+margin:0 0 13px 13px;
+padding:10px;
+text-align:center;
+width:30%;
+
+-moz-border-radius: 5px;
+border-radius: 5px;
+}
+
+.message {
+background:none repeat scroll 0 0 #fff;
+border:1px solid #0196E3;
+font-size:1.1em;
+margin:-40px 0 20px 0;
+padding:10px;
+width:50%;
+font-size:0.9em;
+
+-moz-border-radius: 5px;
+border-radius: 5px;
+}
+
+.list-header {
+/*display:none;*/
+}
+
+/*User pages*/
+.user-column-left {
+clear:both;
+float:left;
+width:200px;
+}
+.user-column-right {
+float:right;
+width:750px;
+margin-right:10px;
+}
+
+.user-column-left .avatar {
+margin-left:10px;
+}
+.form-item {
+padding:5px 0;
+}
+#account  label {
+display:block;
+}
+#footer .column {
+width:22%;
+padding-right:3%;
+float:left;
+}
+
+.visibility {
+float:right;
+width:45%;
+margin:20px 3px;
+font-size:1.1em;
+/*text-align:right;*/
+}
+.visibility .label {
+font-weight: bold;
+}
+.not-public {
+ font-size:3em;
+ padding:30px 10px;
+}
+h1.title a {
+color: #666;user
+text-decoration:none;
+}
+
+.make-public {
+margin:4px 0;
+vertical-align:middle;
+}

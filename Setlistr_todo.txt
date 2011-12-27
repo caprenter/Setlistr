@@ -1,0 +1,58 @@
+To Fix
+HTML Page titles should change on login, save, user, public list, etc
+
+To do
+Captcha
+Download/export data/email this to me.
+Add set list notes
+Request new password
+Delete account
+Register band
+PDFs
+
+
+Analytics
+Separate db and other config settings.
+Licence
+Put on Git Hub
+README.txt
+URL
+Promote
+Last login timestamp for users
+Import list of songs
+Edit Gravatar http://www.phpclasses.org/browse/file/28639.html http://en.gravatar.com/site/implement/
+
+
+Tests 
+Check we can't access other people's data
+Delete/update other people's lists.
+
+To improve
+Print set list
+Update last-updated time on sorting lists.
+Match and validate passwords
+Submit on enter
+
+
+
+Done
+Make list public
+Ajax for changing lists
+Save a list when you login
+List all lists/My lists
+Use sessions to manage unlogged in sessions
+Save lists
+Possibly have Untitled Set list as a ajax option to set title
+Loging to save lists/create username to save.
+Actions panel - Save List/Delete List
+Update account settings (email/username)
+
+
+Licence/Credits
+Todo list: Martin Angelov
+http://tutorialzine.com/2010/03/ajax-todo-list-jquery-php-mysql-css/
+
+phpUserClass
+HumanWorks
+http://phpuserclass.com/
+https://github.com/HumanWorks/phpUserClass

@@ -1,0 +1,74 @@
+<?php
+/*
+ *      footer.php
+ *      Theme file to display the site footer
+ *      
+ *      Copyright 2011 caprenter <caprenter@gmail.com>
+ *      
+ *      This file is part of Setlistr.
+ *      
+ *      Setlistr is free software: you can redistribute it and/or modify
+ *      it under the terms of the GNU Affero General Public License as published by
+ *      the Free Software Foundation, either version 3 of the License, or
+ *      (at your option) any later version.
+ *      
+ *      Setlistr is distributed in the hope that it will be useful,
+ *      but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *      GNU Affero General Public License for more details.
+ *      
+ *      You should have received a copy of the GNU Affero General Public License
+ *      along with Setlistr.  If not, see <http://www.gnu.org/licenses/>.
+ *      
+ *      Setlistr relies on other free software products. See the README.txt file 
+ *      for more details.
+ */
+?>
+  </div><!--main-->
+  
+  <div id="footer-wrapper">
+    <div id="footer">
+      <div class="column">
+        <h3>About</h3>
+        <p>Make, save and print set lists<br/><br/></p>
+        <p>Make and print without having to login<br/><br/></p>
+        <p>To save set lists for future use/edits, <a href="save.php<?php if(isset($list_id)) { echo "?list=" . $list_id; } ?>">create a free account</a>.</p>
+        <p><br/>Free Software from <a href="https://twitter.com/caprenter">@caprenter</a></p>
+      </div>
+      <div class="column">
+      <h3>Contact</h3>
+        <p>Email: caprenter@gmail.com</p>
+        <p>Twitter: <a href="https://twitter.com/caprenter">@caprenter</a></p>
+      </div>
+      <div class="column">
+        <?php 
+          echo '<h3>User tools</h3>';
+          if ( isset($user) && $user->is_loaded() && isset($list_id)) {
+            echo '<p><a href="export.php?list=' . $list_id . '">Export this list as csv</a></p>';
+          } else {
+            echo "Logged in users can export and share lists";
+          }
+        ?>
+      </div>
+      <div class="column">
+        
+      </div>
+    </div>
+  </div>
+
+
+</div><!--wrapper-->
+<!-- Including our scripts -->
+<?php 
+  if (isset($include_javascript) && $include_javascript== TRUE) {
+?>
+<script type="text/javascript" src="javascript/jquery.min.js"></script>
+<script type="text/javascript" src="javascript/jquery-ui.min.js"></script>
+<script type="text/javascript" src="javascript/jquery.jeditable.js" charset="utf-8"></script>
+<script type="text/javascript" src="javascript/script.js"></script>
+<?php 
+  }
+?>
+
+</body>
+</html>
