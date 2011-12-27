@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 21, 2011 at 08:34 PM
+-- Generation Time: Dec 27, 2011 at 09:09 PM
 -- Server version: 5.1.41
 -- PHP Version: 5.3.2-1ubuntu4.11
 
@@ -28,6 +28,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 CREATE TABLE IF NOT EXISTS `lists` (
   `list_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `public` tinyint(1) NOT NULL DEFAULT '0',
   `name` varchar(255) NOT NULL,
   `last_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`list_id`)
@@ -50,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `tz_todo` (
   PRIMARY KEY (`id`),
   KEY `position` (`position`),
   KEY `list_id` (`list_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=249 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=339 ;
 
 -- --------------------------------------------------------
 
@@ -70,4 +71,4 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `activationHash` (`activationHash`),
   KEY `active` (`active`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
