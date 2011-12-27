@@ -1,3 +1,10 @@
+Logged in users only
+delete.php
+clone.php
+
+
+
+
 Clone list
 Can a logged in user clone a list
 
