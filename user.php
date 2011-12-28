@@ -68,7 +68,7 @@ if (!empty($_POST['username']) && !empty($_POST['email']) ){
   }
 }
 
-
+$page = "My Account"; //used for page title in header.php
 include('theme/header.php'); 
 $user = new flexibleAccess();
 ?>

@@ -1,5 +1,4 @@
 To Fix
-HTML Page titles should change on login, save, user, public list, etc
 
 To do
 Captcha
@@ -9,19 +8,13 @@ Request new password
 Delete account
 Register band
 PDFs
-
-
 Analytics
-Separate db and other config settings.
-Licence
-Put on Git Hub
-README.txt
+
 URL
 Promote
 Last login timestamp for users
 Import list of songs
 Edit Gravatar http://www.phpclasses.org/browse/file/28639.html http://en.gravatar.com/site/implement/
-
 
 Tests 
 Check we can't access other people's data
@@ -32,10 +25,12 @@ Print set list
 Update last-updated time on sorting lists.
 Match and validate passwords
 Submit on enter
-
-
+README.txt
+Separate db and other config settings.
 
 Done
+HTML Page titles should change on login, save, user, public list, etc
+Licence
 Make list public
 Ajax for changing lists
 Save a list when you login
@@ -46,7 +41,7 @@ Possibly have Untitled Set list as a ajax option to set title
 Loging to save lists/create username to save.
 Actions panel - Save List/Delete List
 Update account settings (email/username)
-
+Put on Git Hub
 
 Licence/Credits
 Todo list: Martin Angelov

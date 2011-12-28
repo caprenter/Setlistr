@@ -33,7 +33,7 @@
         <p>Make, save and print set lists<br/><br/></p>
         <p>Make and print without having to login<br/><br/></p>
         <p>To save set lists for future use/edits, <a href="save.php<?php if(isset($list_id)) { echo "?list=" . $list_id; } ?>">create a free account</a>.</p>
-        <p><br/>Free Software from <a href="https://twitter.com/caprenter">@caprenter</a></p>
+        <p><br/>Free Software from <a href="https://twitter.com/caprenter">@caprenter</a><br/><a href="https://github.com/caprenter/Setlistr">https://github.com/caprenter/Setlistr</a></p>
       </div>
       <div class="column">
       <h3>Contact</h3>
@@ -56,7 +56,7 @@
     </div>
   </div>
 
-
+<div style="clear:both; min-height:20px;"></div>
 </div><!--wrapper-->
 <!-- Including our scripts -->
 <?php 

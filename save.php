@@ -99,6 +99,7 @@ if (!empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['pwd'
   }
 }
 
+$page = "Save List"; //used for page title in header.php
 include('theme/header.php'); 
 echo '<h1 class="title"><a href="index.php">Setlistr</a></h1><h2 class="user-action">Register to save your lists.</h2>';
 if (isset($errors)) {

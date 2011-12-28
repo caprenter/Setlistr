@@ -96,7 +96,8 @@ if ( !$user->is_loaded() ) {
         header('Location: index.php');
 	  }
 	}
-
+  
+ $page = "Login"; //used for page title in header.php
  include('theme/header.php'); 
 	echo '<h1 class="title"><a href="index.php">Setlistr</a></h1><h2 class="user-action">Login</h1>';
   if (isset($errors)) {

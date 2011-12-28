@@ -28,7 +28,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Setlistr | Manage your setlists</title>
+<title>Setlistr | Manage your setlists | <?php echo $page; ?></title>
 
 <!--GoogleFonts-->
 <!--<link href='http://fonts.googleapis.com/css?family=Cabin&v1' rel='stylesheet' type='text/css'>-->

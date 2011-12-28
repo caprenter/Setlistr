@@ -486,8 +486,8 @@ font-weight: bold;
  font-size:3em;
  padding:30px 10px;
 }
-h1.title a {
-color: #666;user
+h1.title a, h1.title a:hover  {
+color: #666;
 text-decoration:none;
 }
 

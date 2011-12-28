@@ -75,6 +75,7 @@ if (isset($list_id)) {
 }
 
 //Print stuff to the screen:
+$page = "Public List"; //used for page title in header.php
 include('theme/header.php');
 ?>
     <div id="nav">

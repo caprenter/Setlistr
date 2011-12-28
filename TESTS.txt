@@ -2,7 +2,9 @@ Logged in users only
 delete.php
 clone.php
 
-
+Save list:
+Save list as a user registers
+Save list as a user logs in (after pressing save list)
 
 
 Clone list

@@ -116,6 +116,7 @@ if (isset($list_id)) {
 
 <?php
   //Start output to the screen
+  $page = "Home"; //used for page title in header.php
   include('theme/header.php'); 
  ?>
 
