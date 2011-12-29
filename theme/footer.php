@@ -62,13 +62,27 @@
 <?php 
   if (isset($include_javascript) && $include_javascript== TRUE) {
 ?>
-<script type="text/javascript" src="javascript/jquery.min.js"></script>
-<script type="text/javascript" src="javascript/jquery-ui.min.js"></script>
+<!--<script type="text/javascript" src="javascript/jquery.min.js"></script>
+<script type="text/javascript" src="javascript/jquery-ui.min.js"></script>-->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <script type="text/javascript" src="javascript/jquery.jeditable.js" charset="utf-8"></script>
 <script type="text/javascript" src="javascript/script.js"></script>
 <?php 
   }
 ?>
-
+<?php //Password strength tester
+if (isset($password_page) && $password_page == TRUE) { ?>
+  <!--<script type="text/javascript" src="javascript/jquery.min.js"></script>-->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascript/password_match.js"></script>
+  <script type="text/javascript" src="javascript/jquery.pstrength-min.1.2.js">
+  </script>
+  <script type="text/javascript">
+  $(function() {
+  $('.password').pstrength();
+  });
+  </script>
+<?php } ?>
 </body>
 </html>

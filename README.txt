@@ -4,6 +4,7 @@ Setlistr is free software designed to help people create, save, manage, share an
 
 ==Licence==
 GNU Affero General Public License (except where stated)
+See Copying directory.
 
 Draws on the work of:
 Todo list: Martin Angelov
@@ -16,6 +17,16 @@ https://github.com/HumanWorks/phpUserClass
 
 All javascript used has been re-used from websites. Credit is given in those files.
 The application relies heavily on JQuery.
+
+Ajax Password Strength Meter Script (jquery.pstrength)
+Author: Digital Spaghetti
+Licence: Open Source MIT License
+http://simplythebest.net/scripts/ajax/ajax_password_strength.html
+
+password_match.js
+http://screencasts.org/episodes/introduction-to-jquery
+Copyright 2010-2011 Secret Monkey Science LLC - All Rights Reserved.
+Crafted by Josh Timonen & Andrew Chalkley 
 
 ==Install==
 

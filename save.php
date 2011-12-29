@@ -50,7 +50,7 @@ if (isset($_POST['list'])) {
 }
 
 //Process form once submitted 
-if (!empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['pwd'])){
+if (!empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['pwd']) && !empty($_POST['confirm'])){
   //Register user:
   
   //Sanitize the user inputed data
@@ -59,40 +59,48 @@ if (!empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['pwd'
   if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
       $pwd = filter_var($_POST['pwd'], FILTER_SANITIZE_STRING);
+      $confirm = filter_var($_POST['confirm'], FILTER_SANITIZE_STRING);
       //$pwd = $_POST['pwd'];
- 
-      require_once 'phpUserClass/access.class.beta.php';
-      $user = new flexibleAccess();
-      //The logic is simple. We need to provide an associative array, where keys are the field names and values are the values :)
-      $data = array(
-        'username' => $username,
-        'email' => $email,
-        'password' => $pwd,
-        'active' => 1
-      );
-      $userID = $user->insertUser($data);//The method returns the userID of the new user or 0 if the user is not added
-      if ($userID==0) {
-        $errors = 'Ooops. Something\'s not right. Please try again';//user is allready registered or something like that
-        if (!empty($_POST['list'])) {
-            $list_id = filter_var($_POST['list'], FILTER_SANITIZE_NUMBER_INT);
-            if (!filter_var($list_id, FILTER_VALIDATE_INT)) {
-              unset($list_id);
-            }   
-        } 
-      } else {
-        //echo 'User registered with user id '.$userID;
-      
-        //Assigne the list to the user.
-        if (isset($_POST['list'])) {
-          $list_id = filter_var($_POST['list'], FILTER_SANITIZE_NUMBER_INT);
-          if (filter_var($list_id, FILTER_VALIDATE_INT)) {
-           // echo $list_id;
-            //When we assign list to user make sure exisiting owner of list has user_id = 0!!
-            mysql_query("UPDATE `lists` SET user_id=" . $userID . "  WHERE list_id = " . $list_id . " AND user_id = 0");
+      if ($pwd == $confirm && strlen($pwd) >=6 ) {
+          require_once 'phpUserClass/access.class.beta.php';
+          $user = new flexibleAccess();
+          //The logic is simple. We need to provide an associative array, where keys are the field names and values are the values :)
+          $data = array(
+            'username' => $username,
+            'email' => $email,
+            'password' => $pwd,
+            'active' => 1
+          );
+          $userID = $user->insertUser($data);//The method returns the userID of the new user or 0 if the user is not added
+          if ($userID==0) {
+            $errors = 'Ooops. Something\'s not right. Please try again';//user is allready registered or something like that
+            if (!empty($_POST['list'])) {
+                $list_id = filter_var($_POST['list'], FILTER_SANITIZE_NUMBER_INT);
+                if (!filter_var($list_id, FILTER_VALIDATE_INT)) {
+                  unset($list_id);
+                }   
+            } 
+          } else {
+            //echo 'User registered with user id '.$userID;
+          
+            //Assigne the list to the user.
+            if (isset($_POST['list'])) {
+              $list_id = filter_var($_POST['list'], FILTER_SANITIZE_NUMBER_INT);
+              if (filter_var($list_id, FILTER_VALIDATE_INT)) {
+               // echo $list_id;
+                //When we assign list to user make sure exisiting owner of list has user_id = 0!!
+                mysql_query("UPDATE `lists` SET user_id=" . $userID . "  WHERE list_id = " . $list_id . " AND user_id = 0");
+              }
+            }
+            //Redirect to home page, logged in, and with the same list.
+             header('Location: index.php');
           }
+      } else {
+        if (strlen($pwd) < 6 ) {
+          $errors = "Password is too short.<br/><br/>";
+        } else {
+          $errors = "Passwords do not match.<br/><br/>";
         }
-        //Redirect to home page, logged in, and with the same list.
-         header('Location: index.php');
       }
   } else {
     $errors = "Email address is not valid.<br/><br/>";
@@ -106,14 +114,31 @@ if (isset($errors)) {
     echo '<div class="errors">' . $errors . '</div>';
   }
 	echo'<form class="login" method="post" action="'.$_SERVER['PHP_SELF'].'" />
-	 username: <input type="text" name="username" /><br /><br />
-	 password: <input type="password" name="pwd" /><br /><br />
-	 email: <input class="email" type="text" name="email" /><br /><br />';
+  <div class="field-container">
+      <label for="username">Username</label><input type="text" name="username" />
+      <div class="description">Spaces are allowed; punctuation is not allowed except for periods, hyphens, and underscores.</div>
+  </div>
+	<div class="field-container">
+     <label for="email">Email</label>
+     <input class="email" type="text" name="email" />
+           <div class="description">A valid e-mail address. All e-mails from the system will be sent to this address. The e-mail address is not made public and will only be used if you wish to receive a new password or wish to receive certain news or notifications by e-mail.</div>
+  </div>    
+  <div class="field-container">
+      <label for="pwd">Password</label>
+      <input type="password" class="password" name="pwd" id="pwd" />
+  </div>
+  <div class="field-container">
+      <label for="confirm">Confirm Password</label>
+      <input type="password" name="confirm" id="confirm" class="confirm" /> <div class="error-msg"></div>
+  </div>';
+
+   
+   
     if (isset($list_id)) {
       echo '<input type="hidden" name="list" value="'.  $list_id .'"/>';
     }
 
-echo '<input type="submit" value="Register" />
+echo '<input class="submit register" type="submit" value="Register" />
 	</form>';
  echo '<br/><br/><p class="notice">Alreday got an account?';
  if (isset($list_id)) {
@@ -124,4 +149,7 @@ echo '<input type="submit" value="Register" />
   echo' Login</a> (We\'ll save your list if you\'ve been working on one)</p><br/>';
   echo'<p class="notice">&#8656; <a href="index.php">Back</a></p>'
 ?>
-<?php include('theme/footer.php'); ?>
+<?php 
+$password_page = TRUE; //used to initiate the password strength javascript
+include('theme/footer.php'); 
+?>

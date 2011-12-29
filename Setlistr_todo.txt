@@ -1,4 +1,5 @@
 To Fix
+update the last_updated time on a list when a song is edited (already updates on re-arrange, check for create)
 
 To do
 Captcha
@@ -23,12 +24,12 @@ Delete/update other people's lists.
 To improve
 Print set list
 Update last-updated time on sorting lists.
-Match and validate passwords
 Submit on enter
 README.txt
 Separate db and other config settings.
 
 Done
+Match and validate passwords
 HTML Page titles should change on login, save, user, public list, etc
 Licence
 Make list public

@@ -376,9 +376,81 @@ background-color:#ddd;
 color:#aaa;
 background:#ddd;
 }
+
+/*Register and login forms*/
+.description {
+font-size:0.9em;
+margin-left:13px;
+}
  form.login {
  margin-left:13px;
+ width:400px;
  }
+ 
+.field-container {
+clear:left;
+margin:5px 0 15px;
+}
+
+form.login label {
+width:130px;
+margin-left:13px;
+float:left;
+font-weight:bold;
+}
+
+/*Password Strength*/
+.pstrength-minchar {
+font-size : 10px;
+}
+
+#pwd_bar,
+#pwd_text,
+#pwd_minchar {
+width:180px;
+margin-left:143px;
+}
+
+.register {
+clear:left;
+margin: 15px 0 0 13px;
+}
+
+input.error {
+border: 1px solid #f00;
+}
+
+.error-msg {
+margin-left:143px;
+}
+
+input.confim {
+border: 1px solid #666;
+}
+
+#account {
+margin-top:-10px;
+width:50%;
+}
+#account label {
+font-weight:bold;
+}
+#account .description {
+font-size:0.9em;
+margin-left:0;
+}
+
+#account .error-msg {
+margin-left:0;
+}
+
+#account #pwd_bar,
+#account #pwd_text,
+ #account #pwd_minchar {
+width:180px;
+margin-left:0;
+}
+
 h2.user-action {
 position:relative;
 right:0;
@@ -388,9 +460,7 @@ clear:both;
 font-size:26px;
 margin-left:13px;
 }
-.email {
-margin-left:24px;
-}
+
 p.notice {
 margin-left:10px;
 }
@@ -419,7 +489,7 @@ margin-top:-30px;
 background:none repeat scroll 0 0 yellow;
 border:1px solid red;
 font-size:1.1em;
-margin:0 0 13px 13px;
+margin:0 0 13px 23px;
 padding:10px;
 text-align:center;
 width:30%;
@@ -495,3 +565,4 @@ text-decoration:none;
 margin:4px 0;
 vertical-align:middle;
 }
+

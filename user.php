@@ -52,16 +52,25 @@ if (!empty($_POST['username']) && !empty($_POST['email']) ){
         $message .= "Failed to update email <br/>";
       }
       
-      if (!empty($_POST['pwd'])) {
+      if (!empty($_POST['pwd']) && !empty($_POST['confirm'])) {
         $pwd = filter_var($_POST['pwd'], FILTER_SANITIZE_STRING);
+        $confirm = filter_var($_POST['confirm'], FILTER_SANITIZE_STRING);
         //$pass_update = $user->updateProperty(array('password' => $pwd));
         //print_r($pass_update);
-        if ($user->updateProperty(array('password' => $pwd)) == 1) {
-          $message .= "Password updated<br/>";
+        //echo strlen($pwd );
+        if ($pwd == $confirm && strlen($pwd) >= 6) {
+          if ($user->updateProperty(array('password' => $pwd)) == 1) {
+            $message .= "Password updated<br/>";
+          } else {
+            $message .= "Failed to update password <br/>";
+          }
         } else {
-        $message .= "Failed to update password <br/>";
-      }
-          
+          if (strlen($pwd) < 6) {
+            $message .= "Password NOT updated because password is too short.<br/><br/>";
+          } else {
+            $message .= "Password NOT updated because they do not match.<br/>";
+          }
+        }
       }
   } else {
     $message = "New email address is not valid.<br/><br/>";
@@ -131,21 +140,24 @@ $user = new flexibleAccess();
     ?>
     <form action="user.php" method="post" id="account">
  
-    <div id="edit-name-wrapper" class="form-item">
+    <div class="field-container">
       <label for="edit-name">Username: <span class="form-required" title="This field is required.">*</span></label>
-      <input maxlength="60" name="username" id="edit-name" size="60" value="<?php echo $username; ?>" class="form-text required" type="text">
+      <input name="username" id="edit-name" value="<?php echo $username; ?>" class="form-text required" type="text">
       <div class="description">Spaces are allowed; punctuation is not allowed except for periods, hyphens, and underscores.</div>
     </div>
-    <div class="form-item" id="edit-mail-wrapper">
+    <div class="field-container">
       <label for="edit-mail">E-mail address: <span class="form-required" title="This field is required.">*</span></label>
-      <input maxlength="64" name="email" id="edit-mail" size="60" value="<?php echo $email; ?>" class="form-text required" type="text">
+      <input name="email" id="edit-mail" value="<?php echo $email; ?>" class="form-text required" type="text">
       <div class="description">A valid e-mail address. All e-mails from the system will be sent to this address. The e-mail address is not made public and will only be used if you wish to receive a new password or wish to receive certain news or notifications by e-mail.</div>
     </div>
-    <div class="form-item" id="edit-pass-wrapper">
-      <div class="form-item password-parent" id="edit-pass-pass1-wrapper">
-        <label for="edit-pass-pass1">Password: </label>
-        <!--<input name="pass[pass1]" id="edit-pass-pass1" maxlength="128" size="25" class="form-text password-field password-processed" type="password"><span class="password-strength"><span class="password-title">Password strength:</span> <span class="password-result"></span></span>-->
-        <input name="pwd" id="edit-pass-pass1" maxlength="128" size="25" class="form-text password-field password-processed" type="password"><span class="password-strength"><span class="password-title">Password strength:</span> <span class="password-result"></span></span>
+    <div class="field-container">
+      <div class="field-container">
+        <label for="pwd">Password: </label>
+        <input name="pwd" id="pwd" class="password" type="password">
+      </div>
+      <div class="field-container">
+         <label for="confirm">Confirm Password</label>
+         <input type="password" name="confirm" id="confirm" class="confirm" /> <div class="error-msg"></div>
       </div>
       <!--
       <div class="form-item confirm-parent" id="edit-pass-pass2-wrapper">
@@ -163,4 +175,7 @@ $user = new flexibleAccess();
       </form>
     </div>
       
-<?php include('theme/footer.php'); ?>
+<?php 
+$password_page = TRUE; //used to initiate the password strength javascript
+include('theme/footer.php'); 
+?>

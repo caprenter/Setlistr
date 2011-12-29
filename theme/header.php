@@ -41,8 +41,6 @@
 <link rel="stylesheet" type="text/css" href="css/styles.css" />
 <link rel="stylesheet" type="text/css" href="css/print.css" media="print" />
 
-
-
 <script type="text/javascript">
 function show_confirm()
 {
