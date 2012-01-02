@@ -330,6 +330,11 @@ margin:0 auto;
 width:960px;
 padding-top:20px;
 }
+#footer .column {display:none;}
+
+#print-footer {
+display:inherit;
+}
 
 img.avatar {
 border:1px solid #DDDDDD;

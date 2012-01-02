@@ -28,8 +28,12 @@ if ( $user->is_loaded() ) { ?>
 
   <?php 
   if (isset($lists)) { 
-    $is_public = $lists[$list_id]['is_public']; //0 = private, 1=public
-    // echo $is_public;
+    if (isset($lists[$list_id]['is_public'])) { //this may not be set for someone who has created an account and bypassed saving a list.
+      $is_public = $lists[$list_id]['is_public']; //0 = private, 1=public
+      // echo $is_public;
+    } else {
+      $is_public = 0;
+    }
   }
   ?>
 

@@ -157,6 +157,7 @@ if (isset($list_id)) {
       ?>
     </div>
     <div class="column-left">
+      <p class="list-header">In the set</p>
       <ul id="sortable1" class="todoList">
         <?php
           // Looping and outputting the $todos array. The __toString() method
@@ -177,6 +178,7 @@ if (isset($list_id)) {
       </div>
     </div><!--end column left-->
     <div class="column-right">
+      <p class="list-header">In reserve</p>
       <ul id="sortable2" class="todoList">
         <?php
           // Looping and outputting the $todos array. The __toString() method

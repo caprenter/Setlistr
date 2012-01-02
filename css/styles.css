@@ -295,13 +295,18 @@ margin-right:10px;
 }
 
 .list-header {
+display:none;
+}
+
+/*.list-header {
 margin-right:-10px;
 text-align:right;
 }
 .reserve {
 text-align:right;
 margin: 20px 10px 0 0;
-}
+}*/
+
 ul.todoList li.notice {
   background-color:#fff;
 	border:none;
@@ -333,11 +338,20 @@ clear:both;
 border-top:1px solid #aaa;
 min-height:60px;
 }
+
 #footer {
 margin:0 auto;
 width:960px;
 padding:20px 10px;
 }
+
+#footer .column {
+width:22%;
+padding-right:3%;
+float:left;
+}
+
+#print-footer {display:none;}
 
 img.avatar {
 border:1px solid #DDDDDD;
@@ -381,6 +395,8 @@ background:#ddd;
 .description {
 font-size:0.9em;
 margin-left:13px;
+text-align:justify;
+width:290px;
 }
  form.login {
  margin-left:13px;
@@ -492,7 +508,7 @@ font-size:1.1em;
 margin:0 0 13px 23px;
 padding:10px;
 text-align:center;
-width:30%;
+width:50%;
 
 -moz-border-radius: 5px;
 border-radius: 5px;
@@ -511,9 +527,7 @@ font-size:0.9em;
 border-radius: 5px;
 }
 
-.list-header {
-/*display:none;*/
-}
+
 
 /*User pages*/
 .user-column-left {
@@ -536,11 +550,8 @@ padding:5px 0;
 #account  label {
 display:block;
 }
-#footer .column {
-width:22%;
-padding-right:3%;
-float:left;
-}
+
+
 
 .visibility {
 float:right;

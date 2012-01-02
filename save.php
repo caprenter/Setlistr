@@ -73,7 +73,7 @@ if (!empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['pwd'
           );
           $userID = $user->insertUser($data);//The method returns the userID of the new user or 0 if the user is not added
           if ($userID==0) {
-            $errors = 'Ooops. Something\'s not right. Please try again';//user is allready registered or something like that
+            $errors = 'Sorry. We could not create an account with those details.<br/>Please try a different username and/or email address.';//user is allready registered or something like that
             if (!empty($_POST['list'])) {
                 $list_id = filter_var($_POST['list'], FILTER_SANITIZE_NUMBER_INT);
                 if (!filter_var($list_id, FILTER_VALIDATE_INT)) {

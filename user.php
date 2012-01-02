@@ -28,6 +28,11 @@
 require_once "phpUserClass/access.class.beta.php";
 $user = new flexibleAccess();
 
+//If no-one is logged in redirect to home page.
+if ( !$user->is_loaded() ) {
+  header('Location: index.php');
+}
+
 $message ="";
 //echo $_POST['username'];
 //echo $_POST['email'];

@@ -28,9 +28,12 @@
   
   <div id="footer-wrapper">
     <div id="footer">
+      <div id="print-footer">
+        <p>www.setlistr.co.uk - Free software to make, save and print set lists.</p>
+      </div>
       <div class="column">
         <h3>About</h3>
-        <p>Make, save and print set lists<br/><br/></p>
+        <p>Make, save and print set lists.<br/><br/></p>
         <p>Make and print without having to login<br/><br/></p>
         <p>To save set lists for future use/edits, <a href="save.php<?php if(isset($list_id)) { echo "?list=" . $list_id; } ?>">create a free account</a>.</p>
         <p><br/>Free Software from <a href="https://twitter.com/caprenter">@caprenter</a><br/><a href="https://github.com/caprenter/Setlistr">https://github.com/caprenter/Setlistr</a></p>
@@ -76,8 +79,7 @@ if (isset($password_page) && $password_page == TRUE) { ?>
   <!--<script type="text/javascript" src="javascript/jquery.min.js"></script>-->
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script type="text/javascript" src="javascript/password_match.js"></script>
-  <script type="text/javascript" src="javascript/jquery.pstrength-min.1.2.js">
-  </script>
+  <script type="text/javascript" src="javascript/jquery.pstrength-min.1.2.js"></script>
   <script type="text/javascript">
   $(function() {
   $('.password').pstrength();

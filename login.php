@@ -111,7 +111,7 @@ if ( !$user->is_loaded() ) {
       echo '<input type="hidden" name="list" value="'.  $list_id .'"/>';
     }
 echo '<input type="submit" value="login" />
-	</form><br /><br /><p class="notice">Need to register? <a href="register.php">Create a new account</a></p><br/>
+	</form><br /><br /><p class="notice">Need to register? <a href="save.php">Create a new account</a></p><br/>
   <p class="notice">&#8656; <a href="index.php">Back</a></p>
   ';
 } else {
