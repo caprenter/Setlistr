@@ -47,7 +47,7 @@ if (isset($list_id)) {
   //if it is then get the list data
   if (isset($list_id) && $public_list) {
     include("functions/connect.php");
-    $query = ("SELECT * FROM `tz_todo` WHERE list_id = " . $list_id);
+    $query = ("SELECT * FROM `tz_todo` WHERE list_id = " . $list_id . " ORDER BY position");
 
     $result = mysql_query($query);
     if (mysql_num_rows($result) > 0) {
