@@ -38,8 +38,8 @@ if ( $user->is_loaded() ) { ?>
   ?>
 
 
-  <form name="public-private" action="visibility.php" method="post">
-      <input type="checkbox" name="show" class="make-public" value="1" <?php if ($is_public == 1) { echo "checked"; } ?>  onchange="this.form.submit();" /> 
+  <form name="public-private" action="visibility.php" method="post" <?php if ($is_public == 0) { echo 'class="private"'; } ?>>
+      <input type="checkbox" name="show" class="make-public" value="1" <?php if ($is_public == 1) { echo 'checked="checked"'; } ?>  onchange="this.form.submit();" /> 
       <?php if ($is_public == 0) { echo "Make public"; } else { echo "Public"; } ?> 
   <!--<input type="radio" name="show" value="0" <?php if ($is_public == 0) { echo "checked"; } ?>  onchange="this.form.submit();" /> Private
       <input type="radio" name="show" value="1" <?php if ($is_public == 1) { echo "checked"; } ?>  onchange="this.form.submit();" /> Public
