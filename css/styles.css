@@ -552,7 +552,7 @@ display:block;
 }
 
 
-
+/*Public view pages*/
 .visibility {
 float:right;
 width:45%;
@@ -563,10 +563,13 @@ font-size:1.1em;
 .visibility .label {
 font-weight: bold;
 }
+
 .not-public {
- font-size:3em;
- padding:30px 10px;
+clear:both;
+font-size:1.2em;
+padding:20px 10px;
 }
+
 h1.title a, h1.title a:hover  {
 color: #666;
 text-decoration:none;

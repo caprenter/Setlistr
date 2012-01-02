@@ -118,7 +118,7 @@ include('theme/header.php');
     </div>
 
 <?php } else { ?>
-    <div class="not-public">Sorry this list is not available to view.</div>
+    <div class="not-public">Sorry this list is not available for public viewing.</div>
 
 <?php } ?>
 
