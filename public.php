@@ -62,6 +62,7 @@ if (isset($list_id)) {
 
     $title = $public_list[0];
     $last_updated =  $public_list[1];
+    $last_updated = date("jS M, Y H:i:s",strtotime($last_updated));
 
     //Create 2 arrays of songs. One in the set, one NOT in the set
     foreach ($songs as $song) {
