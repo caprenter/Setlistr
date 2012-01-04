@@ -140,7 +140,7 @@ if (isset($errors)) {
 
 echo '<input class="submit register" type="submit" value="Register" />
 	</form>';
- echo '<br/><br/><p class="notice">Alreday got an account?';
+ echo '<br/><br/><p class="notice">Already got an account?';
  if (isset($list_id)) {
       echo '<a href="login.php?list=' . $list_id . '">';
     } else {
