@@ -497,7 +497,8 @@ float:left;
 font-weight:bold;
 height:15px;
 padding:0;
-margin:0 5px;
+margin:0 5px 5px;
+font-size:1.2em;
 }
 .list-buttons {
 clear:left;
@@ -585,4 +586,11 @@ vertical-align:middle;
 
 .offline-message {
 margin-left:13px;
+}
+
+.login {
+font-size:1.2em;
+}
+.login select {
+font-size:0.8em;
 }
