@@ -28,6 +28,11 @@ Find the //edit-in-place function and set the url appropriately.
 Google Analytics tracking javascript is set in theme/footer.php
 Edit this to your needs
 
+=Offline Message=
+If the site fails to connect to the database, then it will redirect to offline.php
+You can customise this file to reflect your own message. 
+To receive the mysql error report edit the lines in the flexibleAccess function in access.class.beta.php
+
 ==Clean up==
 When anyone visits the site, a new list is generated. 
 To clean up old lists, set up a cron job to visit 
