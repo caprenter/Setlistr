@@ -228,7 +228,8 @@ class ToDo {
 		
 		echo (new ToDo(array(
 			'id'	=> mysql_insert_id($GLOBALS['link']),
-			'text'	=> $text
+			'text'	=> $text,
+      'type' => 'todo'
 		)));
 		
 		exit;

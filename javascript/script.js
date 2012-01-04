@@ -148,7 +148,8 @@ $(document).ready(function(){
 			return false;
 		}
 		
-		$('<input type="text">').val(container.text()).appendTo(container.empty());
+		$('<input type="text" class="song-entry">').val(container.text()).appendTo(container.empty()).select();
+
 		
 		// Appending the save and cancel links:
 		container.append(
@@ -157,7 +158,19 @@ $(document).ready(function(){
 			'</div>'
 		);
 		
+		//Save/Cancel on enter/escape
+		var KEYCODE_ENTER = 13;
+        var KEYCODE_ESC = 27;
+
+	    $(container).keyup(function(e) {
+            if (e.keyCode == KEYCODE_ENTER) { $('.todo a.saveChanges').click(); } 
+            if (e.keyCode == KEYCODE_ESC) { $('.todo a.discardChanges').click(); } 
+        });
+		
 	});
+	
+
+
 	
 	// The cancel edit link:
 	
