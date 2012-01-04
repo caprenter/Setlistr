@@ -280,7 +280,7 @@ $(document).ready(function(){
   
   
   //edit-in-place
-  $('.edit').editable('http://localhost/Webs/setlist/functions/updateTitle.php', {
+  $('.edit').editable('http://localhost/Webs/setlistr/functions/updateTitle.php', {
          type   : 'textarea',
       select : true,
       submit : 'OK',

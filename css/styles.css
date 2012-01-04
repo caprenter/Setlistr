@@ -376,6 +376,8 @@ padding:0 10px 20px;
 }
 h4.list-title {
 font-size:1.2em;
+padding-left:20px;
+background:url("../img/edit.png") no-repeat scroll left 2px transparent;
 }
 #sortable2 .todo .text {
 color:#aaa;
