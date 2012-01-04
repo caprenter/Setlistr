@@ -219,7 +219,7 @@ $(document).ready(function(){
 	$('#addButton').click(function(e){
 
 		// Only one todo per 5 seconds is allowed:
-		if((new Date()).getTime() - timestamp<5000) return false;
+		if((new Date()).getTime() - timestamp<1000) return false;
 		
 		$.get("functions/ajax.php",{'action':'new','text':'New Song. Doubleclick to Edit.','list':list,'rand':Math.random()},function(msg){
 
