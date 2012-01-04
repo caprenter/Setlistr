@@ -129,6 +129,7 @@ $user = new flexibleAccess();
           $grav_url = $url.'?gravatar_id='.md5( strtolower($email) ).
           '&default='.urlencode($default).'&size='.$size; 
           echo '<img class="avatar" src="'. $grav_url .'" />';
+          echo '<div style="clear:left;margin:10px">Different image?<br/> This is a Gravatar.<br/><a href="http://en.gravatar.com/">Get a Gravatar</a></div>';
           //echo $email;
           //echo $username;
     ?>

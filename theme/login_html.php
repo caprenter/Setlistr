@@ -60,7 +60,7 @@
          
             echo "<li class='username'><a href='user.php'>" . $user->get_property("username") . "</a></li>";
             echo '<li class="logout"><a href="'.$_SERVER['PHP_SELF'].'?logout=1">logout</a></li>';
-            echo '<li><img class="avatar" src="'. $grav_url .'" /></li>';          
+            echo '<li><a href="user.php"><img class="avatar" src="'. $grav_url .'" /></a></li>';          
           } else {
             //User is not loaded
             echo "<li><a href='login.php'>Login</a></li>";
