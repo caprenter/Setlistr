@@ -99,7 +99,7 @@ if ( !$user->is_loaded() ) {
   
  $page = "Login"; //used for page title in header.php
  include('theme/header.php'); 
-	echo '<h1 class="title"><a href="index.php">Setlistr</a></h1><h2 class="user-action">Login</h1>';
+	echo '<h1 class="title"><a href="index.php">Setlistr</a></h1><h2 class="user-action">Login</h2>';
   if (isset($errors)) {
     echo '<div class="errors">' . $errors . '</div>';
   }

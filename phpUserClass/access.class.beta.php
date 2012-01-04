@@ -139,8 +139,12 @@ class flexibleAccess{
 	    }
 	    $this->remCookieDomain = $this->remCookieDomain == '' ? $_SERVER['HTTP_HOST'] : $this->remCookieDomain;
 	    $this->dbConn = ($dbConn=='')? mysql_connect($this->dbHost.':'.$this->dbPort, $this->dbUser, $this->dbPass):$dbConn;
-	    if ( !$this->dbConn ) die(mysql_error($this->dbConn));
-	    mysql_select_db($this->dbName, $this->dbConn)or die(mysql_error($this->dbConn));
+      //If we can't connect then redirect to offline page. Uncomment the line below to get error reporting
+	    //if ( !$this->dbConn ) die(mysql_error($this->dbConn));
+      if ( !$this->dbConn ) die(header('Location: offline.php'));
+      //If we can't connect then redirect to offline page. Uncomment the line below to get error reporting
+	    //mysql_select_db($this->dbName, $this->dbConn)or die(mysql_error($this->dbConn));
+      mysql_select_db($this->dbName, $this->dbConn)or die(header('Location: offline.php'));
 	    if( !isset( $_SESSION ) ) session_start();
 	    if ( !empty($_SESSION[$this->sessionVariable]) )
 		    $this->loadUser( $_SESSION[$this->sessionVariable] );
