@@ -7,6 +7,13 @@ Place all the files on your webserver.
 Set up a MySQL database and import the database set up files from the /db directory.
 
 ==Configuration==
+=Documen Root/Base URL=
+settings.php
+Edit settings.php to reflect your server document root
+
+=.htaccess=
+You might want to visit the settings in the .htaccess file.
+
 =Database=
 Update the database connection information in the following places:
 functions/connect.php
