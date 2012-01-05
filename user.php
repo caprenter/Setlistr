@@ -23,7 +23,7 @@
  *      Setlistr relies on other free software products. See the README.txt file 
  *      for more details.
  */
-
+require_once('settings.php');
 //Initiate the user access script
 require_once "phpUserClass/access.class.beta.php";
 $user = new flexibleAccess();
@@ -95,18 +95,18 @@ $user = new flexibleAccess();
             if ( $user->is_loaded() ){
               echo "<li class='username'>" . $user->get_property("username") . "</li>";
               //echo '<li class="logout"><a href="'.$_SERVER['PHP_SELF'].'?logout=1">logout</a></li>';
-              echo '<li class="logout"><a href="index.php?logout=1">logout</a></li>';
+              echo '<li class="logout"><a href="' . $host . '?logout=1">logout</a></li>';
             } else {
               //User is loaded
-              echo "<li><a href='login.php'>Login</a></li>";
+              echo "<li><a href='" . $host . "login.php'>Login</a></li>";
             }
           ?>
         </ul>
       </div><!--login-->
-      <h1 class="title"><a href="index.php">Setlistr</a></h1>
+      <h1 class="title"><a href="<?php echo $host; ?>">Setlistr</a></h1>
       <div class="list-buttons">
         <ul class="inline">
-          <li><a href="index.php">Back</a></li>
+          <li><a href="<?php echo $host; ?>">Back</a></li>
         </ul>
       </div>
     </div><!--nav-->

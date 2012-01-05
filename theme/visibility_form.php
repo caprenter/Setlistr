@@ -46,7 +46,8 @@ if ( $user->is_loaded() ) { ?>
    --> 
       <?php 
         if ($is_public == 1) {
-          echo ' - link: <a href="http://' . $_SERVER["SERVER_NAME"] . '/public.php?list=' . $list_id . '">http://' . $_SERVER["SERVER_NAME"] . '/public.php?list=' . $list_id . '</a>';
+          //echo ' - link: <a href="' . $host . 'public.php?list=' . $list_id . '">' . $host . 'public.php?list=' . $list_id . '</a>';
+          echo ' - link: <a href="' . $host . 'list/' . $list_id . '">' . $host . 'list/' . $list_id . '</a>';
         }
       ?>
       <br />

@@ -27,12 +27,11 @@
  *      Setlistr relies on other free software products. See the README.txt file 
  *      for more details.
  */
+require_once('settings.php');
 
-
-  
- $page = "Off Line"; //used for page title in header.php
- include('theme/header.php'); 
-	echo '<h1 class="title"><a href="index.php">Setlistr</a></h1>';
+$page = "Off Line"; //used for page title in header.php
+include('theme/header.php'); 
+echo '<h1 class="title"><a href="' . $host . '">Setlistr</a></h1>';
 ?>
 <h2 class="user-action">Sorry</h2>
 <div class="offline-message">Setlistr is currently down for a bit of tweaking.<br/> We'll be back up again shortly.</div>

@@ -23,7 +23,7 @@
  *      Setlistr relies on other free software products. See the README.txt file 
  *      for more details.
  */
-
+require_once('settings.php');
 
 //Initiate the user access script
 require_once "phpUserClass/access.class.beta.php";
@@ -83,10 +83,10 @@ include('theme/header.php');
       <div class="login">
         <?php include('theme/login_html.php'); ?>
       </div><!--login-->
-      <h1 class="title"><a href="index.php">Setlistr</a></h1>
+      <h1 class="title"><a href="<?php echo $host; ?>">Setlistr</a></h1>
       <div class="list-buttons">
         <ul class="inline">
-          <li><a id="newList1" href="index.php?list=new">New List</a></li>
+          <li><a id="newList1" href="<?php echo $host; ?>?list=new">New List</a></li>
         </ul>
       </div>
     </div><!--nav-->

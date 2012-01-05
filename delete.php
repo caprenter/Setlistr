@@ -23,6 +23,7 @@
  *      Setlistr relies on other free software products. See the README.txt file 
  *      for more details.
  */
+require_once('settings.php');
 
 //Initiate the user access script
 require_once "phpUserClass/access.class.beta.php";
@@ -44,9 +45,9 @@ if ($user->is_loaded()) {
     //echo $user_id;
     //Remove lists assigned to user 0 older than 2 hours
     $query = mysql_query("DELETE FROM lists WHERE list_id = " . $list_id . " AND user_id = " . $user_id);
-    header('Location: index.php');
+    header('Location: ' . $host);
   }
 } else {
-   header('Location: index.php');
+   header('Location: ' . $host);
 }
 ?>

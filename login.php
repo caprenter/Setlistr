@@ -26,7 +26,7 @@
  *      Setlistr relies on other free software products. See the README.txt file 
  *      for more details.
  */
-
+require_once('settings.php');
 /*
 Login with php user class
 http://phpUserClass.com
@@ -93,13 +93,13 @@ if ( !$user->is_loaded() ) {
         //We're looged in
         //Old list has been saved
         //Go back to index.php
-        header('Location: index.php');
+        header('Location: ' . $host);
 	  }
 	}
   
  $page = "Login"; //used for page title in header.php
  include('theme/header.php'); 
-	echo '<h1 class="title"><a href="index.php">Setlistr</a></h1><h2 class="user-action">Login</h2>';
+	echo '<h1 class="title"><a href="' . $host . '">Setlistr</a></h1><h2 class="user-action">Login</h2>';
   if (isset($errors)) {
     echo '<div class="errors">' . $errors . '</div>';
   }
@@ -111,12 +111,12 @@ if ( !$user->is_loaded() ) {
       echo '<input type="hidden" name="list" value="'.  $list_id .'"/>';
     }
 echo '<input type="submit" value="login" />
-	</form><br /><br /><p class="notice">Need to register? <a href="save.php">Create a new account</a></p><br/>
-  <p class="notice">&#8656; <a href="index.php">Back</a></p>
+	</form><br /><br /><p class="notice">Need to register? <a href="' . $host . '/save.php">Create a new account</a></p><br/>
+  <p class="notice">&#8656; <a href="' . $host . '">Back</a></p>
   ';
 } else {
-  //User is loaded
-  echo '<a href="'.$_SERVER['PHP_SELF'].'?logout=1">logout</a>';
+  //User is loaded. Redirect to home page
+  header('Location: ' . $host);
 }
 ?>
 

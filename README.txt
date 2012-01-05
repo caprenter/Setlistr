@@ -15,8 +15,8 @@ HumanWorks
 http://phpuserclass.com/
 https://github.com/HumanWorks/phpUserClass
 
-All javascript used has been re-used from websites. Credit is given in those files.
-The application relies heavily on JQuery.
+Practically all javascript used has been re-used from websites. Credit is given in those files.
+The application relies heavily on JQuery.(http://jquery.com/)
 
 Ajax Password Strength Meter Script (jquery.pstrength)
 Author: Digital Spaghetti
@@ -27,6 +27,16 @@ password_match.js
 http://screencasts.org/episodes/introduction-to-jquery
 Copyright 2010-2011 Secret Monkey Science LLC - All Rights Reserved.
 Crafted by Josh Timonen & Andrew Chalkley 
+
+Drupal
+http://drupal.org
+Drupal is a registered trademark of Dries Buytaert.
+Text for user registration taken from Drupal's user module.
+
+TinyMCE
+http://www.tinymce.com/
+© 2003-2012 Moxiecode Systems AB.
+favicon built from the bullet list image from TinyMCE 
 
 ==Install==
 

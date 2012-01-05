@@ -26,7 +26,7 @@
  *      Setlistr relies on other free software products. See the README.txt file 
  *      for more details.
  */
-
+require_once('settings.php');
 /*
 * When a user saves a list, then  we register them and log them in.
 * Otherwise lists are saved as changes are made
@@ -109,7 +109,7 @@ if (!empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['pwd'
 
 $page = "Save List"; //used for page title in header.php
 include('theme/header.php'); 
-echo '<h1 class="title"><a href="index.php">Setlistr</a></h1><h2 class="user-action">Register to save your lists.</h2>';
+echo '<h1 class="title"><a href="' . $host . '">Setlistr</a></h1><h2 class="user-action">Register to save your lists.</h2>';
 if (isset($errors)) {
     echo '<div class="errors">' . $errors . '</div>';
   }
@@ -142,12 +142,12 @@ echo '<input class="submit register" type="submit" value="Register" />
 	</form>';
  echo '<br/><br/><p class="notice">Already got an account?';
  if (isset($list_id)) {
-      echo '<a href="login.php?list=' . $list_id . '">';
+      echo '<a href="' . $host . 'login.php?list=' . $list_id . '">';
     } else {
-      echo '<a href="login.php">';
+      echo '<a href="' . $host . 'login.php">';
     }
   echo' Login</a> (We\'ll save your list if you\'ve been working on one)</p><br/>';
-  echo'<p class="notice">&#8656; <a href="index.php">Back</a></p>'
+  echo'<p class="notice">&#8656; <a href="' . $host . '">Back</a></p>'
 ?>
 <?php 
 $password_page = TRUE; //used to initiate the password strength javascript

@@ -18,7 +18,7 @@
  *      Setlistr relies on other free software products. See the README.txt file 
  *      for more details.
  */
-
+require_once('settings.php');
 //Initiate the user access script
 require_once "phpUserClass/access.class.beta.php";
 $user = new flexibleAccess();

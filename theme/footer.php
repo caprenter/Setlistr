@@ -35,7 +35,7 @@
         <h3>About</h3>
         <p>Make, save and print set lists.<br/><br/></p>
         <p>Make and print without having to login<br/><br/></p>
-        <p>To save set lists for future use/edits, <a href="save.php<?php if(isset($list_id)) { echo "?list=" . $list_id; } ?>">create a free account</a>.</p>
+        <p>To save set lists for future use/edits, <a href="<?php echo $host; ?>save.php<?php if(isset($list_id)) { echo "?list=" . $list_id; } ?>">create a free account</a>.</p>
         <p><br/>Free Software from <a href="https://twitter.com/caprenter">@caprenter</a><br/><a href="https://github.com/caprenter/Setlistr">https://github.com/caprenter/Setlistr</a></p>
       </div>
       <div class="column">
@@ -47,7 +47,7 @@
         <?php 
           echo '<h3>User tools</h3>';
           if ( isset($user) && $user->is_loaded() && isset($list_id)) {
-            echo '<p><a href="export.php?list=' . $list_id . '">Export this list as csv</a></p>';
+            echo '<p><a href="' . $host . 'export.php?list=' . $list_id . '">Export this list as csv</a></p>';
           } else {
             echo "Logged in users can export and share lists";
           }
@@ -69,8 +69,8 @@
 <script type="text/javascript" src="javascript/jquery-ui.min.js"></script>-->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-<script type="text/javascript" src="javascript/jquery.jeditable.js" charset="utf-8"></script>
-<script type="text/javascript" src="javascript/script.js"></script>
+<script type="text/javascript" src="<?php echo $host; ?>javascript/jquery.jeditable.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo $host; ?>javascript/script.js"></script>
 <?php 
   }
 ?>
@@ -78,8 +78,8 @@
 if (isset($password_page) && $password_page == TRUE) { ?>
   <!--<script type="text/javascript" src="javascript/jquery.min.js"></script>-->
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script type="text/javascript" src="javascript/password_match.js"></script>
-  <script type="text/javascript" src="javascript/jquery.pstrength-min.1.2.js"></script>
+  <script type="text/javascript" src="<?php echo $host; ?>javascript/password_match.js"></script>
+  <script type="text/javascript" src="<?php echo $host; ?>javascript/jquery.pstrength-min.1.2.js"></script>
   <script type="text/javascript">
   $(function() {
   $('.password').pstrength();

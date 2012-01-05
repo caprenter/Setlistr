@@ -35,11 +35,11 @@
 <!--<link href='http://fonts.googleapis.com/css?family=Chango' rel='stylesheet' type='text/css'>-->
 
 <!-- Including the jQuery UI Human Theme -->
-<link rel="stylesheet" href="css/jquery-ui.css" type="text/css" media="all" />
+<link rel="stylesheet" href="<?php echo $host; ?>css/jquery-ui.css" type="text/css" media="all" />
 
 <!-- Our own stylesheet -->
-<link rel="stylesheet" type="text/css" href="css/styles.css" />
-<link rel="stylesheet" type="text/css" href="css/print.css" media="print" />
+<link rel="stylesheet" type="text/css" href="<?php echo $host; ?>css/styles.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $host; ?>css/print.css" media="print" />
 
 <script type="text/javascript">
 function show_confirm()

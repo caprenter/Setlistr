@@ -27,6 +27,7 @@
 /*
 * Clone a list
 */
+require_once('settings.php');
 
 //Pass the list id via the URL
 if (isset($_GET['list'])) {
@@ -92,5 +93,5 @@ if (isset($list_id)){
 }
 
 //Redirect to home page, hopefully still logged in, and with the cloned list.
-header('Location: index.php');
+header('Location: ' . $host);
 
