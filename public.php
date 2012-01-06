@@ -85,6 +85,7 @@ include('theme/header.php');
       </div><!--login-->
       <h1 class="title"><a href="<?php echo $host; ?>">Setlistr</a></h1>
       <div class="list-buttons">
+        <p class="public">Public Lists</p>
         <ul class="inline">
           <li><a id="newList1" href="<?php echo $host; ?>?list=new">New List</a></li>
         </ul>
@@ -93,11 +94,11 @@ include('theme/header.php');
     
  <?php if (isset($title)) { ?>
     
-    <div class="active-list">
-      <h4 id="208" class="edit list-title"><?php echo $title; ?></h4>updated: <?php echo $last_updated; ?>    
+    <div class="active-list public-list">
+      <h4 id="208" class="public-list-title"><?php echo $title; ?></h4>updated: <?php echo $last_updated; ?>    
     </div>
     <div class="visibility">
-      <p><span class="label">Visability</span><br/> Everyone can view this set list</p>
+      <p><span class="label">Visability:</span> Everyone can view this set list</p>
     </div>
     <div class="column-left">
     <?php 

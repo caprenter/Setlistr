@@ -39,6 +39,18 @@ ul.todoList li {
 }
 
 ul.todoList li:hover{
+	border-color:#F9F9F9;
+  cursor:default;
+	
+	/* CSS3 glow effect: */
+	-moz-box-shadow:0 0 5px #A6E5FD;
+	-webkit-box-shadow:0 0 5px #A6E5FD;
+	box-shadow:0 0 5px #A6E5FD;
+  -moz-box-shadow:none;
+	-webkit-box-shadow:none;
+	box-shadow:none;
+}
+.public-list ul.todoList li:hover{
 	border-color:#9be0f9;
 	
 	/* CSS3 glow effect: */
@@ -46,6 +58,7 @@ ul.todoList li:hover{
 	-webkit-box-shadow:0 0 5px #A6E5FD;
 	box-shadow:0 0 5px #A6E5FD;
 }
+
 
 ul.todoList li.break {
 	background-color:#aaa;
@@ -196,6 +209,9 @@ ul.inline, ul.inline li {
 display:inline;
 }
 
+#nav .list-buttons ul.inline {
+float:left;
+}
 
 
 /* The styles below are only necessary for the styling of the demo page: */
@@ -378,6 +394,9 @@ h4.list-title {
 font-size:1.2em;
 padding-left:20px;
 background:url("../img/edit.png") no-repeat scroll left 2px transparent;
+}
+h4.public-list-title {
+font-size:1.2em;
 }
 #sortable2 .todo .text {
 color:#aaa;
@@ -593,4 +612,10 @@ font-size:1.2em;
 }
 .login select {
 font-size:0.8em;
+}
+
+p.public {
+letter-spacing:0.4em;
+margin-left:13px;
+}
 }
