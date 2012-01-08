@@ -63,7 +63,8 @@ if (isset($list_id)) {
     $title = $public_list[0];
     $last_updated =  $public_list[1];
     $last_updated = date("jS M, Y H:i:s",strtotime($last_updated));
-
+    $list_user_id = $public_list[2];
+    
     //Create 2 arrays of songs. One in the set, one NOT in the set
     foreach ($songs as $song) {
       if ($song["in-out"] == 1) {
@@ -105,6 +106,17 @@ include('theme/header.php');
       if (isset($in_set)) {
           echo "<p class=\"list-header\">In the set</p>";
           theme_list_songs ($in_set,"sortable1");
+      }
+    ?>
+    <?php
+      if ($user->is_loaded()){
+          $this_user_id = $user->get_property("userID");
+          if ($this_user_id == $list_user_id) {
+            print(' <form name="edit-public-list" action="' . $host . '" method="post" class="edit-list">
+                    <input type="hidden" name="list" value="'.  $list_id .'"/>
+                    <input type="submit" value="Edit List" />
+                    </form>');
+          }
       }
     ?>
     </div>
@@ -160,7 +172,7 @@ function is_list_public ($list_id) {
       if ($row["public"] == TRUE) {
         //echo $row["name"];
         mysql_close($link);
-        return array($row["name"],$row["last_updated"]);
+        return array($row["name"],$row["last_updated"],$row["user_id"]);
       } else {
         mysql_close($link);
         return FALSE;

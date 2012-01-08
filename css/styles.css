@@ -39,7 +39,7 @@ ul.todoList li {
 }
 
 ul.todoList li:hover{
-	border-color:#F9F9F9;
+	border-color:#EEEEEE;
   cursor:default;
 	
 	/* CSS3 glow effect: */
@@ -420,7 +420,8 @@ margin-left:13px;
 text-align:justify;
 width:290px;
 }
- form.login {
+
+ form.edit-list {
  margin-left:13px;
  width:400px;
  }

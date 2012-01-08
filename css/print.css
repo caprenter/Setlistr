@@ -398,3 +398,7 @@ ul.todoList li {
 border:none;
 }
 .private {display:none}
+
+ form.login {
+display:none;
+ }
