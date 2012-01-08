@@ -629,3 +629,14 @@ width:300px;
 .delete-account input {
 margin-top:15px;
 }
+
+#homepage-text {
+clear:both;
+margin-left:6px;
+padding:10px;
+border-top:1px solid #ddd;
+
+}
+#homepage-text ul {
+margin:15px;
+}

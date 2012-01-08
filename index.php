@@ -194,11 +194,23 @@ if (isset($list_id)) {
     </div>
 
     <!-- This div is used as the base for the confirmation jQuery UI POPUP. Hidden by CSS. -->
-    <div id="dialog-confirm" title="Delete TODO Item?">Are you sure you want to delete this song?</div>
+    <div id="dialog-confirm" title="Delete TODO Item?">Are you sure you want to delete this item?</div>
 
     <!--<p class="note">The todos are flushed every hour. You can add only one in 5 seconds.</p>-->
-      
-      
+    <div id="homepage-text">
+      <h3>Setlistr is designed for musicians who need to organise their material.</h3>
+      <p>For example it can be used to:</p>
+      <ul>
+        <li>Create a set list for your band</li>
+        <li>Decide the running order of tracks on your latest recording</li>
+        <li>Share your ideas with others</li>
+        <li>Print your set list from your browser</li>
+      </ul>
+      <p>By creating an account you can keep a repositry of old sets, copy a set list and edit it, and make lists public for others to see.</p>
+      <p>Your data is yours, so you can also export the data in your lists.</p>
+      <p><br/>If you just want to use the service as a one off, then you can. Lists are deleted after 2 hours if not saved, to help us keep our servers clean.</p>
+      <p><br/>Feedback, suggestions, feature requests, and offers of help are all welcome.</p>
+    </div>
 <?php 
   $include_javascript = TRUE; //Because on some pages we don't want to include it!
   include('theme/footer.php'); 
