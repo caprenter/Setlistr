@@ -619,4 +619,13 @@ p.public {
 letter-spacing:0.4em;
 margin-left:13px;
 }
+
+.delete-account {
+float:right;
+margin:-10px 10px;
+width:300px;
+}
+
+.delete-account input {
+margin-top:15px;
 }

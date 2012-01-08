@@ -33,6 +33,15 @@ if ( !$user->is_loaded() ) {
   header('Location: index.php');
 }
 
+//IS this  a DELETE Account request - gulp!
+//if so delete it and redirect to home page
+if (isset($_POST['user'])) {
+  $user_id = filter_var($_POST['user'], FILTER_SANITIZE_NUMBER_INT);
+  if (filter_var($user_id, FILTER_VALIDATE_INT)) {
+   include("functions/delete_account.php");
+  }
+}
+
 $message ="";
 //echo $_POST['username'];
 //echo $_POST['email'];
@@ -93,6 +102,7 @@ $user = new flexibleAccess();
         <ul class="inline">
           <?php 
             if ( $user->is_loaded() ){
+              $user_id = $user->get_property("userID");
               echo "<li class='username'>" . $user->get_property("username") . "</li>";
               //echo '<li class="logout"><a href="'.$_SERVER['PHP_SELF'].'?logout=1">logout</a></li>';
               echo '<li class="logout"><a href="' . $host . '?logout=1">logout</a></li>';
@@ -144,8 +154,17 @@ $user = new flexibleAccess();
        echo '<div class="message">' . $message . '</div>';
     }
     ?>
+    <div class="delete-account">
+      <h3>To delete your account</h3>
+      <p>By deleting your account we will remove all your account details, and any lists you have created.</p> 
+      <form action="user.php" method="post" id="delete-account">
+        <input type="hidden" name="user" value="<?php echo $user_id ?>"/>
+        <input type="submit" class="form-submit" value="Delete Account" id="delete-user-account" name="delete-user-account">
+      </form>
+    </div>
+    
     <form action="user.php" method="post" id="account">
- 
+    <h3>Update your account details</h3>
     <div class="field-container">
       <label for="edit-name">Username: <span class="form-required" title="This field is required.">*</span></label>
       <input name="username" id="edit-name" value="<?php echo $username; ?>" class="form-text required" type="text">
