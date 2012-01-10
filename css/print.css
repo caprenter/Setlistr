@@ -402,3 +402,7 @@ border:none;
  form.login {
 display:none;
  }
+ 
+ #homepage-text {
+ display:none;
+ }
