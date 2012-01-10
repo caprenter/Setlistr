@@ -36,7 +36,7 @@ include('theme/header.php');
   <h1 class="title"><a href="index.php">Setlistr</a></h1>
   <div class="list-buttons">
     <ul class="inline">
-      <li><a id="newList1" href="' . $host . '">Home</a></li>
+      <li><a id="newList1" href="<?php echo $host; ?>">Home</a></li>
     </ul>
   </div>
 </div><!--nav-->
