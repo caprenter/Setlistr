@@ -38,6 +38,10 @@ http://www.tinymce.com/
 © 2003-2012 Moxiecode Systems AB.
 favicon built from the bullet list image from TinyMCE 
 
+img/404_cat.png
+Licenced for re-use by it's creator:
+Kristianus Kurnia - www.noskill1343.com
+
 ==Install==
 
 See INSTALL.txt

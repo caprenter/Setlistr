@@ -640,3 +640,24 @@ border-top:1px solid #ddd;
 #homepage-text ul {
 margin:15px;
 }
+.not-found-message {
+font-size:1.2em;
+padding-left: 350px;
+background: url(../img/404_cat.png) no-repeat 0 100px transparent;
+height:420px;
+padding-top:20px
+}
+
+.not-found-message h2 {
+margin-left:0;
+padding-top:50px;
+}
+
+.not-found-message p {
+margin:8px 0;
+}
+
+.credit {
+margin-top:155px;
+font-size:0.9em;
+}

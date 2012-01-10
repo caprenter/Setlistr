@@ -4,6 +4,8 @@
 # 
 #
 
+ErrorDocument 404 /404.php
+
 # Rewrite rules.
 <IfModule mod_rewrite.c>
   RewriteEngine on
