@@ -157,6 +157,7 @@ if (isset($list_id)) {
       ?>
     </div>
     <div class="column-left">
+    <p>Hello world</p>
       <p class="list-header">In the set</p>
       <ul id="sortable1" class="todoList">
         <?php
