@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 27, 2011 at 09:09 PM
+-- Generation Time: Jan 13, 2012 at 08:27 PM
 -- Server version: 5.1.41
 -- PHP Version: 5.3.2-1ubuntu4.11
 
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `tz_todo` (
   PRIMARY KEY (`id`),
   KEY `position` (`position`),
   KEY `list_id` (`list_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=339 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=754 ;
 
 -- --------------------------------------------------------
 
@@ -66,9 +66,10 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(150) NOT NULL DEFAULT '',
   `activationHash` varchar(150) NOT NULL DEFAULT '',
   `active` tinyint(1) NOT NULL DEFAULT '0',
+  `last_login` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`userID`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `activationHash` (`activationHash`),
   KEY `active` (`active`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;

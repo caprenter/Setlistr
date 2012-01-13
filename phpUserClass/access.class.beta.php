@@ -196,6 +196,7 @@ class flexibleAccess{
 		if ( $loadUser ) {
 			$this->userData = mysql_fetch_array($res);
 			$this->userID = $this->userData[$this->tbFields['userID']];
+      $this->updateProperty(array('last_login'=>date( "Y-m-d H:i:s",time() ) ) ); //update last_login time
 			$_SESSION[$this->sessionVariable] = $this->userID;
 			if ( $remember ){
 			  $cookie = base64_encode(serialize(array('uname'=>$uname,'password'=>md5($salt.$originalPassword.$site_salt))));
