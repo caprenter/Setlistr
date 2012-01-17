@@ -242,14 +242,14 @@ if (isset($_POST['pwd']) && isset($_POST['confirm']) && isset($_POST['user']) &&
      $body .= $link;
      $body .= "\n\nAny problems/feedback/concerns please let us know: caprenter@gmail.com";
      $headers = "From: " . $site_email;
-     //if (mail($to, $subject, wordwrap($body,70), $headers)) {
+     if (mail($to, $subject, wordwrap($body,70), $headers)) {
         $html .='<p class="notice">An email has been sent to: ' . $email . '</p>';
         $html .='<p class="notice">Follow the instructions we have sent you to get access to your account.</p>';
-     //} else {
+     } else {
         $html .= '<h2 class="user-action">Sorry</h2>';
         $html .='<p class="notice">We were unable to send you an email. Please contact us at <a href="mailto:' . $site_email . '">' . $site_email . '</a></p>';
-     //}
-     $html .= $body;
+     }
+     //$html .= $body;
     } else { 
       //email does not exist in the system
       $page = "Request new password - email not found"; 
