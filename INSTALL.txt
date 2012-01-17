@@ -10,6 +10,7 @@ Set up a MySQL database and import the database set up files from the /db direct
 =Documen Root/Base URL=
 settings.php
 Edit settings.php to reflect your server document root
+There is also a site email setting which is used in password recovery (new_pass.php)
 
 =.htaccess=
 You might want to visit the settings in the .htaccess file.

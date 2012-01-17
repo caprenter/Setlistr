@@ -330,6 +330,32 @@ class flexibleAccess{
     //echo $pwd;
     return $pwd;
   }
+  
+  public function get_user_by_email ($email) {   
+     $res = $this->query("SELECT " . $this->tbFields['userID'] . " FROM ". $this->dbTable . " WHERE " . $this->tbFields['email'] ." = '" . $email . "'");
+     if ( mysql_num_rows($res) != 0) {
+       $row = mysql_fetch_assoc($res);
+       //print_r($row);
+       $user_id = $row['userID'];
+       return $user_id;
+     } else {
+       return FALSE;
+     }
+   }
+   
+  public function update_password ($user_id,$password) {  
+    $salt = $this->randomPass();
+    $password = $this->encode_password($password,$salt);
+    $query = "UPDATE `{$this->dbTable}` SET  {$this->tbFields['pass']} = '" . $password . "', {$this->tbFields['salt']} = '" . $salt . "' WHERE " . $this->tbFields['userID'] . " = " . $user_id;
+    //echo $query;
+    if ($this->query($query)) {
+      return TRUE;
+    } else {
+      return FALSE;
+    }
+  }
+  
+  
   ////////////////////////////////////////////
   // PRIVATE FUNCTIONS
   ////////////////////////////////////////////

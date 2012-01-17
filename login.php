@@ -103,17 +103,21 @@ if ( !$user->is_loaded() ) {
   if (isset($errors)) {
     echo '<div class="errors">' . $errors . '</div>';
   }
-	echo'<form class="login" method="post" action="'.$_SERVER['PHP_SELF'].'" />
-	 username: <input type="text" name="uname" /><br /><br />
-	 password: <input type="password" name="pwd" /><br /><br />
-	 Remember me? <input type="checkbox" name="remember" value="1" /><br /><br />';
-   if (isset($list_id)) {
-      echo '<input type="hidden" name="list" value="'.  $list_id .'"/>';
-    }
-echo '<input type="submit" value="login" />
-	</form><br /><br /><p class="notice">Need to register? <a href="' . $host . '/save.php">Create a new account</a></p><br/>
-  <p class="notice">&#8656; <a href="' . $host . '">Back</a></p>
-  ';
+	print('<form class="login" method="post" action="'.$_SERVER['PHP_SELF'].'" />
+          <label for="username">username</label> <input type="text" name="uname" /><br /><br />
+          <label for="password">password</label> <input type="password" name="pwd" /><br /><br />
+          <label for="Remember me">Remember me?</label> <input type="checkbox" name="remember" value="1" /><br /><br />'
+        );
+  if (isset($list_id)) {
+    echo '<input type="hidden" name="list" value="'.  $list_id .'"/>';
+  }
+  print('<input type="submit" value="login" />
+        </form><br /><br />
+        <p class="notice">Forgotten password? <a href="' . $host . 'new_pass.php">Send me a new password</a></p><br/>
+        <p class="notice">Need to register? <a href="' . $host . 'save.php">Create a new account</a></p><br/>
+        <p class="notice">&#8656; <a href="' . $host . '">Back</a></p>'
+        ); 
+      
 } else {
   //User is loaded. Redirect to home page
   header('Location: ' . $host);

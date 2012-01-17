@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.2deb1
+-- version 3.3.2deb1ubuntu1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 13, 2012 at 08:27 PM
+-- Generation Time: Jan 17, 2012 at 09:19 AM
 -- Server version: 5.1.41
 -- PHP Version: 5.3.2-1ubuntu4.11
 
@@ -37,6 +37,20 @@ CREATE TABLE IF NOT EXISTS `lists` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `recover_password`
+--
+
+CREATE TABLE IF NOT EXISTS `recover_password` (
+  `recovery_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `issued` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`recovery_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tz_todo`
 --
 
@@ -51,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `tz_todo` (
   PRIMARY KEY (`id`),
   KEY `position` (`position`),
   KEY `list_id` (`list_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=754 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=761 ;
 
 -- --------------------------------------------------------
 

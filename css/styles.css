@@ -451,6 +451,20 @@ width:180px;
 margin-left:143px;
 }
 
+.new_pass #pwd_bar,
+.new_pass #pwd_text,
+.new_pass #pwd_minchar {
+width:180px;
+margin-left:177px;
+}
+
+form.new_pass label {
+float:left;
+font-weight:bold;
+margin-left:13px;
+width:150px;
+}
+
 .register {
 clear:left;
 margin: 15px 0 0 13px;
@@ -502,7 +516,7 @@ margin-left:13px;
 }
 
 p.notice {
-margin-left:10px;
+margin-left:13px;
 }
 #all-lists {
 float:left
@@ -612,8 +626,13 @@ margin-left:13px;
 .login {
 font-size:1.2em;
 }
+
 .login select {
 font-size:0.8em;
+}
+
+.login input {
+margin-left:13px;
 }
 
 p.public {
