@@ -206,7 +206,7 @@ if (isset($list_id)) {
         <li>Share your ideas with others</li>
         <li>Print your set list from your browser</li>
       </ul>
-      <p>By creating an account you can keep a repositry of old sets, copy a set list and edit it, and make lists public for others to see.</p>
+      <p>By creating an account you can keep a repository of old sets, copy a set list and edit it, and make lists public for others to see.</p>
       <p>Your data is yours, so you can also export the data in your lists.</p>
       <p><br/>If you just want to use the service as a one off, then you can. Lists are deleted after 2 hours if not saved, to help us keep our servers clean.</p>
       <p><br/>Feedback, suggestions, feature requests, and offers of help are all welcome.</p>
