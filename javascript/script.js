@@ -221,10 +221,10 @@ $(document).ready(function(){
 		// Only one todo per 5 seconds is allowed:
 		if((new Date()).getTime() - timestamp<1000) return false;
 		
-		$.get("functions/ajax.php",{'action':'new','text':'New Song. Doubleclick to Edit.','list':list,'rand':Math.random()},function(msg){
+		$.get("functions/ajax.php",{'action':'new','text':'New Song','list':list,'rand':Math.random()},function(msg){
 
 			// Appending the new todo and fading it into view:
-			$(msg).hide().appendTo('#sortable1').fadeIn();
+			$(msg).hide().appendTo('#sortable1').fadeIn().find('a.edit').click();
 		});
 
 		// Updating the timestamp:
@@ -243,12 +243,12 @@ $(document).ready(function(){
 	$('#addBreak').click(function(e){
 
 		// Only one todo per 5 seconds is allowed:
-		if((new Date()).getTime() - timestamp<5000) return false;
+		if((new Date()).getTime() - timestamp<1000) return false;
 		
-		$.get("functions/ajax.php",{'action':'break','text':'Set Break. Doubleclick to Edit.','list':list,'rand':Math.random()},function(msg){
+		$.get("functions/ajax.php",{'action':'break','text':'Set Break','list':list,'rand':Math.random()},function(msg){
 
 			// Appending the new todo and fading it into view:
-			$(msg).hide().appendTo('#sortable1').fadeIn();
+			$(msg).hide().appendTo('#sortable1').fadeIn().find('a.edit').click();
 		});
 
 		// Updating the timestamp:
