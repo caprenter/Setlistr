@@ -60,10 +60,10 @@
          
             echo "<li class='username'><a href='" . $host . "user.php'>" . $user->get_property("username") . "</a></li>";
             echo '<li class="logout"><a href="' . $host . '?logout=1">logout</a></li>';
-            echo '<li><a href="' . $host . 'user.php"><img class="avatar" src="'. $grav_url .'" /></a></li>';          
+            echo '<li class="gravatar"><a href="' . $host . 'user.php"><img class="avatar" src="'. $grav_url .'" /></a></li>';          
           } else {
             //User is not loaded
-            echo "<li><a href='" . $host . "login.php'>Login</a></li>";
+            echo "<li class='login-link'><a href='" . $host . "login.php'>Login</a></li>";
           }
           ?>
 

@@ -403,6 +403,10 @@ border:none;
 display:none;
  }
  
+ li.login-link a {
+ display:none;
+ }
+ 
  #homepage-text {
  display:none;
  }
