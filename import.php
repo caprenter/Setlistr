@@ -102,7 +102,7 @@ if ($user->is_loaded()) {
           ToDo::createNew($song,$list_id,TRUE);
         }
       }
-      mysql_free_result($result);
+      //mysql_free_result($result);
       header("Location: " . $host);      
     }
   }
