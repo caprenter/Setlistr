@@ -51,8 +51,10 @@ if ( $user->is_loaded() ){
             while ($row = mysql_fetch_assoc($result)) {
                 if ($row['in_out'] == 1 ) {
                   $in_out = "In the set";
+                  $in_out = "in";
                 } else {
                   $in_out = "In reserve";
+                  $in_out = "out";
                 }
                 //echo $row['text'];
                 $data[] = array($row['text'],$in_out);

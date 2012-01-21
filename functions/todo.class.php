@@ -2,6 +2,7 @@
 /*
  *      todo.class.php
  *      This is the Ajax function that deals with all the list sorting. 
+ *      It is now also used when importing lists - using the public static functions
  *      There are only a few modificactions from the original script by
  *      Martin Angelov
  *      http://tutorialzine.com/2010/03/ajax-todo-list-jquery-php-mysql-css/
@@ -205,7 +206,7 @@ class ToDo {
 		the AJAX front-end.
 	*/
 	
-	public static function createNew($text,$list){
+	public static function createNew($text,$list,$import=FALSE){
 		
 		$text = self::esc($text);
 		if(!$text) throw new Exception("Wrong input data!");
@@ -225,17 +226,18 @@ class ToDo {
    
 		
 		// Creating a new ToDo and outputting it directly:
-		
-		echo (new ToDo(array(
-			'id'	=> mysql_insert_id($GLOBALS['link']),
-			'text'	=> $text,
-      'type' => 'todo'
-		)));
-		
+		if (!$import) {
+      echo (new ToDo(array(
+        'id'	=> mysql_insert_id($GLOBALS['link']),
+        'text'	=> $text,
+        'type' => 'todo'
+      )));
+    
 		exit;
+    }
 	}
   
-  public function createNewList($text,$user_id = 1) {
+  public static function createNewList($text,$user_id = 1,$list_title = 'New List', $import=FALSE) {
 		//$user_id = $GLOBALS['user_id'];
     if(!isset($user_id)) {
       $user_id = 0;
@@ -254,25 +256,33 @@ class ToDo {
 			list($list_id) = mysql_fetch_array($listResult);
 
 		if(!$list_id) $list_id = 1;
-
+    
 		mysql_query("INSERT INTO tz_todo SET text='".$text."', type='todo', list_id = '". $list_id ."', position = ".$position );
-
+    //echo "INSERT INTO tz_todo SET text='".$text."', type='todo', list_id = '". $list_id ."', position = ".$position;
+    //echo $list_id;
+    //echo mysql_affected_rows($GLOBALS['link']);
+    //echo $GLOBALS['link'];
 		if(mysql_affected_rows($GLOBALS['link'])!=1)
 			throw new Exception("Error inserting TODO!");
-		 mysql_query("INSERT INTO lists SET name='New List', user_id=".$user_id.", list_id = ". $list_id );
+		 mysql_query("INSERT INTO lists SET name='" . $list_title . "', user_id=" . $user_id . ", list_id = ". $list_id );
 
      //mysql_query("INSERT INTO lists SET name='New List', user_id='". $user_id ."', list_id = '". $list ."'");
-		// Creating a new ToDo and outputting it directly:
 		
-		echo (new ToDo(array(
-			'id'	=> mysql_insert_id($GLOBALS['link']),
-			'text'	=> $text
-		)));
-		
+    //Once we have ceated a new list with one song we either
+    //Return the list id (when on implort.php)
+		if ($import) {
+      return $list_id;
+    } else {
+      //OR create a new ToDo and output it directly: (when using AJAX to create a new list)
+      echo (new ToDo(array(
+        'id'	=> mysql_insert_id($GLOBALS['link']),
+        'text'	=> $text
+      )));
+    }
 		exit;
 	}
   
-  	public static function createBreak($text,$list){
+  	public static function createBreak($text,$list,$import=FALSE){
 		
 		$text = self::esc($text);
 		if(!$text) throw new Exception("Wrong input data!");
@@ -290,14 +300,15 @@ class ToDo {
 			throw new Exception("Error inserting TODO!");
 		
 		// Creating a new ToDo and outputting it directly:
-		
-		echo (new ToDo(array(
-			'id'	=> mysql_insert_id($GLOBALS['link']),
-			'text'	=> $text,
-      'type' => 'break'
-		)));
-		
-		exit;
+		if (!$import) {
+      echo (new ToDo(array(
+        'id'	=> mysql_insert_id($GLOBALS['link']),
+        'text'	=> $text,
+        'type' => 'break'
+      )));
+      
+      exit;
+    }
 	}
 	
 	/*

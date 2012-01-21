@@ -439,6 +439,16 @@ float:left;
 font-weight:bold;
 }
 
+form.import-form label {
+width:80px;
+float:left;
+font-weight:bold;
+}
+
+form.import-form input {
+margin-left:0;
+}
+
 /*Password Strength*/
 .pstrength-minchar {
 font-size : 10px;
@@ -680,4 +690,12 @@ margin:8px 0;
 .credit {
 margin-top:155px;
 font-size:0.9em;
+}
+
+.import-form {
+margin:0 0 0 13px;
+}
+
+ul.import-help {
+margin:10px 0 10px 33px;
 }

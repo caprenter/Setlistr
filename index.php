@@ -134,6 +134,7 @@ if (isset($list_id)) {
             <li><a id="saveList" href="save.php?list=<?php echo $list_id; ?>">Save List</a></li>
           <?php } else { ?>
           <li><a href="clone.php?list=<?php echo $list_id; ?>">Clone List</a></li>
+          <li><a href="import.php">Import List</a></li>
           <li><a onclick="return confirm('Are you sure you want to delete this list?');" id="deleteList" href="delete.php?list=<?php echo $list_id; ?>">Delete List</a></li>
           <?php } ?>
 
@@ -198,7 +199,7 @@ if (isset($list_id)) {
 
     <!--<p class="note">The todos are flushed every hour. You can add only one in 5 seconds.</p>-->
     <div id="homepage-text">
-      <h3>Setlistr is designed for musicians who need to organise their material.</h3>
+      <h3>Setlistr is free service designed for musicians who need to organise their material.</h3>
       <p>For example it can be used to:</p>
       <ul>
         <li>Create a set list for your band</li>
@@ -206,10 +207,20 @@ if (isset($list_id)) {
         <li>Share your ideas with others</li>
         <li>Print your set list from your browser</li>
       </ul>
-      <p>By creating an account you can keep a repository of old sets, copy a set list and edit it, and make lists public for others to see.</p>
-      <p>Your data is yours, so you can also export the data in your lists.</p>
-      <p><br/>If you just want to use the service as a one off, then you can. Lists are deleted after 2 hours if not saved, to help us keep our servers clean.</p>
-      <p><br/>Feedback, suggestions, feature requests, and offers of help are all welcome.</p>
+      <h3>Why should I create an account?</h3>
+      <p>Maybe you shouldn't. If you just want to use the site without logging in, then you can.<br/>Lists are deleted after 2 hours if not saved, to help us keep our servers clean.</p>
+      <p><br/>However, with an account, you can do more...</p>
+      <ul>
+        <li>Keep an archive of old sets</li>
+        <li>Copy a set list, edit and re-use it</li>
+        <li>Import set lists</li>
+        <li>Export set lists</li>
+        <li>Make lists public for others to see</li>
+      </ul>
+      <p>Accounts are free and we don't ask for credit-card details or anything like that.<br/> You can easily delete your account, and take your data away with you at anytime.</p>
+      <p><br/></p>
+      <h3>Improve Setlistr</h3>
+      <p>Feedback, suggestions, feature requests, and offers of help are all welcome.</p>
     </div>
 <?php 
   $include_javascript = TRUE; //Because on some pages we don't want to include it!

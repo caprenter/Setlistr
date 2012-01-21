@@ -49,7 +49,7 @@
           if ( isset($user) && $user->is_loaded() && isset($list_id)) {
             echo '<p><a href="' . $host . 'export.php?list=' . $list_id . '">Export this list as csv</a></p>';
           } else {
-            echo "Logged in users can export and share lists";
+            echo "Logged in users can import and export set lists, clone and share lists, and keep an archive of old lists.";
           }
         ?>
       </div>
