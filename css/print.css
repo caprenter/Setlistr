@@ -410,3 +410,11 @@ display:none;
  #homepage-text {
  display:none;
  }
+
+#nav {
+display:none;
+}
+
+div.active-list h4 {
+font-size: 2em;
+}
