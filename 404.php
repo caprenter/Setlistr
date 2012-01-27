@@ -33,7 +33,7 @@ include('theme/header.php');
 //echo '<h1 class="title"><a href="' . $host . '">Setlistr</a></h1>';
 ?>
 <div id="nav">
-  <h1 class="title"><a href="index.php">Setlistr</a></h1>
+  <h1 class="title"><a href="<?php echo $host; ?>">Setlistr</a></h1>
   <div class="list-buttons">
     <ul class="inline">
       <li><a id="newList1" href="<?php echo $host; ?>">Home</a></li>
