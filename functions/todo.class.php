@@ -100,8 +100,16 @@ class ToDo {
 	*/
 	
 	public static function delete($id){
+    
+		//Which list is this on?
+    $list = mysql_query("SELECT * FROM `tz_todo` WHERE id = " . $id);
+    //echo mysql_num_rows($list);
+    while($row = mysql_fetch_assoc($list)){
+        $list_id = $row['list_id'];
+    }
 		
 		mysql_query("DELETE FROM tz_todo WHERE id=".$id);
+    mysql_query("UPDATE `lists` SET `last_updated` = '" . date("Y-m-d H:i:s",time()) . "' WHERE `list_id` = "  .$list_id);
 		
 		if(mysql_affected_rows($GLOBALS['link'])!=1)
 			throw new Exception("Couldn't delete item!");
@@ -219,7 +227,11 @@ class ToDo {
 		if(!$position) $position = 1;
 
 		mysql_query("INSERT INTO tz_todo SET text='".$text."', type='todo', list_id = '". $list ."', position = ".$position );
-
+    //update the last_updated time on a list
+    if (!$import) { //no need if this is an import and also because it breaks for some reason on import script
+      mysql_query("UPDATE `lists` SET `last_updated` = '" . date("Y-m-d H:i:s",time()) . "' WHERE `list_id` = "  .$list);
+    }
+    
 		if(mysql_affected_rows($GLOBALS['link'])!=1)
 			throw new Exception("Error inserting TODO!");
       
@@ -295,7 +307,11 @@ class ToDo {
 		if(!$position) $position = 1;
 
 		mysql_query("INSERT INTO tz_todo SET text='".$text."' , type='break', list_id = '". $list ."', position = ".$position);
-
+    //update the last_updated time on a list
+		if (!$import) { //no need if this is an import and also because it breaks for some reason on import script
+      mysql_query("UPDATE `lists` SET `last_updated` = '" . date("Y-m-d H:i:s",time()) . "' WHERE `list_id` = "  .$list);
+    }
+    
 		if(mysql_affected_rows($GLOBALS['link'])!=1)
 			throw new Exception("Error inserting TODO!");
 		

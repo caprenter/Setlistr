@@ -64,6 +64,7 @@
           } else {
             //User is not loaded
             echo "<li class='login-link'><a href='" . $host . "login.php'>Login</a></li>";
+            echo "<li class='login-link'> <strong>&#183;</strong>&nbsp;  <a href='" . $host . "save.php?list=" . $list_id . "'>Register</a></li>";
           }
           ?>
 

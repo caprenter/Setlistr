@@ -149,7 +149,8 @@ if (isset($list_id)) {
         //Display the title of the selected one, or if not selected the most recent
         if (isset($lists)) {
           echo '<h4 id="' . $list_id .'" class="edit list-title">' . $lists[$list_id]['name'] . '</h4>';
-          echo 'updated: ' . date("jS M, Y H:i:s",strtotime($lists[$list_id]["last_updated"]));
+          echo '<div id="updated">updated: ' . date("D, j M Y H:i:s e",strtotime($lists[$list_id]["last_updated"])) . '</div>';
+          //Sat, 28 Jan 2012 00:10:53 GMT
           
           include ('theme/visibility_form.php'); //Check box to make list public/private
         } else {

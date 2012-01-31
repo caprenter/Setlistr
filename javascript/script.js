@@ -72,6 +72,8 @@ $(document).ready(function(){
       //if (arrOut.length !=0) {
         $.get('functions/ajax.php',{action:'rearrange_not_in_set',positions:arrOut});
      // }
+        //Rewrite the last update string: - updated: 21st Jan, 2012 18:21:11
+        document.getElementById('updated').innerHTML = toUTCStr().replace('Current setting is','updated:');
 		},
 		
 		/* Opera fix: */
@@ -100,6 +102,8 @@ $(document).ready(function(){
 				})
 				
 				$(this).dialog('close');
+        //Rewrite the last update string: - updated: 21st Jan, 2012 18:21:11
+        document.getElementById('updated').innerHTML = toUTCStr().replace('Current setting is','updated:');
 			},
 			Cancel: function() {
 				$(this).dialog('close');
@@ -165,8 +169,9 @@ $(document).ready(function(){
 	    $(container).keyup(function(e) {
             if (e.keyCode == KEYCODE_ENTER) { $('.todo a.saveChanges').click(); } 
             if (e.keyCode == KEYCODE_ESC) { $('.todo a.discardChanges').click(); } 
+            //Rewrite the last update string: - updated: 21st Jan, 2012 18:21:11
+            document.getElementById('updated').innerHTML = toUTCStr().replace('Current setting is','updated:');
         });
-		
 	});
 	
 
@@ -191,6 +196,8 @@ $(document).ready(function(){
 		currentTODO.removeData('origText')
 					.find(".text")
 					.text(text);
+    //Rewrite the last update string: - updated: 21st Jan, 2012 18:21:11
+    document.getElementById('updated').innerHTML = toUTCStr().replace('Current setting is','updated:');
 	});
   
   
@@ -225,6 +232,8 @@ $(document).ready(function(){
 
 			// Appending the new todo and fading it into view:
 			$(msg).hide().appendTo('#sortable1').fadeIn().find('a.edit').click();
+      //Rewrite the last update string: - updated: 21st Jan, 2012 18:21:11
+      document.getElementById('updated').innerHTML = toUTCStr().replace('Current setting is','updated:');
 		});
 
 		// Updating the timestamp:
@@ -249,10 +258,13 @@ $(document).ready(function(){
 
 			// Appending the new todo and fading it into view:
 			$(msg).hide().appendTo('#sortable1').fadeIn().find('a.edit').click();
+      //Rewrite the last update string: - updated: 21st Jan, 2012 18:21:11
+      document.getElementById('updated').innerHTML = toUTCStr().replace('Current setting is','updated:');
 		});
 
 		// Updating the timestamp:
 		timestamp = (new Date()).getTime();
+    //document.getElementById('updated').innerHTML = 'Fred Flinstone';
 		
 		e.preventDefault();
 	});
@@ -281,12 +293,20 @@ $(document).ready(function(){
   
   //edit-in-place
   $('.edit').editable('http://localhost/Webs/setlistr/functions/updateTitle.php', {
-         type   : 'textarea',
+      type   : 'textarea',
       select : true,
       submit : 'OK',
       cancel : 'cancel',
-
      });
+     
+  //http://msdn.microsoft.com/en-us/library/7ew14035%28v=vs.94%29.aspx
+  function toUTCStr(){
+   var d, s;                   //Declare variables.
+   d = new Date();             //Create Date object.
+   s = "Current setting is ";
+   s += d.toUTCString();       //Convert to UTC string.
+   return(s);                  //Return UTC string.
+  }
   
 	
 }); // Closing $(document).ready()
