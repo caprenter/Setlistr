@@ -105,6 +105,10 @@ if (!empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['pwd'
   } else {
     $errors = "Email address is not valid.<br/><br/>";
   }
+} else {
+    if($_SERVER['REQUEST_METHOD'] == "POST") {
+      $errors = "You must fill in all the fields.<br/><br/>";
+    }
 }
 
 $page = "Save List"; //used for page title in header.php

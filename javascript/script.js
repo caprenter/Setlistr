@@ -296,7 +296,7 @@ $(document).ready(function(){
       type   : 'textarea',
       select : true,
       submit : 'OK',
-      cancel : 'cancel',
+      cancel : 'cancel'
      });
      
   //http://msdn.microsoft.com/en-us/library/7ew14035%28v=vs.94%29.aspx
