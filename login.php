@@ -110,7 +110,7 @@ if ( !$user->is_loaded() ) {
           </div>
           <div class="field-container">
             <label for="password">Password</label><br/>
-            <input type="password" name="pwd" />
+            <input type="password" name="pwd" id="password"/>
           </div>
           <label for="remember">Remember me?</label> <input type="checkbox" name="remember" id ="remember" value="1" /><br /><br />'
         );
