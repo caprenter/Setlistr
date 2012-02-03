@@ -30,7 +30,17 @@ $user = new flexibleAccess();
 require "todo.class.php";
 
 //Sanitize the id variable
-$list_id = filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);
+//$list_id = filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);
+$list_id = filter_var($_POST['id'], FILTER_SANITIZE_STRING);
+
+//Check the id is of the form list-xxx
+if  (startsWith($list_id, 'list-')) {
+ $list_id = substr($list_id,5);
+ //echo $list_id;
+} else {
+  $list_id = "bad id!"; //return a string which will fail at the next test below
+}
+
 
 if (filter_var($list_id, FILTER_VALIDATE_INT)) { //check it is an integer
   $new_name = filter_var($_POST['value'], FILTER_SANITIZE_STRING);
@@ -48,5 +58,13 @@ if (filter_var($list_id, FILTER_VALIDATE_INT)) { //check it is an integer
   //$query = mysql_query("SELECT * FROM `tz_todo` WHERE list_id = " . $list_id . " ORDER BY `position` ASC");
   echo  $new_name;
   //mysql_fetch_assoc($query);
+}
+
+
+//Thanks: http://stackoverflow.com/questions/834303/php-startswith-and-endswith-functions
+function startsWith($haystack, $needle)
+{
+    $length = strlen($needle);
+    return (substr($haystack, 0, $length) === $needle);
 }
 ?>

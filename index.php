@@ -148,7 +148,7 @@ if (isset($list_id)) {
         //if we have a number of lists to choose from:
         //Display the title of the selected one, or if not selected the most recent
         if (isset($lists)) {
-          echo '<h4 id="' . $list_id .'" class="edit list-title">' . $lists[$list_id]['name'] . '</h4>';
+          echo '<h4 id="list-' . $list_id .'" class="edit list-title">' . $lists[$list_id]['name'] . '</h4>';
           echo '<div id="updated">updated: ' . date("D, j M Y H:i:s e",strtotime($lists[$list_id]["last_updated"])) . '</div>';
           //Sat, 28 Jan 2012 00:10:53 GMT
           
