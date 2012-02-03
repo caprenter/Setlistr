@@ -297,7 +297,6 @@ clear:left;
 margin:0;
 padding:20px 10px 10px 13px;
 width:45%;
-float:left;
 }
 
 .column-left {
@@ -567,7 +566,7 @@ border-radius: 5px;
 background:none repeat scroll 0 0 #fff;
 border:1px solid #0196E3;
 font-size:1.1em;
-margin:-40px 0 20px 0;
+margin:10px 0 20px 13px;
 padding:10px;
 width:50%;
 font-size:0.9em;
@@ -660,7 +659,7 @@ margin-left:13px;
 margin-top:15px;
 }
 
-.gravatar {
+.user-page-gravatar {
     margin-top: 44px;
     padding: 0 20px;
     float:right;

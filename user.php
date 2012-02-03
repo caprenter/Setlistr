@@ -91,15 +91,6 @@ if (!empty($_POST['username']) && !empty($_POST['email']) ){
   }
 }
 
-//gravatar
-$url = 'http://www.gravatar.com/avatar/';
-$email = $user->get_property("email");
-$username = $user->get_property("username");
-$default = 'monsterid';
-$size = 120;
-
-$grav_url = $url.'?gravatar_id=' . md5( strtolower($email) ) . '&default=' . urlencode($default) . '&size=' . $size; 
-
 $page = "My Account"; //used for page title in header.php
 include('theme/header.php'); 
 $user = new flexibleAccess();
@@ -112,7 +103,9 @@ $user = new flexibleAccess();
           <?php 
             if ( $user->is_loaded() ){
               $user_id = $user->get_property("userID");
-              echo "<li class='username'>" . $user->get_property("username") . "</li>";
+              $username = $user->get_property("username");
+              $email = $user->get_property("email");
+              echo "<li class='username'>" . $username . "</li>";
               //echo '<li class="logout"><a href="'.$_SERVER['PHP_SELF'].'?logout=1">logout</a></li>';
               echo '<li class="logout"><a href="' . $host . '?logout=1">logout</a></li>';
             } else {
@@ -184,12 +177,20 @@ $user = new flexibleAccess();
       </form>
     <!--</div>-->
     
-    <div class="gravatar">
+    <div class="user-page-gravatar">
        <?php
-            echo '<img class="avatar" src="'. $grav_url .'" />';
-            echo '<div><br/>This is a Gravatar.<br/><a href="http://en.gravatar.com/">Get a Gravatar</a></div>';
-            //echo $email;
-            //echo $username;
+       //gravatar
+        $url = 'http://www.gravatar.com/avatar/';
+        //$email = $user->get_property("email");
+        //$username = $user->get_property("username");
+        $default = 'monsterid';
+        $size = 120;
+
+        $grav_url = $url.'?gravatar_id=' . md5( strtolower($email) ) . '&default=' . urlencode($default) . '&size=' . $size; 
+        echo '<img class="avatar" src="'. $grav_url .'" />';
+        echo '<div><br/>This is a Gravatar.<br/><a href="http://en.gravatar.com/">Get a Gravatar</a></div>';
+        //echo $email;
+        //echo $username;
       ?>
     </div>
     
