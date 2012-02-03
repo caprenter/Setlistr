@@ -103,7 +103,7 @@ if ( !$user->is_loaded() ) {
   if (isset($errors)) {
     echo '<div class="errors">' . $errors . '</div>';
   }
-	print('<form class="login" method="post" action="'.$_SERVER['PHP_SELF'].'" />
+	print('<form class="login" method="post" action="'.$_SERVER['PHP_SELF'].'" >
           <div class="field-container">
             <label for="uname">Username</label><br/>
             <input type="text" name="uname" id="uname"/>
