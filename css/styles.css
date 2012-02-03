@@ -294,8 +294,8 @@ float:left;
 
 .active-list {
 clear:left;
-margin:0 0 20px 0;
-padding:20px 10px 10px 10px;
+margin:0;
+padding:20px 10px 10px 13px;
 width:45%;
 float:left;
 }
@@ -651,13 +651,36 @@ margin-left:13px;
 }
 
 .delete-account {
-float:right;
-margin:-10px 10px;
-width:300px;
+    border-top: 1px solid #EEEEEE;
+    clear: both;
+    padding: 20px 13px 0;
 }
 
 .delete-account input {
 margin-top:15px;
+}
+
+.gravatar {
+    margin-top: 44px;
+    padding: 0 20px;
+    float:right;
+    border-left: 1px solid #ddd;
+}
+
+.user_edit {
+  float: left;
+  padding-bottom: 60px;
+  width: 770px;
+}
+
+.user_edit input {
+    font-size: 1em;
+    margin-left: 13px;
+    width: 300px;
+}
+
+.user_edit input.form-submit {
+width: 100px;
 }
 
 #homepage-text {
