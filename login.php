@@ -105,14 +105,14 @@ if ( !$user->is_loaded() ) {
   }
 	print('<form class="login" method="post" action="'.$_SERVER['PHP_SELF'].'" />
           <div class="field-container">
-            <label for="username">Username</label><br/>
+            <label for="uname">Username</label><br/>
             <input type="text" name="uname" />
           </div>
           <div class="field-container">
             <label for="password">Password</label><br/>
             <input type="password" name="pwd" />
           </div>
-          <label for="Remember me">Remember me?</label> <input type="checkbox" name="remember" value="1" /><br /><br />'
+          <label for="remember">Remember me?</label> <input type="checkbox" name="remember" value="1" /><br /><br />'
         );
   if (isset($list_id)) {
     echo '<input type="hidden" name="list" value="'.  $list_id .'"/>';
