@@ -146,17 +146,17 @@ $user = new flexibleAccess();
     
     <div class="field-container">
       <label for="edit-name">Username: <span class="form-required" title="This field is required.">*</span></label><br/>
-      <input name="username" id="edit-name" value="<?php echo $username; ?>" class="form-text required" type="text">
+      <input name="username" id="edit-name" value="<?php echo $username; ?>" class="form-text required" type="text" />
       <div class="description">Spaces are allowed; punctuation is not allowed except for periods, hyphens, and underscores.</div>
     </div>
     <div class="field-container">
       <label for="edit-mail">E-mail address: <span class="form-required" title="This field is required.">*</span></label><br/>
-      <input name="email" id="edit-mail" value="<?php echo $email; ?>" class="form-text required" type="text">
+      <input name="email" id="edit-mail" value="<?php echo $email; ?>" class="form-text required" type="text" />
       <div class="description">A valid e-mail address. All e-mails from the system will be sent to this address. The e-mail address is not made public and will only be used if you wish to receive a new password or wish to receive certain news or notifications by e-mail.</div>
     </div>
     <div class="field-container">
       <label for="pwd">Password: </label><br/>
-      <input name="pwd" id="pwd" class="password" type="password">
+      <input name="pwd" id="pwd" class="password" type="password" />
     </div>
     <div class="field-container">
        <label for="confirm">Confirm Password</label><br/>
@@ -172,7 +172,7 @@ $user = new flexibleAccess();
        <div class="description">To change the current user password, enter the new password in both fields.</div>
        -->
 
-    <input type="submit" class="form-submit" value="Update" id="edit-submit" name="op">
+    <input type="submit" class="form-submit" value="Update" id="edit-submit" name="op" />
 
       </form>
     <!--</div>-->

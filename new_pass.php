@@ -31,8 +31,8 @@
 require_once('settings.php');
 
 //I know this is not great. But a bit of html we will need to re-use...
-$submit_email_form ='<form class="login" method="post" action="'.$host.'new_pass.php" />
-                          <label for="email">Email</label> <input type="text" name="email" /><br /><br />
+$submit_email_form ='<form class="login" method="post" action="'.$host.'new_pass.php">
+                          <label for="email">Email</label> <input type="text" name="email" id="email"/><br /><br />
                           <input type="submit" value="Submit" />
                       </form><br /><br />
                       <p class="notice">&#8656; <a href="' . $host . '">Home</a></p>'; 
