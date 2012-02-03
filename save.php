@@ -121,15 +121,15 @@ echo '<h1 class="title"><a href="' . $host . '">Setlistr</a></h1><h2 class="user
 if (isset($errors)) {
     echo '<div class="errors">' . $errors . '</div>';
   }
-	echo'<form class="login" method="post" action="'.$_SERVER['PHP_SELF'].'" />
+	echo'<form class="login" method="post" action="'.$_SERVER['PHP_SELF'].'">
   <div class="field-container">
       <label for="username">Username</label><br/>
-      <input type="text" name="username" />
+      <input type="text" name="username" id="username"/>
       <div class="description">Spaces are allowed; punctuation is not allowed except for periods, hyphens, and underscores.</div>
   </div>
 	<div class="field-container">
      <label for="email">Email</label><br/>
-     <input class="email" type="text" name="email" />
+     <input class="email" type="text" name="email" id="email"/>
            <div class="description">A valid e-mail address. All e-mails from the system will be sent to this address. The e-mail address is not made public and will only be used if you wish to receive a new password or wish to receive certain news or notifications by e-mail.</div>
   </div>    
   <div class="field-container">
