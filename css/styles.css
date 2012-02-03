@@ -433,7 +433,7 @@ margin:5px 0 15px;
 }
 
 form.login label {
-width:130px;
+/*width:130px;*/
 margin-left:13px;
 float:left;
 font-weight:bold;
@@ -699,3 +699,65 @@ margin:0 0 0 13px;
 ul.import-help {
 margin:10px 0 10px 33px;
 }
+
+
+/*New Form stuff*/
+h2.user-action {
+font-size:1.2em;
+font-weight:bold;
+}
+
+.field-container {
+    clear: left;
+    font-size: 2em;
+    margin: 5px 0 15px;
+}
+
+.login input {
+    margin-left: 13px;
+    font-size: 1em;
+}
+
+form.login label {
+    float: left;
+    font-size: 0.8em;
+    font-weight: normal;
+    margin-left: 13px;
+    /*width: 160px;*/
+}
+
+.description {
+    float: right;
+    font-size: 0.4em;
+    margin-right: 120px;
+    text-align: justify;
+    width: 280px;
+    background: #eee;
+    padding:10px;
+    border: 1px solid #eee;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+}
+
+
+
+#pwd_bar, #pwd_text, #pwd_minchar {
+    margin-left: 13px;
+    width: 250px;
+}
+
+#pwd_text {
+    font-size: 0.8em;
+}
+
+.error-msg {
+    font-size: 0.6em;
+    margin-left: 13px;
+}
+
+#pwd_bar {
+    max-width: 40%;
+}
+
+

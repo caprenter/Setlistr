@@ -114,25 +114,30 @@ if (!empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['pwd'
 $page = "Save List"; //used for page title in header.php
 include('theme/header.php'); 
 echo '<h1 class="title"><a href="' . $host . '">Setlistr</a></h1><h2 class="user-action">Register to save your lists.</h2>';
+
+
+
+
 if (isset($errors)) {
     echo '<div class="errors">' . $errors . '</div>';
   }
 	echo'<form class="login" method="post" action="'.$_SERVER['PHP_SELF'].'" />
   <div class="field-container">
-      <label for="username">Username</label><input type="text" name="username" />
+      <label for="username">Username</label><br/>
+      <input type="text" name="username" />
       <div class="description">Spaces are allowed; punctuation is not allowed except for periods, hyphens, and underscores.</div>
   </div>
 	<div class="field-container">
-     <label for="email">Email</label>
+     <label for="email">Email</label><br/>
      <input class="email" type="text" name="email" />
            <div class="description">A valid e-mail address. All e-mails from the system will be sent to this address. The e-mail address is not made public and will only be used if you wish to receive a new password or wish to receive certain news or notifications by e-mail.</div>
   </div>    
   <div class="field-container">
-      <label for="pwd">Password</label>
+      <label for="pwd">Password</label><br/>
       <input type="password" class="password" name="pwd" id="pwd" />
   </div>
   <div class="field-container">
-      <label for="confirm">Confirm Password</label>
+      <label for="confirm">Confirm Password</label><br/>
       <input type="password" name="confirm" id="confirm" class="confirm" /> <div class="error-msg"></div>
   </div>';
 
@@ -144,13 +149,13 @@ if (isset($errors)) {
 
 echo '<input class="submit register" type="submit" value="Register" />
 	</form>';
- echo '<br/><br/><p class="notice">Already got an account?';
+ echo '<br/><br/><p class="notice">Already got an account? ';
  if (isset($list_id)) {
       echo '<a href="' . $host . 'login.php?list=' . $list_id . '">';
     } else {
       echo '<a href="' . $host . 'login.php">';
     }
-  echo' Login</a> (We\'ll save your list if you\'ve been working on one)</p><br/>';
+  echo'Login</a> (We\'ll save your list if you\'ve been working on one)</p><br/>';
   echo'<p class="notice">&#8656; <a href="' . $host . '">Back</a></p>'
 ?>
 <?php 

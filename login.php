@@ -104,8 +104,14 @@ if ( !$user->is_loaded() ) {
     echo '<div class="errors">' . $errors . '</div>';
   }
 	print('<form class="login" method="post" action="'.$_SERVER['PHP_SELF'].'" />
-          <label for="username">username</label> <input type="text" name="uname" /><br /><br />
-          <label for="password">password</label> <input type="password" name="pwd" /><br /><br />
+          <div class="field-container">
+            <label for="username">Username</label><br/>
+            <input type="text" name="uname" />
+          </div>
+          <div class="field-container">
+            <label for="password">Password</label><br/>
+            <input type="password" name="pwd" />
+          </div>
           <label for="Remember me">Remember me?</label> <input type="checkbox" name="remember" value="1" /><br /><br />'
         );
   if (isset($list_id)) {
