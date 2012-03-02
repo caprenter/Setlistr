@@ -226,11 +226,14 @@ class ToDo {
 
 		if(!$position) $position = 1;
 
-		mysql_query("INSERT INTO tz_todo SET text='".$text."', type='todo', list_id = '". $list ."', position = ".$position );
+
     //update the last_updated time on a list
     if (!$import) { //no need if this is an import and also because it breaks for some reason on import script
       mysql_query("UPDATE `lists` SET `last_updated` = '" . date("Y-m-d H:i:s",time()) . "' WHERE `list_id` = "  .$list);
     }
+    //Needs to be last query executed as mysql_insert_id($GLOBALS['link'] gets it's value from this call
+		mysql_query("INSERT INTO tz_todo SET text='".$text."', type='todo', list_id = '". $list ."', position = ".$position );
+    
     
 		if(mysql_affected_rows($GLOBALS['link'])!=1)
 			throw new Exception("Error inserting TODO!");
@@ -306,11 +309,14 @@ class ToDo {
 
 		if(!$position) $position = 1;
 
-		mysql_query("INSERT INTO tz_todo SET text='".$text."' , type='break', list_id = '". $list ."', position = ".$position);
+		
     //update the last_updated time on a list
 		if (!$import) { //no need if this is an import and also because it breaks for some reason on import script
       mysql_query("UPDATE `lists` SET `last_updated` = '" . date("Y-m-d H:i:s",time()) . "' WHERE `list_id` = "  .$list);
     }
+    
+    //Need to create the break as the last step cos mysql_insert_id($GLOBALS['link']) relies on this
+    mysql_query("INSERT INTO tz_todo SET text='".$text."' , type='break', list_id = '". $list ."', position = ".$position);
     
 		if(mysql_affected_rows($GLOBALS['link'])!=1)
 			throw new Exception("Error inserting TODO!");
