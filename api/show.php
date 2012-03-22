@@ -47,9 +47,9 @@ $user = new flexibleAccess();
     </div>
 
 <div class="column-left" style="clear:both;margin-left:13px">
-<h4>http://localhost/Webs/setlistr/api/?list=all</h4><br/>
+<h4><?php echo $host; ?>api/?list=all</h4><br/>
 <?php
-$url = "http://localhost/Webs/setlistr/api/?list=all";
+$url = $host . "/api/?list=all";
 $data = json_decode(file_get_contents($url));
 print('<table class="api_demo"><thead><th>id</th><th>Title</th><th>Last Updated</th></thead><tbody>');
 foreach ($data as $list) {
@@ -66,9 +66,9 @@ print('</tbody></table>');
 </div>
 
 <div class="column-right">
-<h4>http://localhost/Webs/setlistr/api/?list=24</h4><br/>
+<h4><?php echo $host; ?>api/?list=24</h4><br/>
 <?php
-$url = "http://localhost/Webs/setlistr/api/?list=24";
+$url = $host . "/api/?list=24";
 $json =  file_get_contents($url);
 //echo $json;
 $data = json_decode($json);
