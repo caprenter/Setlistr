@@ -80,27 +80,16 @@ if (isset($list_id)) {
 $page = "Public List"; //used for page title in header.php
 include('theme/header.php');
 ?>
-    <div id="nav">
-      <div class="login">
-        <?php include('theme/login_html.php'); ?>
-      </div><!--login-->
-      <h1 class="title"><a href="<?php echo $host; ?>">Setlistr</a></h1>
-      <div class="list-buttons">
-        <p class="public">Public Lists</p>
-        <ul class="inline">
-          <li><a id="newList1" href="<?php echo $host; ?>?list=new">New List</a></li>
-        </ul>
-      </div>
-    </div><!--nav-->
+ <div class="visibility">Public List: Everyone can view this set list</div>
     
  <?php if (isset($title)) { ?>
     
     <div class="active-list public-list">
       <h4 id="208" class="public-list-title"><?php echo $title; ?></h4>updated: <?php echo $last_updated; ?>    
     </div>
-    <div class="visibility">
+    <!--<div class="visibility">
       <p><span class="label">Visability:</span> Everyone can view this set list</p>
-    </div>
+    </div>-->
     <div class="column-left">
     <?php 
       if (isset($in_set)) {

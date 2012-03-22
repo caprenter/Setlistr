@@ -17,29 +17,7 @@ if ( $user->is_loaded() ){
       $user = new flexibleAccess();
       ?>
 
-      <div id="nav">
-        <div class="login">
-          <ul class="inline">
-            <?php 
-              if ( $user->is_loaded() ){
-                $user_id = $user->get_property("userID");
-                echo "<li class='username'>" . $user->get_property("username") . "</li>";
-                //echo '<li class="logout"><a href="'.$_SERVER['PHP_SELF'].'?logout=1">logout</a></li>';
-                echo '<li class="logout"><a href="' . $host . '?logout=1">logout</a></li>';
-              } else {
-                //User is loaded
-                echo "<li><a href='" . $host . "login.php'>Login</a></li>";
-              }
-            ?>
-          </ul>
-        </div><!--login-->
-        <h1 class="title"><a href="<?php echo $host; ?>">Setlistr</a></h1>
-        <div class="list-buttons">
-          <ul class="inline">
-            <li><a href="<?php echo $host; ?>user.php">Back</a></li>
-          </ul>
-        </div>
-      </div><!--nav-->
+      
       
       
       <div class="active-list">
@@ -71,21 +49,10 @@ if ( $user->is_loaded() ){
       mysql_query("DELETE FROM lists WHERE list_id IN ( ".implode(",",$lists).")");
       //Delete the user
       mysql_query("DELETE FROM users WHERE userID = " . $user_id );
+      $page = "Account Deleted";
       include('theme/header.php'); 
       ?>
-      <div id="nav">
-        <div class="login">
-          <ul class="inline">
-            <li><a href="<?php echo $host; ?>login.php">Login</a></li>
-          </ul>
-        </div><!--login-->
-        <h1 class="title"><a href="<?php echo $host; ?>">Setlistr</a></h1>
-        <div class="list-buttons">
-          <ul class="inline">
-            <li><a href="<?php echo $host; ?>">New List</a></li>
-          </ul>
-        </div>
-      </div><!--nav-->
+
       
       
       <div class="active-list">

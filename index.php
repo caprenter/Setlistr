@@ -85,7 +85,7 @@ if (isset($_GET['list']) && $_GET['list']=="new" || (!isset($lists)) || $lists =
     }
     //Create a new list for the user - set user = 0 if not logged in.
     mysql_query("INSERT INTO lists SET name='New List', user_id=".$user_id.", list_id = ". $list_id );
-    $lists[$list_id] = array( "name" => "New List (click to edit title)",
+    $lists[$list_id] = array( "name" => "New List",
                             "last_updated" => date("Y-m-d H:i:s",time())
                           );
     //Give the list one default song.
@@ -119,29 +119,10 @@ if (isset($list_id)) {
   $page = "Home"; //used for page title in header.php
   include('theme/header.php'); 
  ?>
-
-
-    <div id="nav">
-      <div class="login">
-        <?php include('theme/login_html.php'); ?>
-      </div><!--login-->
-      <h1 class="title"><a href="index.php">Setlistr</a></h1>
-      <div class="list-buttons">
-        <ul class="inline">
-          <li><a id="newList1" href="index.php?list=new">New List</a></li>
-          
-          <?php if ( !$user->is_loaded() ) { ?>
-            <li><a id="saveList" href="save.php?list=<?php echo $list_id; ?>">Save List</a></li>
-          <?php } else { ?>
-          <li><a href="clone.php?list=<?php echo $list_id; ?>">Clone List</a></li>
-          <li><a href="import.php">Import List</a></li>
-          <li><a onclick="return confirm('Are you sure you want to delete this list?');" id="deleteList" href="delete.php?list=<?php echo $list_id; ?>">Delete List</a></li>
-          <?php } ?>
-
-        </ul>
-      </div>
-    </div><!--nav-->
     
+    <div class="list-buttons">
+        <?php include("theme/nav_buttons.php"); ?>
+    </div>
     
     <div class="active-list">
       <?php
@@ -149,7 +130,7 @@ if (isset($list_id)) {
         //Display the title of the selected one, or if not selected the most recent
         if (isset($lists)) {
           echo '<h4 id="list-' . $list_id .'" class="edit list-title">' . $lists[$list_id]['name'] . '</h4>';
-          echo '<div id="updated">updated: ' . date("D, j M Y H:i:s e",strtotime($lists[$list_id]["last_updated"])) . '</div>';
+          echo '<div id="edit-and-updated"><a class="edit-title" href="#">[edit title]</a>&nbsp;<span id="updated">Updated: ' . date("D, j M Y H:i:s e",strtotime($lists[$list_id]["last_updated"])) . '</span></div>';
           //Sat, 28 Jan 2012 00:10:53 GMT
           
           include ('theme/visibility_form.php'); //Check box to make list public/private
@@ -200,28 +181,30 @@ if (isset($list_id)) {
 
     <!--<p class="note">The todos are flushed every hour. You can add only one in 5 seconds.</p>-->
     <div id="homepage-text">
-      <h3>Setlistr is free service designed for musicians who need to organise their material.</h3>
-      <p>For example it can be used to:</p>
-      <ul>
-        <li>Create a set list for your band</li>
-        <li>Decide the running order of tracks on your latest recording</li>
-        <li>Share your ideas with others</li>
-        <li>Print your set list from your browser</li>
-      </ul>
-      <h3>Why should I create an account?</h3>
-      <p>Maybe you shouldn't. If you just want to use the site without logging in, then you can.<br/>Lists are deleted after 2 hours if not saved, to help us keep our servers clean.</p>
-      <p><br/>However, with an account, you can do more...</p>
-      <ul>
-        <li>Keep an archive of old sets</li>
-        <li>Copy a set list, edit and re-use it</li>
-        <li>Import set lists</li>
-        <li>Export set lists</li>
-        <li>Make lists public for others to see</li>
-      </ul>
-      <p>Accounts are free and we don't ask for credit-card details or anything like that.<br/> You can easily delete your account, and take your data away with you at anytime.</p>
-      <p><br/></p>
-      <h3>Improve Setlistr</h3>
-      <p>Feedback, suggestions, feature requests, and offers of help are all welcome.</p>
+      <div class="homepage-left">
+        <h3>Setlistr is free service designed for musicians who need to organise their material.</h3>
+        <p>For example it can be used to:</p>
+        <ul>
+          <li>Create a set list for your band</li>
+          <li>Decide the running order of tracks on your latest recording</li>
+          <li>Share your ideas with others</li>
+          <li>Print your set list from your browser</li>
+        </ul>
+        <h3>Why should I create an account?</h3>
+        <p>Maybe you shouldn't. If you just want to use the site without logging in, then you can.<br/>Lists are deleted after 2 hours if not saved, to help us keep our servers clean.</p>
+        <p><br/>However, with an account, you can do more...</p>
+        <ul>
+          <li>Keep an archive of old sets</li>
+          <li>Copy a set list, edit and re-use it</li>
+          <li>Import set lists</li>
+          <li>Export set lists</li>
+          <li>Make lists public for others to see</li>
+        </ul>
+        <p>Accounts are free and we don't ask for credit-card details or anything like that.<br/> You can easily delete your account, and take your data away with you at anytime.</p>
+        <p><br/></p>
+        <h3>Improve Setlistr</h3>
+        <p>Feedback, suggestions, feature requests, and offers of help are all welcome.</p>
+      </div>
     </div>
 <?php 
   $include_javascript = TRUE; //Because on some pages we don't want to include it!

@@ -46,7 +46,7 @@
       <div class="column">
         <?php 
           echo '<h3>User tools</h3>';
-          if ( isset($user) && $user->is_loaded() && isset($list_id)) {
+          if ( isset($user) && $user->is_loaded() && isset($list_id) && $list_id !=0) {
             echo '<p><a href="' . $host . 'export.php?format=csv&amp;list=' . $list_id . '">Export this list as csv</a></p>';
             echo '<p><a href="' . $host . 'export.php?format=xml&amp;list=' . $list_id . '">Export this list as XML</a></p>';
           } else {
@@ -55,7 +55,8 @@
         ?>
       </div>
       <div class="column">
-        
+        <h3>Developers</h3>
+        <p><a href="<?php echo $host; ?>api.php">Setlistr API</a></p>
       </div>
     </div>
   </div>

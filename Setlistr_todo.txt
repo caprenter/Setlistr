@@ -5,16 +5,12 @@ To do
 Captcha
 Download/export data/email this to me.
 Add set list notes
-Request new password
-Delete account
 Register band
 PDFs
 Analytics
-
 URL
 Promote
 Last login timestamp for users
-Import list of songs
 Edit Gravatar http://www.phpclasses.org/browse/file/28639.html http://en.gravatar.com/site/implement/
 
 Tests 
@@ -22,9 +18,9 @@ Check we can't access other people's data
 Delete/update other people's lists.
 
 To improve
+Import list of songs
 Print set list
 Update last-updated time on sorting lists.
-Submit on enter
 README.txt
 Separate db and other config settings.
 
@@ -43,12 +39,6 @@ Loging to save lists/create username to save.
 Actions panel - Save List/Delete List
 Update account settings (email/username)
 Put on Git Hub
-
-Licence/Credits
-Todo list: Martin Angelov
-http://tutorialzine.com/2010/03/ajax-todo-list-jquery-php-mysql-css/
-
-phpUserClass
-HumanWorks
-http://phpuserclass.com/
-https://github.com/HumanWorks/phpUserClass
+Request new password
+Delete account
+Submit on enter

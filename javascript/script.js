@@ -292,12 +292,23 @@ $(document).ready(function(){
   
   
   //edit-in-place
+  //thanks: http://stackoverflow.com/questions/1320528/jquery-edit-in-place-plugin-that-allows-you-to-trigger-editing-from-another-elem
+  $(".edit-title").click(function() {
+        $(".edit").trigger('make_editable');
+      });
+  
+  
   $('.edit').editable('http://localhost/Webs/setlistr/functions/updateTitle.php', {
-      type   : 'textarea',
+      event  : "make_editable",
+      type   : 'text',
       select : true,
+      onblur : "ignore",
       submit : 'OK',
       cancel : 'cancel'
      });
+     
+     
+
      
   //http://msdn.microsoft.com/en-us/library/7ew14035%28v=vs.94%29.aspx
   function toUTCStr(){

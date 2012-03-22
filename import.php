@@ -112,7 +112,6 @@ if ($user->is_loaded()) {
 <?php
 $page = "Import";
 include('theme/header.php');
-  echo '<h1 class="title"><a href="' . $host . '">Setlistr</a></h1>';
 ?>
 <h2 class="user-action">Import setlist</h2>
 <p class="notice">Copy and paste (or type) a list of songs here to import them into Setlistr.</p>

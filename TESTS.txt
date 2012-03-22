@@ -15,3 +15,7 @@ Does the clean up script remove the correct lists
 
 Print Lists
 'In the set' and 'In Reserve' should display.
+
+
+Create a new account
+Delecte this new account

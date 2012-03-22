@@ -27,7 +27,7 @@
         <ul class="inline">
           <?php 
             //Drop down select list of all users set lists. For logged in users only.
-            if (isset($lists)) {
+            /*if (isset($lists)) {
                 if (count($lists)>1) { //only show if more than one list available
                   echo'<li><div id="all-lists">';
                   echo '<form method="post" action="index.php">';
@@ -42,13 +42,13 @@
                   echo '<input type="submit" value="Select List" style="display:none">';
                   echo '</form></div></li>';
               }
-            }
+            }*/
           ?>
 
           
           <?php 
           //Display user logged in stuff or 'login'
-          if ( $user->is_loaded() ){
+          if (isset($user) && $user->is_loaded() ){
             //gravatar
             $url = 'http://www.gravatar.com/avatar/';
             $email = $user->get_property("email");
@@ -64,7 +64,12 @@
           } else {
             //User is not loaded
             echo "<li class='login-link'><a href='" . $host . "login.php'>Login</a></li>";
-            echo "<li class='login-link'> <strong>&#183;</strong>&nbsp;  <a href='" . $host . "save.php?list=" . $list_id . "'>Register</a></li>";
+            if (isset($list_id)) {
+              echo "<li class='login-link'><a href='" . $host . "save.php?list=" . $list_id . "'>Register</a></li>";
+            } else {
+              echo "<li class='login-link'><a href='" . $host . "save.php'>Register</a></li>";
+            }
+
           }
           ?>
 

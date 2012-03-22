@@ -42,6 +42,10 @@ img/404_cat.png
 Licenced for re-use by it's creator:
 Kristianus Kurnia - www.noskill1343.com
 
+img/delete.png
+From Gnome icon set on default Ubuntu 10.04 install
+Understood to be licenced under the GPL
+See http://art.gnome.org
 ==Install==
 
 See INSTALL.txt

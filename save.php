@@ -27,6 +27,7 @@
  *      for more details.
  */
 require_once('settings.php');
+include('functions/genRandomString.php');
 /*
 * When a user saves a list, then  we register them and log them in.
 * Otherwise lists are saved as changes are made
@@ -69,7 +70,8 @@ if (!empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['pwd'
             'username' => $username,
             'email' => $email,
             'password' => $pwd,
-            'active' => 1
+            'active' => 1,
+            'apikey' => genRandomString(30)
           );
           $userID = $user->insertUser($data);//The method returns the userID of the new user or 0 if the user is not added
           if ($userID==0) {
@@ -113,7 +115,7 @@ if (!empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['pwd'
 
 $page = "Save List"; //used for page title in header.php
 include('theme/header.php'); 
-echo '<h1 class="title"><a href="' . $host . '">Setlistr</a></h1><h2 class="user-action">Register to save your lists.</h2>';
+echo '<h2 class="user-action">Register to save your lists.</h2>';
 
 
 

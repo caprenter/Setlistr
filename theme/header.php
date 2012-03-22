@@ -60,3 +60,28 @@ else
 <body>
 <div id="wrapper">
   <div id="main">
+    <div id="banner">
+      <div class="login">
+        <?php 
+          if ($page == "API Example") {
+            include('../theme/login_html.php'); 
+          } else {
+           include('theme/login_html.php'); 
+          }
+        ?>
+      </div><!--login-->
+      <div id="logo">
+        <h1 class="title">
+          <a href="<?php echo $host; ?>">Setlistr</a>
+        </h1>
+      </div><!--logo-->
+      <div id="nav">
+        <ul class="inline">
+          <li><a href="<?php echo $host; ?>">Home</a></li>
+          <!--<li><a href="<?php echo $host; ?>about.php">About</a></li>
+          <li><a href="<?php echo $host; ?>contact.php">Contact</a></li>-->
+        </ul>
+      </div>
+     
+      
+    </div><!---->

@@ -154,7 +154,7 @@ margin:0 10px 40px 0;
 
 /* Green button class: */
 
-a.green-button, a.green-button:visited {
+a.green-button, a.green-button:visited, .list-buttons li a, .list-buttons li a:visited {
 border:1px solid #AAAAAA;
 color:black;
 display:block;
@@ -164,11 +164,14 @@ font-weight:bold;
 height:15px;
 padding:6px 5px 4px;
 text-shadow:1px 1px 1px #DDDDDD;
+-moz-border-radius:3px;
+    -webkit-border-radius:3px;
+	border-radius:3px;
 }
 
 
 
-a.green-button:hover{
+a.green-button:hover, .list-buttons li a:hover{
 	text-decoration:none;
 	background: #aaa;
   text-shadow:none;
@@ -187,6 +190,9 @@ font-weight:bold;
 height:15px;
 padding:6px 5px 4px;
 text-shadow:1px 1px 1px #DDDDDD;
+-moz-border-radius:3px;
+    -webkit-border-radius:3px;
+	border-radius:3px;
 }
 
 a, a:visited {
@@ -209,7 +215,9 @@ ul.inline, ul.inline li {
 display:inline;
 }
 
-#nav .list-buttons ul.inline {
+/*#nav .list-buttons ul.inline,*/
+#nav ul.inline,
+#banner .list-buttons ul.inline {
 float:left;
 }
 
@@ -277,7 +285,8 @@ padding:5px 20px;
 display:none;
 }
 
-#nav ul {
+#nav ul,
+#banner ul {
 list-style: none;
 float:right;
 margin:10px 0 0 0;
@@ -285,17 +294,26 @@ display:inline;
 font-size:1.1em;
 }
 
-#nav ul li {
+#nav ul {
+margin:0 0 0 10px;
+}
+
+
+#banner ul li {
 display:inline;
 padding:2px;
 margin-left:5px;
 float:left;
 }
 
+#nav ul li {
+margin:0 15px 0 0;
+}
+
 .active-list {
 clear:left;
 margin:0;
-padding:20px 10px 10px 13px;
+padding:10px 10px 10px 13px;
 width:45%;
 }
 
@@ -308,6 +326,17 @@ width:45%;
 float:right;
 width:45%;
 margin-right:10px;
+}
+
+#api-text .column-left {
+width:35%;
+}
+#api-text .column-right {
+width:55%;
+}
+
+h4.api-option {
+font-size:1.2em;
 }
 
 .list-header {
@@ -371,24 +400,38 @@ float:left;
 #print-footer {display:none;}
 
 img.avatar {
-border:1px solid #DDDDDD;
+border:3px solid #DDDDDD;
 margin-right:5px;
-padding:2px;
+/*padding:2px;*/
 position:relative;
 top:-2px;
 vertical-align:top;
+  -moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
 }
-#nav {
+#nav,
+#banner {
 float:left;
-width:100%;
-border-bottom:1px solid #ddd;
 }
+
+#banner {
+border-bottom:1px solid #ddd;
+width:100%;
+}
+
+#nav {
+width:60%;
+clear:left;
+margin-top:-5px;
+}
+
 h1.title {
 float:left;
 width:30%;
 font-size:40px;
 margin-bottom:0;
-padding:0 10px 20px;
+padding:0 10px 0;
 }
 h4.list-title {
 font-size:1.2em;
@@ -518,7 +561,7 @@ h2.user-action {
 position:relative;
 right:0;
 top:0;
-padding:0 0 10px 0;
+padding:20px 0 10px 0;
 clear:both;
 font-size:26px;
 margin-left:13px;
@@ -533,7 +576,7 @@ float:left
 select {
 background-color:#FFFFFF;
 border:2px solid #EEEEEE;
-width:240px;
+width:350px;
 }
 .list-buttons li a {
 display:block;
@@ -649,10 +692,10 @@ letter-spacing:0.4em;
 margin-left:13px;
 }
 
-.delete-account {
+.delete-account, .developers {
     border-top: 1px solid #EEEEEE;
     clear: both;
-    padding: 20px 13px 0;
+    padding: 20px 13px 20px 10px;
 }
 
 .delete-account input {
@@ -692,6 +735,20 @@ border-top:1px solid #ddd;
 #homepage-text ul {
 margin:15px;
 }
+
+.homepage-left {
+width:400px;
+}
+
+#api-text {
+clear:both;
+margin-left:3px;
+padding:10px;
+}
+#api-text ul {
+margin:15px;
+}
+
 .not-found-message {
 font-size:1.2em;
 padding-left: 350px;
@@ -725,7 +782,7 @@ margin:10px 0 10px 33px;
 
 /*New Form stuff*/
 h2.user-action {
-font-size:1.2em;
+font-size:1.8em;
 font-weight:bold;
 }
 
@@ -782,4 +839,91 @@ form.login label {
     max-width: 40%;
 }
 
+.api_demo {
+text-align:left;
+}
+.api_demo td {
+padding-right:10px;
+}
 
+ul.api_demo {
+margin-left:30px;
+}
+h4.api_demo {
+padding-top:10px;
+}
+
+.api_key {
+    font-size: 1.8em;
+    margin: 10px 0;
+}
+
+
+/*New Design*/
+#nav,
+#banner {
+background:#fff56d;
+background:#fff;
+}
+
+#banner div.login {
+margin: 0 10px 0 0;
+}
+
+#wrapper {
+    margin: 0 auto;
+}
+#main {
+background: #FFF;
+}
+h4.list-title {
+font-size:1.2em;
+padding-left:0;
+background:none;
+}
+
+.list-buttons {
+clear:left;
+float:left;
+margin:10px 0 0 8px;
+width:100%;
+}
+
+.list-buttons li a {
+display:block;
+float:left;
+font-weight:bold;
+/*height:15px;*/
+padding:10px 15px;
+margin:0 5px 5px;
+font-size:1em;
+background: #fff;
+padding: 2px 8px 3px 6px;
+text-align: center;
+width: 50px;
+color:#000;
+border:1px solid #aaa;
+  -moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+}
+.your_lists {
+/*font-size:1.2em;*/
+float:left;
+width:75px;
+margin-top:2px;
+}
+#list-of-lists select {
+/*font-size:1.2em;*/
+}
+
+#nav ul li.username, #nav ul li.logout, #nav ul li.login,
+#banner ul li.username, #banner ul li.logout, #banner ul li.login, #banner ul li.login-link {
+margin-top:10px;
+margin-right:10px;
+}
+
+.active-list h3 {
+font-size:1.8em;
+padding-top:20px;
+}

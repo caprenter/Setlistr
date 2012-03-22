@@ -1,13 +1,11 @@
 <?php
 /*
- *      offline.php
- *      This is a custom page to deal with site problems. 
- *      Currently it is called from phpUSerClass/access.class.beta.php when the site fails
- *      to connect to the database.
- *      
- *      This is heavily based on the example script from http://phpUserClass.com    
+ *      genRandomString.php
+ *      Generates a random string of numbers and letters
  * 
- *      Copyright 2011 caprenter <caprenter@gmail.com>
+ *      This is heavily based on the example at http://derek.io/blog/2009/php-a-better-random-string-function/   
+ *      
+ *      Copyright 2012 caprenter <caprenter@gmail.com>
  *      
  *      This file is part of Setlistr.
  *      
@@ -27,11 +25,19 @@
  *      Setlistr relies on other free software products. See the README.txt file 
  *      for more details.
  */
-require_once('settings.php');
 
-$page = "Off Line"; //used for page title in header.php
-include('theme/header.php'); 
+//http://derek.io/blog/2009/php-a-better-random-string-function/
+function genRandomString($length = 30) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $string = "";
+    for ($p = 0; $p < $length; $p++) {
+        $string .= $characters[mt_rand(0, (strlen($characters) - 1))];
+    }
+ 
+    return $string;
+}
+
+//for ($i=0; $i<100;$i++) {
+//  echo strlen(genRandomString(30));
+//
 ?>
-<h2 class="user-action">Sorry</h2>
-<div class="offline-message">Setlistr is currently down for a bit of tweaking.<br/> We'll be back up again shortly.</div>
-<?php include('theme/footer.php'); ?>

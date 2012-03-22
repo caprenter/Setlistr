@@ -94,34 +94,21 @@ if (!empty($_POST['username']) && !empty($_POST['email']) ){
 $page = "My Account"; //used for page title in header.php
 include('theme/header.php'); 
 $user = new flexibleAccess();
+
+if ( $user->is_loaded() ){
+  $user_id = $user->get_property("userID");
+  $username = $user->get_property("username");
+  $user_api = $user->get_property("apikey");
+  $email = $user->get_property("email");
+} 
 ?>
 
-
-    <div id="nav">
-      <div class="login">
-        <ul class="inline">
-          <?php 
-            if ( $user->is_loaded() ){
-              $user_id = $user->get_property("userID");
-              $username = $user->get_property("username");
-              $email = $user->get_property("email");
-              echo "<li class='username'>" . $username . "</li>";
-              //echo '<li class="logout"><a href="'.$_SERVER['PHP_SELF'].'?logout=1">logout</a></li>';
-              echo '<li class="logout"><a href="' . $host . '?logout=1">logout</a></li>';
-            } else {
-              //User is loaded
-              echo "<li><a href='" . $host . "login.php'>Login</a></li>";
-            }
-          ?>
-        </ul>
-      </div><!--login-->
-      <h1 class="title"><a href="<?php echo $host; ?>">Setlistr</a></h1>
-      <div class="list-buttons">
+      <!--<div class="list-buttons">
         <ul class="inline">
           <li><a href="<?php echo $host; ?>">Back</a></li>
         </ul>
-      </div>
-    </div><!--nav-->
+      </div>-->
+
     
     
     <div class="active-list">
@@ -202,6 +189,13 @@ $user = new flexibleAccess();
         <input type="hidden" name="user" value="<?php echo $user_id ?>"/>
         <input type="submit" class="form-submit" value="Delete Account" id="delete-user-account" name="delete-user-account">
       </form>
+    </div>
+    
+    <div class="developers">
+      <h3>Setlistr API Key</h3>
+      <p>Your API Key allows you to interact with Setlistr from other devices/websites.</p>
+      <p>Developers can use our <a href="<?php echo $host; ?>api.php">API</a> to exchange data.</p> 
+      <div class="api_key"><?php echo $user_api; ?></div>
     </div>
 
 <?php 

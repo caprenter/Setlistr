@@ -1,12 +1,8 @@
 <?php
 /*
- *      offline.php
- *      This is a custom page to deal with site problems. 
- *      Currently it is called from phpUSerClass/access.class.beta.php when the site fails
- *      to connect to the database.
+ *      is_list_public.php
+ *      Function to check if a setlist is set to public display
  *      
- *      This is heavily based on the example script from http://phpUserClass.com    
- * 
  *      Copyright 2011 caprenter <caprenter@gmail.com>
  *      
  *      This file is part of Setlistr.
@@ -27,11 +23,32 @@
  *      Setlistr relies on other free software products. See the README.txt file 
  *      for more details.
  */
-require_once('settings.php');
+ 
+ /**
+ * Tests to see if a list is public. If it is we return the Title and last updated time 
+ * name: is_list_public
+ * @param integer $list_id The unique id of a set lists
+ * @return string Tilte of the set list
+ */
 
-$page = "Off Line"; //used for page title in header.php
-include('theme/header.php'); 
+function is_list_public ($list_id) {
+  //include("connect.php");
+  $query = ("SELECT * FROM lists WHERE list_id = " . $list_id);
+  $result = mysql_query($query);
+  if (mysql_num_rows($result) > 0) {
+    while($row = mysql_fetch_assoc($result)){
+      if ($row["public"] == TRUE) {
+        //echo $row["name"];
+       // mysql_close($link);
+        return array($row["name"],$row["last_updated"],$row["user_id"]);
+      } else {
+        //mysql_close($link);
+        return FALSE;
+      }
+    } 
+  } else {
+    //echo "no rows";
+    return FALSE;
+  }
+}
 ?>
-<h2 class="user-action">Sorry</h2>
-<div class="offline-message">Setlistr is currently down for a bit of tweaking.<br/> We'll be back up again shortly.</div>
-<?php include('theme/footer.php'); ?>

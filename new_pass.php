@@ -277,7 +277,6 @@ if (isset($_POST['pwd']) && isset($_POST['confirm']) && isset($_POST['user']) &&
 ?>
 <?php
 include('theme/header.php');
-  echo '<h1 class="title"><a href="' . $host . '">Setlistr</a></h1>';
   if (isset($html)) {
     echo $html;
   }
