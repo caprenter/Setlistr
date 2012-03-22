@@ -6,4 +6,5 @@ $host = "http://localhost/Webs/setlistr/";
 $site_email = "admin@setlistr.co.uk";
 
 date_default_timezone_set('GMT');
+$api_default_example_list_id = 292;
 ?>

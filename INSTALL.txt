@@ -7,10 +7,11 @@ Place all the files on your webserver.
 Set up a MySQL database and import the database set up files from the /db directory.
 
 ==Configuration==
-=Documen Root/Base URL=
+=Document Root/Base URL=
 settings.php
 Edit settings.php to reflect your server document root
 There is also a site email setting which is used in password recovery (new_pass.php)
+And a default list id for the API demo page (/api/show.php)
 
 =.htaccess=
 You might want to visit the settings in the .htaccess file.

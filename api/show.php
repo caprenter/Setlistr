@@ -66,9 +66,9 @@ print('</tbody></table>');
 </div>
 
 <div class="column-right">
-<h4><?php echo $host; ?>api/?list=24</h4><br/>
+<h4><?php echo $host; ?>api/?list=<?php echo $api_default_example_list_id; //$api_default_example_list_id from settings.php ?></h4><br/>
 <?php
-$url = $host . "/api/?list=24";
+$url = $host . "/api/?list=" . $api_default_example_list_id; //$api_default_example_list_id from settings.php
 $json =  file_get_contents($url);
 //echo $json;
 $data = json_decode($json);
