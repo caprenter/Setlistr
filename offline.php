@@ -32,6 +32,10 @@ require_once('settings.php');
 $page = "Off Line"; //used for page title in header.php
 include('theme/header.php'); 
 ?>
-<h2 class="user-action">Sorry</h2>
-<div class="offline-message">Setlistr is currently down for a bit of tweaking.<br/> We'll be back up again shortly.</div>
+<div class="workspace">
+  <div class="active-list">
+        <h2>Sorry</h2>
+  </div>
+  <div class="offline-message">Setlistr is currently down for a bit of tweaking.<br/> We'll be back up again shortly.</div>
+</div>
 <?php include('theme/footer.php'); ?>

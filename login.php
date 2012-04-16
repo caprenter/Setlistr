@@ -99,7 +99,10 @@ if ( !$user->is_loaded() ) {
   
  $page = "Login"; //used for page title in header.php
  include('theme/header.php'); 
-	echo '<h2 class="user-action">Login</h2>';
+	print('<div class="workspace">
+        <div class="active-list">
+          <h2>Login</h2>
+        </div>');
   if (isset($errors)) {
     echo '<div class="errors">' . $errors . '</div>';
   }
@@ -120,8 +123,8 @@ if ( !$user->is_loaded() ) {
   print('<input type="submit" value="login" />
         </form><br /><br />
         <p class="notice">Forgotten password? <a href="' . $host . 'new_pass.php">Send me a new password</a></p><br/>
-        <p class="notice">Need to register? <a href="' . $host . 'save.php">Create a new account</a></p><br/>
-        <p class="notice">&#8656; <a href="' . $host . '">Back</a></p>'
+        <p class="notice">Need to register? <a href="' . $host . 'save.php">Create a new account</a></p><br/><br/>
+        </div>'
         ); 
       
 } else {

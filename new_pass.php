@@ -34,8 +34,7 @@ require_once('settings.php');
 $submit_email_form ='<form class="login" method="post" action="'.$host.'new_pass.php">
                           <label for="email">Email</label> <input type="text" name="email" id="email"/><br /><br />
                           <input type="submit" value="Submit" />
-                      </form><br /><br />
-                      <p class="notice">&#8656; <a href="' . $host . '">Home</a></p>'; 
+                      </form><br /><br />'; 
 
 
 
@@ -89,16 +88,26 @@ if (isset($_POST['pwd']) && isset($_POST['confirm']) && isset($_POST['user']) &&
           //Now update the users password
           if ($user->update_password($user_id,$pwd)) {
             $page = "Password updated";
-            $html = '<h2 class="user-action">Your password has been sucessfully updated</h2>';
+            $html = '<div class="workspace">
+                      <div class="active-list">
+                          <h2>Your password has been sucessfully updated</h2>
+                      </div>';
+            //$html = '<h2 class="user-action">Your password has been sucessfully updated</h2>';
             $html .= '<p class="notice">You can now <a href="' . $host . 'login.php">login</a></p><br/>';
+            $html .= '</div>';
 
           } else {
             $page = "Password updated failed"; //internal error
-            $html = '<h2 class="user-action">Sorry</h2>';
+            $html = '<div class="workspace">
+                      <div class="active-list">
+                          <h2>Sorry</h2>
+                      </div>';
+            //$html = '<h2 class="user-action">Sorry</h2>';
             $html .= '<p class="notice">Failed to update password </p><br/>';
             $html .= '<p class="notice">As site security is important to us and your one-time login attempt has now been used, you will need to re-supply an email address.</p><br/>';
             $html .= '<h2 class="user-action">Try again?</h2>';
             $html .= $submit_email_form;
+            $html .= '</div>';
 
           }
         }
@@ -106,28 +115,43 @@ if (isset($_POST['pwd']) && isset($_POST['confirm']) && isset($_POST['user']) &&
     } else {
       if (strlen($pwd) < 6) {
         $page = "Password updated failed"; //too short
-        $html = '<h2 class="user-action">Sorry</h2>';
+        $html = '<div class="workspace">
+                      <div class="active-list">
+                          <h2>Sorry</h2>
+                      </div>';
+        //$html = '<h2 class="user-action">Sorry</h2>';
         $html .= '<p class="notice">Password NOT updated because password is too short.</p><br/>';
         $html .= '<p class="notice">As site security is important to us and your one-time login attempt has now been used, you will need to re-supply an email address.</p><br/>';
         $html .= '<h2 class="user-action">Try again?</h2>';
         $html .= $submit_email_form;
+        $html .= '</div>';
       } else {
         $page = "Password updated failed"; //don't match
-        $html = '<h2 class="user-action">Sorry</h2>';
+        $html = '<div class="workspace">
+                      <div class="active-list">
+                          <h2>Sorry</h2>
+                      </div>';
+        //$html = '<h2 class="user-action">Sorry</h2>';
         $html .= '<p class="notice">Password NOT updated because they do not match.</p><br/>';
         $html .= '<p class="notice">As site security is important to us and your one-time login attempt has now been used, you will need to re-supply an email address.</p><br/>';
         $html .= '<h2 class="user-action">Try again?</h2>';
         $html .= $submit_email_form;
+        $html .= '</div>';
       }
     }
   } else {
     //either password or confirm fields were empty
     $page = "Password updated failed"; //empty fields
-    $html = '<h2 class="user-action">Sorry</h2>';
+    $html = '<div class="workspace">
+                      <div class="active-list">
+                          <h2>Sorry</h2>
+                      </div>';
+    //$html = '<h2 class="user-action">Sorry</h2>';
     $html .= '<p class="notice">Password NOT updated because you sent empty data.</p><br/>';
     $html .= '<p class="notice">As site security is important to us and your one-time login attempt has now been used, you will need to re-supply an email address.</p><br/>';
     $html .= '<h2 class="user-action">Try again?</h2>';
     $html .= $submit_email_form;
+    $html .= '</div>';
   }
 
 
@@ -155,7 +179,11 @@ if (isset($_POST['pwd']) && isset($_POST['confirm']) && isset($_POST['user']) &&
         //The link is less than a day old - proceed
         //Present a form to allow the user to reset their password:
         $page = "Set new password"; 
-        $html = '<h2 class="user-action">Hello. Please enter a new password below</h2>';
+        $html = '<div class="workspace">
+                      <div class="active-list">
+                          <h2>Hello. Please enter a new password below</h2>
+                      </div>';
+        //$html = '<h2 class="user-action">Hello. Please enter a new password below</h2>';
         $html .=' <form class="login new_pass" method="post" action="'.$host.'new_pass.php" />
                   <div class="field-container">
                       <label for="pwd">New Password</label>
@@ -169,23 +197,33 @@ if (isset($_POST['pwd']) && isset($_POST['confirm']) && isset($_POST['user']) &&
                   <input name="user" type="hidden" value="' . $user_id . '" />
                   <input name="key" type="hidden" value="' . $key . '" />
                 </form>';
-        
+        $html .= '</div>';
         $password_page = TRUE; //used to initiate the password strength javascript
         //echo $user_id; echo $issued_time; echo $recovery_id; die;
       } else {
         $page = "One-time login expired"; 
-        $html = '<h2 class="user-action">Sorry</h2>';
+        $html = '<div class="workspace">
+                      <div class="active-list">
+                          <h2>Sorry</h2>
+                      </div>';
+        //$html = '<h2 class="user-action">Sorry</h2>';
         $html .= '<p class="notice">The one-time login link has expired.</p><br/>';
         $html .= '<h2 class="user-action">Try again?</h2>';
         $html .= $submit_email_form;
+        $html .= '</div>';
       }
     } else {
       //The key is not in the table
       $page = "One-time login error";
-      $html = '<h2 class="user-action">Sorry</h2>';
+      $html = '<div class="workspace">
+                      <div class="active-list">
+                          <h2>Sorry</h2>
+                      </div>';
+      //$html = '<h2 class="user-action">Sorry</h2>';
       $html .= '<p class="notice">There is an error with your one-time login link.</p><br/>';
       $html .= '<h2 class="user-action">Try again?</h2>';
       $html .= $submit_email_form;
+      $html .= '</div>';
     }
       
   } else {
@@ -194,9 +232,14 @@ if (isset($_POST['pwd']) && isset($_POST['confirm']) && isset($_POST['user']) &&
     $page = "Request new password"; //used for page title in header.php
      
     //$html = '<h1 class="title"><a href="' . $host . '">Setlistr</a></h1>';
-    $html = '<h2 class="user-action">Forgotten your password?</h2>';
+    $html = '<div class="workspace">
+                      <div class="active-list">
+                          <h2>Forgotten your password?</h2>
+                      </div>';
+    //$html = '<h2 class="user-action">Forgotten your password?</h2>';
     $html .= '<p class="notice">Tell us your email address and we\'ll send you instructions about how to reset your password.</p><br/>';
     $html .= $submit_email_form;
+    $html .= '</div>';
   }  
  
 //**Case: Someone has supplied an email address - hopefully because they are real and need a new password!  
@@ -205,11 +248,17 @@ if (isset($_POST['pwd']) && isset($_POST['confirm']) && isset($_POST['user']) &&
   $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
   if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $page = "Request new password - invalid email address"; 
-    $html = '<h2 class="user-action">Sorry</h2>';
+    $html = '<div class="workspace">
+                      <div class="active-list">
+                          <h2>Sorry</h2>
+                      </div>';
+    
+    //$html = '<h2 class="user-action">Sorry</h2>';
     $html .= '<p class="notice">The email address you supplied doesn\'t seem to be a valid email address.</p>';
     $html .= '<p class="notice">Please email us at <a href="mailto:' . $site_email .'">' . $site_email . '</a> if we\'re wrong.</p><br/>';
     $html .= '<h2 class="user-action">Try again?</h2>';
     $html .= $submit_email_form;
+    $html .= '</div>';
   } else {
     //Check to see if we have the email in our system
     //See if this valid email is assigned to a user in the system and get their id
@@ -230,7 +279,11 @@ if (isset($_POST['pwd']) && isset($_POST['confirm']) && isset($_POST['user']) &&
      //Print a message to the screen
      //Email address is user input but should have been suffciently sanitized by now to send to the screen
      $page = "Request new password - valid email address"; 
-     $html = '<h2 class="user-action">Email found</h2>';
+     $html = '<div class="workspace">
+                      <div class="active-list">
+                          <h2>Email found</h2>
+                      </div>';
+     //$html = '<h2 class="user-action">Email found</h2>';
      //$html .='<p class="notice">An email has been sent to: ' . $email . '</p>';
      //$html .='<p class="notice">Follow the instructions we have sent you to get access to your account.</p>';
      //send email
@@ -245,18 +298,26 @@ if (isset($_POST['pwd']) && isset($_POST['confirm']) && isset($_POST['user']) &&
      if (mail($to, $subject, wordwrap($body,70), $headers)) {
         $html .='<p class="notice">An email has been sent to: ' . $email . '</p>';
         $html .='<p class="notice">Follow the instructions we have sent you to get access to your account.</p>';
+        $html .= '</div>';
      } else {
         $html .= '<h2 class="user-action">Sorry</h2>';
         $html .='<p class="notice">We were unable to send you an email. Please contact us at <a href="mailto:' . $site_email . '">' . $site_email . '</a></p>';
+        $html .= '</div>';
      }
      //$html .= $body;
     } else { 
       //email does not exist in the system
       $page = "Request new password - email not found"; 
-      $html = '<h2 class="user-action">Sorry</h2>';
+      $html = '<div class="workspace">
+                      <div class="active-list">
+                          <h2>Sorry</h2>
+                      </div>';
+      
+      //$html = '<h2 class="user-action">Sorry</h2>';
       $html .= '<p class="notice">That email address is not in the system.</p><br/>';
       $html .= '<h2 class="user-action">Try again?</h2>';
       $html .= $submit_email_form;
+      $html .= '</div>';
     }
       
     //echo $user_id; die;
@@ -268,9 +329,14 @@ if (isset($_POST['pwd']) && isset($_POST['confirm']) && isset($_POST['user']) &&
   $page = "Request new password"; //used for page title in header.php
    
 	//$html = '<h1 class="title"><a href="' . $host . '">Setlistr</a></h1>';
-  $html = '<h2 class="user-action">Forgotten your password?</h2>';
+  $html = '<div class="workspace">
+                      <div class="active-list">
+                          <h2>Forgotten your password?</h2>
+                      </div>';
+  //$html = '<h2 class="user-action">Forgotten your password?</h2>';
   $html .= '<p class="notice">Tell us your email address and we\'ll send you instructions about how to reset your password.</p><br/>';
   $html .= $submit_email_form;
+  $html .= '</div>';
 
 }
 

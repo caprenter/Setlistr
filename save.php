@@ -115,7 +115,10 @@ if (!empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['pwd'
 
 $page = "Save List"; //used for page title in header.php
 include('theme/header.php'); 
-echo '<h2 class="user-action">Register to save your lists.</h2>';
+print('<div class="workspace">
+        <div class="active-list">
+          <h2>Register to save your lists</h2>
+        </div>');
 
 
 
@@ -157,8 +160,9 @@ echo '<input class="submit register" type="submit" value="Register" />
     } else {
       echo '<a href="' . $host . 'login.php">';
     }
-  echo'Login</a> (We\'ll save your list if you\'ve been working on one)</p><br/>';
-  echo'<p class="notice">&#8656; <a href="' . $host . '">Back</a></p>'
+  echo'Login</a> (We\'ll save your list if you\'ve been working on one)</p><br/><br/>';
+  //echo'<p class="notice">&#8656; <a href="' . $host . '">Back</a></p>';
+  echo'</div>'
 ?>
 <?php 
 $password_page = TRUE; //used to initiate the password strength javascript

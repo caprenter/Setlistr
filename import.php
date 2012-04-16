@@ -113,25 +113,29 @@ if ($user->is_loaded()) {
 $page = "Import";
 include('theme/header.php');
 ?>
-<h2 class="user-action">Import setlist</h2>
-<p class="notice">Copy and paste (or type) a list of songs here to import them into Setlistr.</p>
-<ul class="import-help">
-  <li>One song per line.</li>
-  <li>Use "break: Your break text here" (no qoutes) to insert a set break.</li>
-</ul>
-
-<form class="import-form" name="import-form" action="<?php echo $host; ?>import.php" method="post">
-  <div class="import-box">
-    <label for="title">Title</label> 
-    <input type="text" size="40" value="" name="title" />
-    <br/><br/>
-    <label for="setlist">Songs</label> 
-    <textarea cols="40" rows="15" name="setlist"></textarea>
-    <br/>
-    <input type="submit" value="import" />
-    <input type="hidden" value="<?php echo $list_id; ?>" />
+<div class="workspace">
+  <div class="active-list">
+        <h2>Import Setlist</h2>
   </div>
-</form>
+  <p class="notice">Copy and paste (or type) a list of songs here to import them into Setlistr.</p>
+  <ul class="import-help">
+    <li>One song per line.</li>
+    <li>Use "break: Your break text here" (no qoutes) to insert a set break.</li>
+  </ul>
+
+  <form class="import-form" name="import-form" action="<?php echo $host; ?>import.php" method="post">
+    <div class="import-box">
+      <label for="title">Title</label> 
+      <input type="text" size="40" value="" name="title" />
+      <br/><br/>
+      <label for="setlist">Songs</label> 
+      <textarea cols="40" rows="15" name="setlist"></textarea>
+      <br/>
+      <input type="submit" value="import" />
+      <input type="hidden" value="<?php echo $list_id; ?>" />
+    </div>
+  </form>
+</div><!-- end workspace-->
 
 <?php
 include('theme/footer.php'); 

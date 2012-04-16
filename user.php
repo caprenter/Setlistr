@@ -110,94 +110,94 @@ if ( $user->is_loaded() ){
       </div>-->
 
     
-    
-    <div class="active-list">
-      <h3>Account Settings</h3>
-    </div>
-   <!-- <div class="user-column-left">-->
-      
-   
-          
-
-
-    <!--</div>
-    <div class="user-column-right">-->
-    <?php
-    if ($message != NULL) {
-       echo '<div class="message">' . $message . '</div>';
-    }
-    ?>
-    
-    
-    <form action="user.php" method="post" class="login user_edit">
-    
-    <div class="field-container">
-      <label for="edit-name">Username: <span class="form-required" title="This field is required.">*</span></label><br/>
-      <input name="username" id="edit-name" value="<?php echo $username; ?>" class="form-text required" type="text" />
-      <div class="description">Spaces are allowed; punctuation is not allowed except for periods, hyphens, and underscores.</div>
-    </div>
-    <div class="field-container">
-      <label for="edit-mail">E-mail address: <span class="form-required" title="This field is required.">*</span></label><br/>
-      <input name="email" id="edit-mail" value="<?php echo $email; ?>" class="form-text required" type="text" />
-      <div class="description">A valid e-mail address. All e-mails from the system will be sent to this address. The e-mail address is not made public and will only be used if you wish to receive a new password or wish to receive certain news or notifications by e-mail.</div>
-    </div>
-    <div class="field-container">
-      <label for="pwd">Password: </label><br/>
-      <input name="pwd" id="pwd" class="password" type="password" />
-    </div>
-    <div class="field-container">
-       <label for="confirm">Confirm Password</label><br/>
-       <input type="password" name="confirm" id="confirm" class="confirm" /> <div class="error-msg"></div>
-    </div>
-      <!--
-      <div class="form-item confirm-parent" id="edit-pass-pass2-wrapper">
-       <label for="edit-pass-pass2">Confirm password: </label>
-       <input name="pass[pass2]" id="edit-pass-pass2" maxlength="128" size="25" class="form-text password-confirm" type="password"><span class="password-confirm">Passwords match: <span></span></span>
+    <div class="workspace">
+      <div class="active-list">
+        <h2>Account Settings</h2>
       </div>
-      <div style="display: none;" class="password-description"></div>
+     <!-- <div class="user-column-left">-->
+        
+     
+            
 
-       <div class="description">To change the current user password, enter the new password in both fields.</div>
-       -->
 
-    <input type="submit" class="form-submit" value="Update" id="edit-submit" name="op" />
-
-      </form>
-    <!--</div>-->
-    
-    <div class="user-page-gravatar">
-       <?php
-       //gravatar
-        $url = 'http://www.gravatar.com/avatar/';
-        //$email = $user->get_property("email");
-        //$username = $user->get_property("username");
-        $default = 'monsterid';
-        $size = 120;
-
-        $grav_url = $url.'?gravatar_id=' . md5( strtolower($email) ) . '&default=' . urlencode($default) . '&size=' . $size; 
-        echo '<img class="avatar" src="'. $grav_url .'" />';
-        echo '<div><br/>This is a Gravatar.<br/><a href="http://en.gravatar.com/">Get a Gravatar</a></div>';
-        //echo $email;
-        //echo $username;
+      <!--</div>
+      <div class="user-column-right">-->
+      <?php
+      if ($message != NULL) {
+         echo '<div class="message">' . $message . '</div>';
+      }
       ?>
-    </div>
-    
-    
-    <div class="delete-account">
-      <h3>To delete your account</h3>
-      <p>By deleting your account we will remove all your account details, and any lists you have created.</p> 
-      <form action="user.php" method="post" id="delete-account">
-        <input type="hidden" name="user" value="<?php echo $user_id ?>"/>
-        <input type="submit" class="form-submit" value="Delete Account" id="delete-user-account" name="delete-user-account">
-      </form>
-    </div>
-    
-    <div class="developers">
-      <h3>Setlistr API Key</h3>
-      <p>Your API Key allows you to interact with Setlistr from other devices/websites.</p>
-      <p>Developers can use our <a href="<?php echo $host; ?>api.php">API</a> to exchange data.</p> 
-      <div class="api_key"><?php echo $user_api; ?></div>
-    </div>
+      
+      
+      <form action="user.php" method="post" class="login user_edit">
+      
+      <div class="field-container">
+        <label for="edit-name">Username: <span class="form-required" title="This field is required.">*</span></label><br/>
+        <input name="username" id="edit-name" value="<?php echo $username; ?>" class="form-text required" type="text" />
+        <div class="description">Spaces are allowed; punctuation is not allowed except for periods, hyphens, and underscores.</div>
+      </div>
+      <div class="field-container">
+        <label for="edit-mail">E-mail address: <span class="form-required" title="This field is required.">*</span></label><br/>
+        <input name="email" id="edit-mail" value="<?php echo $email; ?>" class="form-text required" type="text" />
+        <div class="description">A valid e-mail address. All e-mails from the system will be sent to this address. The e-mail address is not made public and will only be used if you wish to receive a new password or wish to receive certain news or notifications by e-mail.</div>
+      </div>
+      <div class="field-container">
+        <label for="pwd">Password: </label><br/>
+        <input name="pwd" id="pwd" class="password" type="password" />
+      </div>
+      <div class="field-container">
+         <label for="confirm">Confirm Password</label><br/>
+         <input type="password" name="confirm" id="confirm" class="confirm" /> <div class="error-msg"></div>
+      </div>
+        <!--
+        <div class="form-item confirm-parent" id="edit-pass-pass2-wrapper">
+         <label for="edit-pass-pass2">Confirm password: </label>
+         <input name="pass[pass2]" id="edit-pass-pass2" maxlength="128" size="25" class="form-text password-confirm" type="password"><span class="password-confirm">Passwords match: <span></span></span>
+        </div>
+        <div style="display: none;" class="password-description"></div>
 
+         <div class="description">To change the current user password, enter the new password in both fields.</div>
+         -->
+
+      <input type="submit" class="form-submit" value="Update" id="edit-submit" name="op" />
+
+        </form>
+      <!--</div>-->
+      
+      <div class="user-page-gravatar">
+         <?php
+         //gravatar
+          $url = 'http://www.gravatar.com/avatar/';
+          //$email = $user->get_property("email");
+          //$username = $user->get_property("username");
+          $default = 'monsterid';
+          $size = 120;
+
+          $grav_url = $url.'?gravatar_id=' . md5( strtolower($email) ) . '&default=' . urlencode($default) . '&size=' . $size; 
+          echo '<img class="avatar" src="'. $grav_url .'" />';
+          echo '<div><br/>This is a Gravatar.<br/><a href="http://en.gravatar.com/">Get a Gravatar</a></div>';
+          //echo $email;
+          //echo $username;
+        ?>
+      </div>
+      
+      
+      <div class="delete-account">
+        <h3>To delete your account</h3>
+        <p>By deleting your account we will remove all your account details, and any lists you have created.</p> 
+        <form action="user.php" method="post" id="delete-account">
+          <input type="hidden" name="user" value="<?php echo $user_id ?>"/>
+          <input type="submit" class="form-submit" value="Delete Account" id="delete-user-account" name="delete-user-account">
+        </form>
+      </div>
+      
+      <div class="developers">
+        <h3>Setlistr API Key</h3>
+        <p>Your API Key allows you to interact with Setlistr from other devices/websites.</p>
+        <p>Developers can use our <a href="<?php echo $host; ?>api.php">API</a> to exchange data.</p> 
+        <div class="api_key"><?php echo $user_api; ?></div>
+      </div>
+  </div><!--end workspace-->
 <?php 
 $password_page = TRUE; //used to initiate the password strength javascript
 include('theme/footer.php'); 

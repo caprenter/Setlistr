@@ -295,6 +295,8 @@ $(document).ready(function(){
   //thanks: http://stackoverflow.com/questions/1320528/jquery-edit-in-place-plugin-that-allows-you-to-trigger-editing-from-another-elem
   $(".edit-title").click(function() {
         $(".edit").trigger('make_editable');
+        //Rewrite the last update string: - updated: 21st Jan, 2012 18:21:11
+        //document.getElementById('updated').innerHTML = toUTCStr().replace('Current setting is','updated:');
       });
   
   
@@ -315,7 +317,13 @@ $(document).ready(function(){
    var d, s;                   //Declare variables.
    d = new Date();             //Create Date object.
    s = "Current setting is ";
-   s += d.toUTCString();       //Convert to UTC string.
+   //s += toLocaleDateString.d.toUTCString();       //Convert to UTC string.
+   //s += d.toLocaleDateString();
+   //s += d.toLocaleTimeString();
+   s += d.toUTCString().substring(0,17);
+   s += " ";
+   s += d.toLocaleTimeString();
+   //s += d.toLocaleTimeString().substring(0,26);
    return(s);                  //Return UTC string.
   }
   

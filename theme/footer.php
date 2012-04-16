@@ -59,9 +59,10 @@
         <p><a href="<?php echo $host; ?>api.php">Setlistr API</a></p>
       </div>
     </div>
+    <div style="clear:both; min-height:20px;"></div>
   </div>
 
-<div style="clear:both; min-height:20px;"></div>
+
 </div><!--wrapper-->
 <!-- Including our scripts -->
 <?php 

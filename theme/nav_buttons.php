@@ -25,7 +25,12 @@
                     if ($value['name'] == "New List (click to edit title)") {
                       $value['name'] = "New List";
                     }
-                    echo '<option value="' . $id . '"' . ($id == $list_id ? "selected='selected'":"") . '>' . $value["name"] .'</option>';
+                    echo '<option ';
+                    if ($value['is_public'] == 1) {
+                      echo 'class="public" ';
+                    }
+                    echo 'value="' . $id . '"' . ($id == $list_id ? "selected='selected'":"") . '>' . $value["name"] .' (id:' . $id . ')';
+                    echo '</option>';
                   }
                   echo '</select>';
                   echo '<input type="submit" value="Select List" style="display:none">';

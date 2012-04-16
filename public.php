@@ -80,49 +80,51 @@ if (isset($list_id)) {
 $page = "Public List"; //used for page title in header.php
 include('theme/header.php');
 ?>
- <div class="visibility">Public List: Everyone can view this set list</div>
-    
- <?php if (isset($title)) { ?>
-    
-    <div class="active-list public-list">
-      <h4 id="208" class="public-list-title"><?php echo $title; ?></h4>updated: <?php echo $last_updated; ?>    
-    </div>
-    <!--<div class="visibility">
-      <p><span class="label">Visability:</span> Everyone can view this set list</p>
-    </div>-->
-    <div class="column-left">
-    <?php 
-      if (isset($in_set)) {
-          echo "<p class=\"list-header\">In the set</p>";
-          theme_list_songs ($in_set,"sortable1");
-      }
-    ?>
-    <?php
-      if ($user->is_loaded()){
-          $this_user_id = $user->get_property("userID");
-          if ($this_user_id == $list_user_id) {
-            print(' <form name="edit-public-list" action="' . $host . '" method="post" class="edit-list">
-                    <input type="hidden" name="list" value="'.  $list_id .'"/>
-                    <input type="submit" value="Edit List" />
-                    </form>');
-          }
-      }
-    ?>
-    </div>
+ <div class="workspace">
+   <div class="visibility">Public List: Everyone can view this set list</div>
+      
+   <?php if (isset($title)) { ?>
+      
+      <div class="active-list public-list">
+        <h4 id="208" class="public-list-title"><?php echo $title; ?></h4>updated: <?php echo $last_updated; ?>    
+      </div>
+      <!--<div class="visibility">
+        <p><span class="label">Visability:</span> Everyone can view this set list</p>
+      </div>-->
+      <div class="column-left">
+      <?php 
+        if (isset($in_set)) {
+            echo "<p class=\"list-header\">In the set</p>";
+            theme_list_songs ($in_set,"sortable1");
+        }
+      ?>
+      <?php
+        if ($user->is_loaded()){
+            $this_user_id = $user->get_property("userID");
+            if ($this_user_id == $list_user_id) {
+              print(' <form name="edit-public-list" action="' . $host . '" method="post" class="edit-list">
+                      <input type="hidden" name="list" value="'.  $list_id .'"/>
+                      <input type="submit" value="Edit List" />
+                      </form>');
+            }
+        }
+      ?>
+      </div>
 
-    <div class="column-right">
-    <?php 
-      if (isset($not_in_set)) {
-        echo "<p class=\"list-header\">In reserve</p>";
-        theme_list_songs ($not_in_set,"sortable2");
-      }
-    ?>
-    </div>
+      <div class="column-right">
+      <?php 
+        if (isset($not_in_set)) {
+          echo "<p class=\"list-header\">In reserve</p>";
+          theme_list_songs ($not_in_set,"sortable2");
+        }
+      ?>
+      </div>
 
-<?php } else { ?>
-    <div class="not-public">Sorry this list is not available for public viewing.</div>
+  <?php } else { ?>
+      <div class="not-public">Sorry this list is not available for public viewing.</div>
 
-<?php } ?>
+  <?php } ?>
+  </div><!-- end workspace -->
 
 <?php
 //print_r($songs);

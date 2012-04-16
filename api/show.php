@@ -41,72 +41,73 @@ $user = new flexibleAccess();
           <li><a id="newList1" href="<?php echo $host; ?>index.php?list=new">New List</a></li>
         </ul>
       </div>-->
-          
-    <div class="active-list">
-      <h3>API Examples</h3>
+<div class="workspace">
+        <div class="active-list">
+          <h2>API Examples</h2>
+        </div>
+
+    <div class="column-left" style="clear:both;margin-left:13px">
+    <h4><?php echo $host; ?>api/?list=all</h4><br/>
+    <?php
+    $url = $host . "/api/?list=all";
+    $data = json_decode(file_get_contents($url));
+    print('<table class="api_demo"><thead><th>id</th><th>Title</th><th>Last Updated</th></thead><tbody>');
+    foreach ($data as $list) {
+      print(' <tr>
+                  <td><a href="' . $host .'list/' . $list->list_id . '">' . $list->list_id . '</a></td>
+                  <td>' . $list->name . '</td>
+                  <td>' . $list->last_updated . '</td>
+              </tr>');
+    }
+    print('</tbody></table>');
+
+    //print_r($data);
+    ?>
     </div>
 
-<div class="column-left" style="clear:both;margin-left:13px">
-<h4><?php echo $host; ?>api/?list=all</h4><br/>
-<?php
-$url = $host . "/api/?list=all";
-$data = json_decode(file_get_contents($url));
-print('<table class="api_demo"><thead><th>id</th><th>Title</th><th>Last Updated</th></thead><tbody>');
-foreach ($data as $list) {
-  print(' <tr>
-              <td>' . $list->list_id . '</td>
-              <td>' . $list->name . '</td>
-              <td>' . $list->last_updated . '</td>
-          </tr>');
-}
-print('</tbody></table>');
-
-//print_r($data);
-?>
-</div>
-
-<div class="column-right">
-<h4><?php echo $host; ?>api/?list=<?php echo $api_default_example_list_id; //$api_default_example_list_id from settings.php ?></h4><br/>
-<?php
-$url = $host . "/api/?list=" . $api_default_example_list_id; //$api_default_example_list_id from settings.php
-$json =  file_get_contents($url);
-//echo $json;
-$data = json_decode($json);
-//print_r($data);
-print('<h3>' . $data[0]->title . '</h3>');
-print('<p>Last Updated: ' . $data[0]->last_updated  . '</p>');
-if(isset($data[0]->in_set)) {
-  echo '<h4 class="api_demo">In set</h4>';
-  print('<ul class="api_demo">');
-    foreach ($data[0]->in_set as $song) {
-      if ($song->type =='break') {
-        $text = $song->title . ' (break)';
-      } else {
-        $text = $song->title;
-      }
-      print('<li>' . $text.'</li>');
+    <div class="column-right">
+    <h4><?php echo $host; ?>api/?list=<?php echo $api_default_example_list_id; //$api_default_example_list_id from settings.php ?></h4><br/>
+    <?php
+    $url = $host . "/api/?list=" . $api_default_example_list_id; //$api_default_example_list_id from settings.php
+    $json =  file_get_contents($url);
+    //echo $json;
+    $data = json_decode($json);
+    //print_r($data);
+    print('<h3>' . $data[0]->title . '</h3>');
+    print('<p>Last Updated: ' . $data[0]->last_updated  . '</p>');
+    if(isset($data[0]->in_set)) {
+      echo '<h4 class="api_demo">In set</h4>';
+      print('<ul class="api_demo">');
+        foreach ($data[0]->in_set as $song) {
+          if ($song->type =='break') {
+            $text = $song->title . ' (break)';
+          } else {
+            $text = $song->title;
+          }
+          print('<li>' . $text.'</li>');
+        }
+      print('</ul>');
     }
-  print('</ul>');
-}
 
-if(isset($data[0]->not_in_set)) {
-  echo '<h4 class="api_demo">Not in set</h4>';
-  print('<ul class="api_demo">');
-    foreach ($data[0]->not_in_set as $song) {
-      if ($song->type =='break') {
-        $text = $song->title . ' (break)';
-      } else {
-        $text = $song->title;
-      }
-      print('<li>' . $text.'</li>');
+    if(isset($data[0]->not_in_set)) {
+      echo '<h4 class="api_demo">Not in set</h4>';
+      print('<ul class="api_demo">');
+        foreach ($data[0]->not_in_set as $song) {
+          if ($song->type =='break') {
+            $text = $song->title . ' (break)';
+          } else {
+            $text = $song->title;
+          }
+          print('<li>' . $text.'</li>');
+        }
+      print('</ul>');
     }
-  print('</ul>');
-}
 
 
-?>
-</div>
+    ?>
+    </div>
 
+</div><!--end workspace-->
 
 <?php 
   $include_javascript = FALSE; //Because on some pages we don't want to include it!

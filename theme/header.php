@@ -58,10 +58,18 @@ else
 </head>
 
 <body>
-<div id="wrapper">
-  <div id="main">
+<div id="header">
     <div id="banner">
-      <div class="login">
+      
+      
+      
+      <div id="logo">
+        <h1 class="title">
+          <a href="<?php echo $host; ?>">Setlistr</a>
+        </h1>
+      </div><!--logo-->
+      
+      <div id="login-area">
         <?php 
           if ($page == "API Example") {
             include('../theme/login_html.php'); 
@@ -70,18 +78,16 @@ else
           }
         ?>
       </div><!--login-->
-      <div id="logo">
-        <h1 class="title">
-          <a href="<?php echo $host; ?>">Setlistr</a>
-        </h1>
-      </div><!--logo-->
+      
       <div id="nav">
         <ul class="inline">
           <li><a href="<?php echo $host; ?>">Home</a></li>
           <!--<li><a href="<?php echo $host; ?>about.php">About</a></li>
           <li><a href="<?php echo $host; ?>contact.php">Contact</a></li>-->
         </ul>
-      </div>
+      </div><!--nav-->
      
-      
-    </div><!---->
+    </div><!--banner-->
+</div><!--header-->
+<div id="wrapper">
+  <div id="main">

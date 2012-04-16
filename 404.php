@@ -39,13 +39,15 @@ include('theme/header.php');
   </ul>
 </div>-->
 
-<div class="not-found-message">
-  <h2 class="user-action">Sorry</h2>
-  <p>The page you are looking for could not be found.</p> 
-  <p>If you think it's something we should fix please mail <a href="mailto:caprenter@gmail.com">caprenter@gmail.com</a></p>
-  <div class="credit">
-    <p>Image by: Kristianus Kurnia - <a href="http://www.noskill1343.com">www.noskill1343.com</a></p>
+<div class="workspace">
+  <div class="not-found-message">
+    <h2 class="user-action">Sorry</h2>
+    <p>The page you are looking for could not be found.</p> 
+    <p>If you think it's something we should fix please mail <a href="mailto:caprenter@gmail.com">caprenter@gmail.com</a></p>
+    <div class="credit">
+      <p>Image by: Kristianus Kurnia - <a href="http://www.noskill1343.com">www.noskill1343.com</a></p>
+    </div>
   </div>
-</div>
+</div><!--end workspace-->
 
 <?php include('theme/footer.php'); ?>

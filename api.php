@@ -34,54 +34,56 @@ $user = new flexibleAccess();
         <li><a id="newList1" href="<?php echo $host; ?>index.php?list=new">New</a></li>
       </ul>
     </div>-->
-
-    <div class="active-list">
-      <h3 style="clear:both">Setlistr API</h3>
-    </div>
-
-    <!--<p class="note">The todos are flushed every hour. You can add only one in 5 seconds.</p>-->
-    <div id="api-text">
-      <div class="column-left">
-        <p>The Setlistr API gives you access to setlist data. 
-        All public lists are available via the API. 
-        With an API key you can also retrieve your own non-public' setlists.</p>
-        <p><br/>You can call</p>
-        <ul>
-          <li>an individual public setlist, or</li>
-          <li>list of all public setlists</li>
-          <li>all of your personal lists (public and private with an API key)</li>
-        </ul>
-        
-        <p>Data will be return in either XML or JSON format</p>
-        <p><br/>An example file that calls the API to show data can be found at <a href="<?php echo $host . "api/show.php"; ?>"><?php echo $host . "api/show.php"; ?></a></p>
-      </div><!--end column left-->
-      <div class="column-right">
-        <h4 class="api-option">The list parameter</h4>
-        <p>All calls to the API must include a 'list' parameter.<br/>
-        Values are either 'all' or an integer (corresponding to a list id). See below.</p>
-        <br/>
-        <h4 class="api-option">Information about all public lists:</h4>
-        <p>http://www.setlistr.co.uk/api/?list=all</p>
-        <p><strong>Further parameters</strong></p>  
-        <p>&amp;username=&lt;a_valid_setlistr_username&gt;<br/>
-        (Returns all public lists by that user. Can ONLY be used with list=all option)</p>
-        <br/>
-        <h4 class="api-option">To get data on a single public list:</h4>
-        <p>http://www.setlistr.co.uk/api/?list=(integer)<br/>e.g. http://www.setlistr.co.uk/api/?list=55<br/></p>
-        <p><strong>Further parameters</strong></p> <p>&amp;songs=in/out/all (i.e. songs 'in' the set, not in ('out') or, (default) all)</p>
-        <p>&amp;breaks=yes/no (include set breaks in the output - default is yes)</p>
-        <br/>
-        
-        <h4 class="api-option">Using your API key</h4>
-        <p>With an API key you can retrieve your 'non-public' setlists.</p>
-        <p>When logged in, you will find your API key on your <a href="<?php echo $host; ?>user.php">user page</a>.</p><br/>
-        <p>&amp;username=&lt;your_setlistr_username&gt;&amp;key=&lt;your_key&gt;</p>
-        <br/>
-        <h4 class="api-option">Format parameters</h4>
-         <p>&amp;format=xml/json (default is json)</p>
-         <br/>
+    <div class="workspace">
+      <div class="active-list">
+        <h2 style="clear:both">Setlistr API</h2>
       </div>
-    </div>
+
+      <!--<p class="note">The todos are flushed every hour. You can add only one in 5 seconds.</p>-->
+      <div id="api-text">
+        <div class="column-left">
+          <p>The Setlistr API gives you access to setlist data. 
+          All public lists are available via the API. 
+          With an API key you can also retrieve your own non-public' setlists.</p>
+          <p><br/>You can call</p>
+          <ul>
+            <li>an individual public setlist, or</li>
+            <li>list of all public setlists</li>
+            <li>all of your personal lists (public and private with an API key)</li>
+          </ul>
+          
+          <p>Data will be return in either XML or JSON format</p>
+          <p><br/>An example file that calls the API to show data can be found at:<br/> <a href="<?php echo $host . "api/show.php"; ?>"><?php echo $host . "api/show.php"; ?></a></p>
+        </div><!--end column left-->
+        <div class="column-right">
+          <h3 class="api-option">The list parameter</h3>
+          <p>All calls to the API must include a 'list' parameter.<br/>
+          Values are either 'all' or an integer (corresponding to a list id). See below.</p>
+          <br/>
+          <h3 class="api-option">All public lists</h3>
+          <p>http://www.setlistr.co.uk/api/?list=all</p>
+          <h4 class="api-option">Further parameters</h4>  
+          <p>&amp;username=&lt;a_valid_setlistr_username&gt;<br/>
+          (Returns all public lists by that user. Can ONLY be used with list=all option)</p>
+          <br/>
+          <h3 class="api-option">To get data on a single public list:</h3>
+          <p>http://www.setlistr.co.uk/api/?list=(integer)<br/>e.g. http://www.setlistr.co.uk/api/?list=55<br/></p>
+          <h4 class="api-option">Further parameters</h4> 
+          <p>&amp;songs=in/out/all (i.e. songs 'in' the set, not in ('out') or, (default) all)</p>
+          <p>&amp;breaks=yes/no (include set breaks in the output - default is yes)</p>
+          <br/>
+          
+          <h3 class="api-option">Using your API key</h3>
+          <p>With an API key you can retrieve your 'non-public' setlists.</p>
+          <p>When logged in, you will find your API key on your <a href="<?php echo $host; ?>user.php">user page</a>.</p><br/>
+          <p>&amp;username=&lt;your_setlistr_username&gt;&amp;key=&lt;your_key&gt;</p>
+          <br/>
+          <h3 class="api-option">Format parameters</h3>
+           <p>&amp;format=xml/json (default is json)</p>
+           <br/>
+        </div>
+      </div>
+    </div><!--end workspace-->
 <?php 
   $include_javascript = FALSE; //Because on some pages we don't want to include it!
   include('theme/footer.php'); 

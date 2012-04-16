@@ -119,93 +119,95 @@ if (isset($list_id)) {
   $page = "Home"; //used for page title in header.php
   include('theme/header.php'); 
  ?>
-    
-    <div class="list-buttons">
-        <?php include("theme/nav_buttons.php"); ?>
-    </div>
-    
-    <div class="active-list">
-      <?php
-        //if we have a number of lists to choose from:
-        //Display the title of the selected one, or if not selected the most recent
-        if (isset($lists)) {
-          echo '<h4 id="list-' . $list_id .'" class="edit list-title">' . $lists[$list_id]['name'] . '</h4>';
-          echo '<div id="edit-and-updated"><a class="edit-title" href="#">[edit title]</a>&nbsp;<span id="updated">Updated: ' . date("D, j M Y H:i:s e",strtotime($lists[$list_id]["last_updated"])) . '</span></div>';
-          //Sat, 28 Jan 2012 00:10:53 GMT
-          
-          include ('theme/visibility_form.php'); //Check box to make list public/private
-        } else {
-          echo '<h4 id="list-' . $list_id .'" class="list-title">[Edit] Title</h4>';
-        }
-      ?>
-    </div>
-    <div class="column-left">
-      <p class="list-header">In the set</p>
-      <ul id="sortable1" class="todoList">
+    <div class="workspace">
+      <div class="list-buttons">
+          <?php include("theme/nav_buttons.php"); ?>
+      </div>
+      
+      <div class="active-list">
         <?php
-          // Looping and outputting the $todos array. The __toString() method
-          // is used internally to convert the objects to strings:
-          echo '<li class="notice">Drag songs here to put them in your set or create them below &#8659;  </li>';
-            if (isset($in_set)) {
-              foreach($in_set as $item){
+          //if we have a number of lists to choose from:
+          //Display the title of the selected one, or if not selected the most recent
+          if (isset($lists)) {
+            echo '<h4 id="list-' . $list_id .'" class="edit list-title">' . $lists[$list_id]['name'] . '</h4>';
+            echo '<div id="edit-and-updated"><a class="edit-title" href="#">[edit title]</a>&nbsp;<span id="updated">updated: ' . date("D, j M Y H:i:s",strtotime($lists[$list_id]["last_updated"])) . '</span></div>';
+            //Sat, 28 Jan 2012 00:10:53 GMT
+            
+            include ('theme/visibility_form.php'); //Check box to make list public/private
+          } else {
+            echo '<h4 id="list-' . $list_id .'" class="list-title">[Edit] Title</h4>';
+          }
+        ?>
+      </div>
+      <div class="column-left">
+        <p class="list-header">In the set</p>
+        <ul id="sortable1" class="todoList">
+          <?php
+            // Looping and outputting the $todos array. The __toString() method
+            // is used internally to convert the objects to strings:
+            echo '<li class="notice">Drag songs here to put them in your set or create them below &#8659;  </li>';
+              if (isset($in_set)) {
+                foreach($in_set as $item){
+                  echo $item;
+                }
+            } 
+          ?>
+        </ul>
+        <div class="buttons">
+          <ul class="inline">
+            <li><a id="addButton" class="green-button" href="#">Add a Song</a></li>
+            <li><a id="addBreak" class="orange-button" href="#">Add a Set Break</a></li>
+          </ul>
+        </div>
+      </div><!--end column left-->
+      <div class="column-right">
+        <p class="list-header">In reserve</p>
+        <ul id="sortable2" class="todoList">
+          <?php
+            // Looping and outputting the $todos array. The __toString() method
+            // is used internally to convert the objects to strings:
+            echo '<li class="notice">Drag songs here to keep them in reserve &#8659;</li>';
+            if (isset($not_in_set)) {
+              foreach($not_in_set as $item){
                 echo $item;
               }
-          } 
-        ?>
-      </ul>
-      <div class="buttons">
-        <ul class="inline">
-          <li><a id="addButton" class="green-button" href="#">Add a Song</a></li>
-          <li><a id="addBreak" class="orange-button" href="#">Add a Set Break</a></li>
+            } 
+          ?>
         </ul>
       </div>
-    </div><!--end column left-->
-    <div class="column-right">
-      <p class="list-header">In reserve</p>
-      <ul id="sortable2" class="todoList">
-        <?php
-          // Looping and outputting the $todos array. The __toString() method
-          // is used internally to convert the objects to strings:
-          echo '<li class="notice">Drag songs here to keep them in reserve &#8659;</li>';
-          if (isset($not_in_set)) {
-            foreach($not_in_set as $item){
-              echo $item;
-            }
-          } 
-        ?>
-      </ul>
-    </div>
-
+    </div><!--end workspace-->
     <!-- This div is used as the base for the confirmation jQuery UI POPUP. Hidden by CSS. -->
     <div id="dialog-confirm" title="Delete TODO Item?">Are you sure you want to delete this item?</div>
 
     <!--<p class="note">The todos are flushed every hour. You can add only one in 5 seconds.</p>-->
     <div id="homepage-text">
-      <div class="homepage-left">
-        <h3>Setlistr is free service designed for musicians who need to organise their material.</h3>
-        <p>For example it can be used to:</p>
-        <ul>
-          <li>Create a set list for your band</li>
-          <li>Decide the running order of tracks on your latest recording</li>
-          <li>Share your ideas with others</li>
-          <li>Print your set list from your browser</li>
-        </ul>
-        <h3>Why should I create an account?</h3>
-        <p>Maybe you shouldn't. If you just want to use the site without logging in, then you can.<br/>Lists are deleted after 2 hours if not saved, to help us keep our servers clean.</p>
-        <p><br/>However, with an account, you can do more...</p>
-        <ul>
-          <li>Keep an archive of old sets</li>
-          <li>Copy a set list, edit and re-use it</li>
-          <li>Import set lists</li>
-          <li>Export set lists</li>
-          <li>Make lists public for others to see</li>
-        </ul>
-        <p>Accounts are free and we don't ask for credit-card details or anything like that.<br/> You can easily delete your account, and take your data away with you at anytime.</p>
-        <p><br/></p>
-        <h3>Improve Setlistr</h3>
-        <p>Feedback, suggestions, feature requests, and offers of help are all welcome.</p>
-      </div>
-    </div>
+      <div class="homepage-text-wrapper">
+        <div class="homepage-left">
+          <h3>Setlistr is a free service designed for musicians who need to organise their material.</h3>
+          <p>For example it can be used to:</p>
+          <ul>
+            <li>Create a set list for your band</li>
+            <li>Decide the running order of tracks on your latest recording</li>
+            <li>Share your ideas with others</li>
+            <li>Print your set list from your browser</li>
+          </ul>
+          <h3>Why should I create an account?</h3>
+          <p>Maybe you shouldn't. If you just want to use the site without logging in, then you can.<br/>Lists are deleted after 2 hours if not saved, to help us keep our servers clean.</p>
+          <p><br/>However, with an account, you can do more...</p>
+          <ul>
+            <li>Keep an archive of old sets</li>
+            <li>Copy a set list, edit and re-use it</li>
+            <li>Import set lists</li>
+            <li>Export set lists</li>
+            <li>Make lists public for others to see</li>
+          </ul>
+          <p>Accounts are free and we don't ask for credit-card details or anything like that.<br/> You can easily delete your account, and take your data away with you at anytime.</p>
+          <p><br/></p>
+          <h3>Improve Setlistr</h3>
+          <p>Feedback, suggestions, feature requests, and offers of help are all welcome.</p>
+        </div>
+      </div><!--end homepage-text-wrapper-->
+    </div><!--end homepage-text-->
 <?php 
   $include_javascript = TRUE; //Because on some pages we don't want to include it!
   include('theme/footer.php'); 
