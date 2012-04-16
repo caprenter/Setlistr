@@ -131,10 +131,11 @@ include('theme/header.php');
       <label for="setlist">Songs</label> 
       <textarea cols="40" rows="15" name="setlist"></textarea>
       <br/>
-      <input type="submit" value="import" />
+      <input type="submit" value="Import" />
       <input type="hidden" value="<?php echo $list_id; ?>" />
     </div>
   </form>
+  <br/><br/>
 </div><!-- end workspace-->
 
 <?php

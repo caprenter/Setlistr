@@ -120,7 +120,7 @@ if ( !$user->is_loaded() ) {
   if (isset($list_id)) {
     echo '<input type="hidden" name="list" value="'.  $list_id .'"/>';
   }
-  print('<input type="submit" value="login" />
+  print('<input type="submit" value="Login" />
         </form><br /><br />
         <p class="notice">Forgotten password? <a href="' . $host . 'new_pass.php">Send me a new password</a></p><br/>
         <p class="notice">Need to register? <a href="' . $host . 'save.php">Create a new account</a></p><br/><br/>
