@@ -29,7 +29,7 @@
                     if ($value['is_public'] == 1) {
                       echo 'class="public" ';
                     }
-                    echo 'value="' . $id . '"' . ($id == $list_id ? "selected='selected'":"") . '>' . $value["name"] .' (id:' . $id . ')';
+                    echo 'value="' . $id . '" ' . ($id == $list_id ? "selected='selected'":"") . '>' . $value["name"] .' (id:' . $id . ')';
                     echo '</option>';
                   }
                   echo '</select>';
