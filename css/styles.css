@@ -455,6 +455,7 @@ clear:both;
 border-top:1px solid #aaa;
 min-height:60px;
 background: -moz-linear-gradient(center top , #FCFCFC, #FCFAF8) repeat scroll 0 0 transparent;
+font-size:0.95em;
 }
 
 #footer {
