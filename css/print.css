@@ -348,6 +348,9 @@ vertical-align:top;
 float:left;
 width:100%
 }
+#header {
+display:none;
+}
 h1.title {
 float:left;
 width:30%;
@@ -417,4 +420,8 @@ display:none;
 
 div.active-list h4 {
 font-size: 2em;
+}
+
+#edit-and-updated a.edit-title {
+display:none;
 }
