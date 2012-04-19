@@ -110,6 +110,10 @@ ul.todoList {
     margin-bottom: 20px;
 }
 
+.column-right {
+    margin-bottom: 20px;
+}
+
 ul.todoList li {
 	background-color:#F9F9F9;
 	border:1px solid #EEEEEE;
