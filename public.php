@@ -81,10 +81,10 @@ $page = "Public List"; //used for page title in header.php
 include('theme/header.php');
 ?>
  <div class="workspace">
-   <div class="visibility">Public List: Everyone can view this set list</div>
+   
       
    <?php if (isset($title)) { ?>
-      
+      <div class="visibility">Public List: Everyone can view this set list</div>
       <div class="active-list public-list">
         <h4 id="208" class="public-list-title"><?php echo $title; ?></h4>updated: <?php echo $last_updated; ?>    
       </div>
