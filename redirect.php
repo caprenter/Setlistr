@@ -23,10 +23,11 @@
 //echo $_SERVER['REQUEST_URI'];
 $request = filter_var($_SERVER['REQUEST_URI'], FILTER_SANITIZE_URL);
 //echo $request;
-$scriptName = filter_var($_SERVER['SCRIPT_NAME'],FILTER_SANITIZE_URL);
+//$scriptName = filter_var($_SERVER['SCRIPT_NAME'],FILTER_SANITIZE_URL);
 //echo $scriptName;
 $url_componants = explode("/",$request);
-$username = $url_componants[3];
+$no_componants = count($url_componants);
+$username = $url_componants[($no_componants-1)];
 //echo $username;
 //Does user exist?
 $query = sprintf("SELECT userID FROM `users` WHERE `username` ='%s'",$username );
@@ -62,7 +63,7 @@ if (mysql_num_rows($result) > 0) {
           print(' <tr>
                     <td><a class="setlist" id="' . $list->list_id . '" href="' . $host .'list/' . $list->list_id . '">' . $list->list_id . '</a></td>
                     <td>' . $list->name . '</td>
-                    <td>' . date("F j, Y, g:i a",strtotime($list->last_updated)) . '</td>
+                    <td>' . date("M j, Y, H:i",strtotime($list->last_updated)) . '</td>
                   </tr>');
         }
         print('</tbody></table>');
