@@ -94,10 +94,20 @@ background: #FFF;
 }
 /* The todo items are grouped into an UL unordered list */
 
-ul.todoList{
+ul.todoList {
 	width:450px;
 	position:relative;
-  min-height:150px;
+   border-bottom: 1px dotted #AAAAAA;
+  /*http://www.dustindiaz.com/min-height-fast-hack/*/
+  min-height:200px;
+  height:auto !important;
+  height:200px;
+  /*min-height:150px;
+  min-height:90%;*/
+}
+
+.column-right ul.todoList {
+    margin-bottom: 20px;
 }
 
 ul.todoList li {

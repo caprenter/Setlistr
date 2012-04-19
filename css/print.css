@@ -17,6 +17,7 @@ body{
 ul.todoList{
 	width:450px;
 	position:relative;
+  border:none;
 }
 
 ul.todoList li {
