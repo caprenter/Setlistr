@@ -555,8 +555,18 @@ float:left;
 font-weight:bold;
 }
 
+form.import-form label.full-width {
+float:none;
+width:300px;
+}
+
 form.import-form input {
 margin-left:0;
+}
+
+form.import-form input.list-radio {
+margin:5px 5px 0 0;
+vertical-align:-2px;
 }
 
 /*Password Strength*/

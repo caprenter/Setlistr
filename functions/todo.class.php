@@ -214,7 +214,7 @@ class ToDo {
 		the AJAX front-end.
 	*/
 	
-	public static function createNew($text,$list,$import=FALSE){
+	public static function createNew($text,$list,$import=FALSE,$out=FALSE){
 		
 		$text = self::esc($text);
 		if(!$text) throw new Exception("Wrong input data!");
@@ -232,7 +232,12 @@ class ToDo {
       mysql_query("UPDATE `lists` SET `last_updated` = '" . date("Y-m-d H:i:s",time()) . "' WHERE `list_id` = "  .$list);
     }
     //Needs to be last query executed as mysql_insert_id($GLOBALS['link'] gets it's value from this call
-		mysql_query("INSERT INTO tz_todo SET text='".$text."', type='todo', list_id = '". $list ."', position = ".$position );
+    $query = "INSERT INTO tz_todo SET text='".$text."', type='todo', list_id = '". $list ."', position = ".$position;
+    if ($out) { //assign to the not in set list - only used on import
+      $query .= ", in_out = 0";
+    } 
+    mysql_query($query);
+		//mysql_query("INSERT INTO tz_todo SET text='".$text."', type='todo', list_id = '". $list ."', position = ".$position );
     
     
 		if(mysql_affected_rows($GLOBALS['link'])!=1)
@@ -252,7 +257,7 @@ class ToDo {
     }
 	}
   
-  public static function createNewList($text,$user_id = 1,$list_title = 'New List', $import=FALSE) {
+  public static function createNewList($text,$user_id = 1,$list_title = 'New List', $import=FALSE,$out=FALSE) {
 		//$user_id = $GLOBALS['user_id'];
     if(!isset($user_id)) {
       $user_id = 0;
@@ -272,7 +277,11 @@ class ToDo {
 
 		if(!$list_id) $list_id = 1;
     
-		mysql_query("INSERT INTO tz_todo SET text='".$text."', type='todo', list_id = '". $list_id ."', position = ".$position );
+    $query = "INSERT INTO tz_todo SET text='".$text."', type='todo', list_id = '". $list_id ."', position = ".$position;
+    if ($out) { //assign to the not in set list - only used on import
+      $query .= ", in_out = 0";
+    }
+		mysql_query($query);
     //echo "INSERT INTO tz_todo SET text='".$text."', type='todo', list_id = '". $list_id ."', position = ".$position;
     //echo $list_id;
     //echo mysql_affected_rows($GLOBALS['link']);
@@ -297,7 +306,7 @@ class ToDo {
 		exit;
 	}
   
-  	public static function createBreak($text,$list,$import=FALSE){
+  	public static function createBreak($text,$list,$import=FALSE,$out=FALSE){
 		
 		$text = self::esc($text);
 		if(!$text) throw new Exception("Wrong input data!");
@@ -316,7 +325,11 @@ class ToDo {
     }
     
     //Need to create the break as the last step cos mysql_insert_id($GLOBALS['link']) relies on this
-    mysql_query("INSERT INTO tz_todo SET text='".$text."' , type='break', list_id = '". $list ."', position = ".$position);
+    $query = "INSERT INTO tz_todo SET text='".$text."' , type='break', list_id = '". $list ."', position = ".$position;
+    if ($out) { //assign to the not in set list - only used on import
+      $query .= ", in_out = 0";
+    } 
+    mysql_query($query);
     
 		if(mysql_affected_rows($GLOBALS['link'])!=1)
 			throw new Exception("Error inserting TODO!");

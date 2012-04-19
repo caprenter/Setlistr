@@ -6,7 +6,7 @@
     <li><a id="saveList" href="save.php?list=<?php echo $list_id; ?>">Save</a></li>
   <?php } else { ?>
   <li><a href="clone.php?list=<?php echo $list_id; ?>">Clone</a></li>
-  <li><a href="import.php">Import</a></li>
+  <li><a href="import.php?list=<?php echo $list_id; ?>">Import</a></li>
   <li><a onclick="return confirm('Are you sure you want to delete this list?');" id="deleteList" href="delete.php?list=<?php echo $list_id; ?>">Delete</a></li>
   <?php } ?>
 
