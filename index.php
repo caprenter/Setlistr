@@ -28,7 +28,7 @@ if ( isset($_GET['logout']) && $_GET['logout'] == 1 ) {
 	$user->logout('http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']);
 }
 
-//include ("redirect.php");
+include ("redirect.php");
 //Each page relies heavily on the $list_id variable:- the id of the list we're viewing/editing etc.
 //The following sets all that up for us and deals with the cases of being logged in/out, creating new lists etc
 if ( $user->is_loaded() ) {

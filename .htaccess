@@ -32,6 +32,11 @@ ErrorDocument 404 /404.php
 
   #http://www.setlistr.co.uk/public.php?list=123
   RewriteRule ^list/([0-9]+)/?$ public.php?list=$1 [NC] # Nice lists
+  
+  #This is to try to get www.setlistr.co.uk/username to work
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . index.php
 </IfModule>
 
 # $Id$

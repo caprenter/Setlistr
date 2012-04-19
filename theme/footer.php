@@ -74,6 +74,8 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <script type="text/javascript" src="<?php echo $host; ?>javascript/jquery.jeditable.js" charset="utf-8"></script>
 <script type="text/javascript" src="<?php echo $host; ?>javascript/script.js"></script>
+
+
 <?php 
   }
 ?>
@@ -88,6 +90,12 @@ if (isset($password_page) && $password_page == TRUE) { ?>
   $('.password').pstrength();
   });
   </script>
+<?php } ?>
+
+<?php //User page lists e.g. setlistr.co.uk/caprenter
+if (isset($user_page_javascript) && $user_page_javascript == TRUE) { ?>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="<?php echo $host; ?>javascript/show_list_script.js"></script>
 <?php } ?>
 
 <!--Google Analytics-->

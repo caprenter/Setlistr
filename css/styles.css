@@ -986,6 +986,12 @@ h2.user-action {
 margin-left:13px;
 padding-bottom:10px;
 }
+
+/*Ajax show lists box*/
+#list-container {
+padding-top:33px;
+}
+
 /*
  * h2.user-action {
 font-size:1.8em;
