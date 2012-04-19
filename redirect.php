@@ -64,7 +64,7 @@ if (mysql_num_rows($result) > 0) {
                             "name" => $list->name);
         }
         usort($lists, "sort_by_date");
-        print_r($lists);
+        //print_r($lists);
         print('<table class="api_demo"><thead><th>id</th><th>Title</th><!--<th>Last Updated</th>--></thead><tbody>');
         foreach ($lists as $list) {
           print(' <tr>
