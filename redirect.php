@@ -63,7 +63,7 @@ if (mysql_num_rows($result) > 0) {
           print(' <tr>
                     <td><a class="setlist" id="' . $list->list_id . '" href="' . $host .'list/' . $list->list_id . '">' . $list->list_id . '</a></td>
                     <td>' . $list->name . '</td>
-                    <td>' . date("M j, Y, H:i",strtotime($list->last_updated)) . '</td>
+                    <td>' . date("Y-m-d H:i",strtotime($list->last_updated)) . '</td>
                   </tr>');
         }
         print('</tbody></table>');
