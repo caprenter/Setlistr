@@ -65,10 +65,10 @@ if (mysql_num_rows($result) > 0) {
         }
         usort($lists, "sort_by_date");
         //print_r($lists);
-        print('<table class="api_demo"><thead><th>id</th><th>Title</th><!--<th>Last Updated</th>--></thead><tbody>');
+        print('<table class="api_demo"><thead><tr><th>id</th><th>Title</th><!--<th>Last Updated</th>--></tr></thead><tbody>');
         foreach ($lists as $list) {
           print(' <tr>
-                    <td><a class="setlist" id="' . $list["id"] . '" href="' . $host .'list/' . $list["id"] . '">' . $list["id"] . '</a></td>
+                    <td><a class="setlist" id="list-' . $list["id"] . '" href="' . $host .'list/' . $list["id"] . '">' . $list["id"] . '</a></td>
                     <td>' . $list["name"] . '</td>
                     <!--<td>' . date("Y-m-d H:i",$list["date"]) . '</td>-->
                   </tr>');
