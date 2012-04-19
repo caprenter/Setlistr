@@ -58,14 +58,29 @@ if (mysql_num_rows($result) > 0) {
       if (isset($data[0]->data)) {
         echo "<p>This user doesn't have any public lists</p>";
       } else {
-        print('<table class="api_demo"><thead><th>id</th><th>Title</th><th>Last Updated</th></thead><tbody>');
         foreach ($data as $list) {
+          $lists[] = array( "date" =>strtotime($list->last_updated), 
+                            "id"=> $list->list_id, 
+                            "name" => $list->name);
+        }
+        usort($lists, "sort_by_date");
+        print_r($lists);
+        print('<table class="api_demo"><thead><th>id</th><th>Title</th><!--<th>Last Updated</th>--></thead><tbody>');
+        foreach ($lists as $list) {
+          print(' <tr>
+                    <td><a class="setlist" id="' . $list["id"] . '" href="' . $host .'list/' . $list["id"] . '">' . $list["id"] . '</a></td>
+                    <td>' . $list["name"] . '</td>
+                    <!--<td>' . date("Y-m-d H:i",$list["date"]) . '</td>-->
+                  </tr>');
+        }
+        
+        /*foreach ($data as $list) {
           print(' <tr>
                     <td><a class="setlist" id="' . $list->list_id . '" href="' . $host .'list/' . $list->list_id . '">' . $list->list_id . '</a></td>
                     <td>' . $list->name . '</td>
                     <td>' . date("Y-m-d H:i",strtotime($list->last_updated)) . '</td>
                   </tr>');
-        }
+        }*/
         print('</tbody></table>');
       }
       //print_r($data);
@@ -82,5 +97,10 @@ if (mysql_num_rows($result) > 0) {
       $user_page_javascript = TRUE; //Because on some pages we don't want to include it!
       include('theme/footer.php'); 
       die;
+}
+
+
+function sort_by_Date( $a, $b ) {
+    return $b["date"] - $a["date"];
 }
 ?>
