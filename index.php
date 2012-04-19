@@ -28,6 +28,7 @@ if ( isset($_GET['logout']) && $_GET['logout'] == 1 ) {
 	$user->logout('http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']);
 }
 
+//include ("redirect.php");
 //Each page relies heavily on the $list_id variable:- the id of the list we're viewing/editing etc.
 //The following sets all that up for us and deals with the cases of being logged in/out, creating new lists etc
 if ( $user->is_loaded() ) {
@@ -59,10 +60,15 @@ if ( $user->is_loaded() ) {
 }
 
 //Check list requested belongs to user
+//Not sure when this is used. Is it old code?
 if (isset($_POST['list'])) {
+    $posted_list_id = filter_var($_POST['list'], FILTER_SANITIZE_NUMBER_INT);
+    if (!filter_var($posted_list_id, FILTER_VALIDATE_INT)) {
+      unset($posted_list_id);
+    }
   //Then we want to select a specific list
-  if ( $user->is_loaded() && in_array($_POST['list'],$my_list_ids)) {
-       $list_id = $_POST['list'];
+  if ( $user->is_loaded() && in_array($posted_list_id,$my_list_ids)) {
+       $list_id = $posted_list_id;
     } else {
       //If not make a new one
       $_GET['list'] = "new";
