@@ -3,7 +3,7 @@ $(document).ready(function(){
 		$('a.setlist').on('click',function(event){
       event.preventDefault();
 			$('#list-container').fadeOut();
-			var a = $(this).attr('id').replace('list-','');
+			var a = $(this).attr('id').replace('list_','');
 			$.post("functions/show_list_ajax.php?list="+a, {
 			}, function(response){
 				//$('#list-container').html(unescape(response));

@@ -335,6 +335,10 @@ width:960px;
 margin:0 auto;
 }
 
+.workspace {
+margin-bottom:20px;
+}
+
 #homepage-text {
     background-color: #EBE8E5;
     border-bottom: 1px solid #DCDAD8;

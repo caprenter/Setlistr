@@ -28,6 +28,7 @@ $request = filter_var($_SERVER['REQUEST_URI'], FILTER_SANITIZE_URL);
 $url_componants = explode("/",$request);
 $no_componants = count($url_componants);
 $username = $url_componants[($no_componants-1)];
+$username = preg_replace("/%20/"," ",$username);
 //echo $username;
 //Does user exist?
 $query = sprintf("SELECT userID FROM `users` WHERE `username` ='%s'",$username );
@@ -68,7 +69,7 @@ if (mysql_num_rows($result) > 0) {
         print('<table class="api_demo"><thead><tr><th>id</th><th>Title</th><!--<th>Last Updated</th>--></tr></thead><tbody>');
         foreach ($lists as $list) {
           print(' <tr>
-                    <td><a class="setlist" id="list-' . $list["id"] . '" href="' . $host .'list/' . $list["id"] . '">' . $list["id"] . '</a></td>
+                    <td><a class="setlist" id="list_' . $list["id"] . '" href="' . $host .'list/' . $list["id"] . '">' . $list["id"] . '</a></td>
                     <td>' . $list["name"] . '</td>
                     <!--<td>' . date("Y-m-d H:i",$list["date"]) . '</td>-->
                   </tr>');
