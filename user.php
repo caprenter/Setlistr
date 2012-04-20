@@ -58,7 +58,8 @@ if (!empty($_POST['username']) && !empty($_POST['email']) ){
       if ($user->updateProperty(array('username' => $username)) == 1) {
         $message .= "Username updated<br/>";
       } else {
-        $message .= "Failed to update username <br/>";
+        $message .= "Failed to update username. ";
+        $message .= "(This could because the name is already taken) <br/>";
       }
       if ($user->updateProperty(array('email' => $email)) == 1) {
         $message .= "Email updated<br/>";
@@ -181,6 +182,15 @@ if ( $user->is_loaded() ){
         ?>
       </div>
       
+      
+      
+      
+      <div class="delete-account">
+        <h3>Your public page</h3>
+        <p>You have a public page at: </p> 
+        <div class="api_key"><a href="<?php echo $host ?><?php echo $username; ?>"><?php echo $host ?><?php echo $username; ?></a></div>
+        <p>Any lists that you make public will be listed there.</p>
+      </div>
       
       <div class="delete-account">
         <h3>To delete your account</h3>

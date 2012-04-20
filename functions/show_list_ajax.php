@@ -20,7 +20,7 @@ if (isset($_GET['list'])) {
     //print_r($data);
     print('<h3>' . $data[0]->title . '</h3>');
     print('<p>Last Updated: ' . date("F j, Y, g:ia",strtotime($data[0]->last_updated))  . '</p>');
-    print('<p>Link: <a href="' . $host  . '/list/' . $posted_list_id . '">' . $host  . '/list/' . $posted_list_id . '</a>');
+    print('<p>Link: <a href="' . $host  . 'list/' . $posted_list_id . '">' . $host  . 'list/' . $posted_list_id . '</a>');
     if(isset($data[0]->in_set)) {
       echo '<h4 class="api_demo">In set</h4>';
       print('<ul class="api_demo">');
