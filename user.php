@@ -175,6 +175,9 @@ if ( $user->is_loaded() ){
           $size = 120;
 
           $grav_url = $url.'?gravatar_id=' . md5( strtolower($email) ) . '&default=' . urlencode($default) . '&size=' . $size; 
+          if (@!file_get_contents($grav_url)) {
+              $grav_url = "./img/missing_gravatar_120.png";
+          }
           echo '<img class="avatar" src="'. $grav_url .'" />';
           echo '<div><br/>This is a Gravatar.<br/><a href="http://en.gravatar.com/">Get a Gravatar</a></div>';
           //echo $email;

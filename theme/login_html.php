@@ -57,6 +57,10 @@
              
             $grav_url = $url.'?gravatar_id='.md5( strtolower($email) ).
             '&default='.urlencode($default).'&size='.$size; 
+            
+            if (@!file_get_contents($grav_url)) {
+              $grav_url = "./img/missing_gravatar.png";
+            }
          
             echo "<li class='username'><a href='" . $host . "user.php'>" . $user->get_property("username") . "</a></li>";
             echo '<li class="logout"><a href="' . $host . '?logout=1">logout</a></li>';
