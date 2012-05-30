@@ -15,6 +15,7 @@
 <div class="column-right">
 
   <?php 
+    include ('theme/visibility_form.php'); //Check box to make list public/private   
     //Drop down select list of all users set lists. For logged in users only.
     if (isset($lists)) {
         if (count($lists)>1) { //only show if more than one list available
@@ -39,6 +40,7 @@
         echo '</ul>';
       }
     }
-  ?>
-          
+  
+  
+  ?>     
 </div>

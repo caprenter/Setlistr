@@ -139,7 +139,7 @@ if (isset($list_id)) {
             echo '<div id="edit-and-updated"><a class="edit-title" href="#">[edit title]</a>&nbsp;<span id="updated">updated: ' . date("D, j M Y H:i:s",strtotime($lists[$list_id]["last_updated"])) . '</span></div>';
             //Sat, 28 Jan 2012 00:10:53 GMT
             
-            include ('theme/visibility_form.php'); //Check box to make list public/private
+            //include ('theme/visibility_form.php'); //Check box to make list public/private
           } else {
             echo '<h4 id="list-' . $list_id .'" class="list-title">[Edit] Title</h4>';
           }
