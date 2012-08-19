@@ -49,7 +49,7 @@ $user = new flexibleAccess();
         </div><!--end column left-->
         <div class="column-right">
           <script type="text/javascript">
-            var parameters="list=24&username=caprenter&songs=in&limit=2";
+            var parameters="list=292&username=caprenter&songs=in&limit=2";
           </script>
           <script src="http://www.setlistr.co.uk/widget/script.js"  type="text/javascript"></script>
           <div id="setlistr-widget-container"></div>
@@ -61,7 +61,7 @@ $user = new flexibleAccess();
           <?php 
             $code = '
 <script type="text/javascript">
-  var parameters="list=24&username=caprenter&songs=in&limit=2";
+  var parameters="list=292&username=caprenter&songs=in&limit=2";
 </script>
 <script src="http://www.setlistr.co.uk/widget/script.js"  type="text/javascript"></script>
 

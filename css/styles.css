@@ -1028,7 +1028,7 @@ width:35%;
 }
 
 .code-example {
-clear:right;
+clear:both;
 margin-left:13px;
 width:95%;
 }
