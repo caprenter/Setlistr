@@ -42,8 +42,8 @@ $user = new flexibleAccess();
       <!--<p class="note">The todos are flushed every hour. You can add only one in 5 seconds.</p>-->
       <div id="api-text">
         <div class="column-left">
-          <p>The Setlistr API gives you access to setlist data. 
-          All public lists are available via the API. 
+          <p>The Setlistr API gives you access to setlist data. <br/><br/>
+          All public lists are available via the API. <br/>
           With an API key you can also retrieve your own non-public' setlists.</p>
           <p><br/>You can call</p>
           <ul>
@@ -54,6 +54,10 @@ $user = new flexibleAccess();
           
           <p>Data will be return in either XML or JSON format</p>
           <p><br/>An example file that calls the API to show data can be found at:<br/> <a href="<?php echo $host . "api/show.php"; ?>"><?php echo $host . "api/show.php"; ?></a></p>
+          <br/>
+          <h3 class="api-option">Setlistr Widget</h3>
+          <p>A javscript widget that can be embeded into webpages is also available.<br/>
+          See: <a href="<?php echo $host; ?>widget/">Setlistr Widget</a></p>
         </div><!--end column left-->
         <div class="column-right">
           <h3 class="api-option">The list parameter</h3>
