@@ -51,7 +51,7 @@ $user = new flexibleAccess();
           <script type="text/javascript">
             var parameters="list=24&username=caprenter&songs=in&limit=2";
           </script>
-          <script src="http://localhost/Webs/setlistr/widget/script.js"  type="text/javascript"></script>
+          <script src="http://www.setlistr.co.uk/widget/script.js"  type="text/javascript"></script>
           <div id="setlistr-widget-container"></div>
         </div>
       </div>

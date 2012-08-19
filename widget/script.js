@@ -50,7 +50,7 @@ function main() {
         /******* Load HTML *******/
         //var jsonp_url = "http://localhost/Webs/setlistr/widget/json.php?callback=?";
         //var parameters = "caprenter";
-        var jsonp_url = "http://localhost/Webs/setlistr/widget/json.php?" + parameters + "&callback=?"
+        var jsonp_url = "http://www.setlistr.co.uk/widget/json.php?" + parameters + "&callback=?"
         //var jsonp_url = "http://www.setlistr/widget/json.php?list=all&callback=?"
         $.getJSON(jsonp_url, function(data) {          
           $('#setlistr-widget-container').html(data.html);
