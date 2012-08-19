@@ -1,0 +1,31 @@
+/*Widget CSS*/
+#setlistr-widget-container {
+}
+#setlistr-widget-container p, 
+#setlistr-widget-container h3 ,
+#setlistr-widget-container h4 {
+margin:0;
+padding:0;
+}
+#setlistr-widget-container p {
+font-size: 0.9em;
+}
+#setlistr-widget-container h4 {
+margin-top:5px;
+}
+
+.api_demo {
+text-align:left;
+}
+.api_demo td {
+padding-right:10px;
+}
+
+ul.api_demo {
+    margin: 0 0 0 15px;
+    padding: 0;
+}
+
+h4.api_demo {
+padding-top:10px;
+}

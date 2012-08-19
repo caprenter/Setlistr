@@ -57,6 +57,7 @@
       <div class="column">
         <h3>Developers</h3>
         <p><a href="<?php echo $host; ?>api.php">Setlistr API</a></p>
+        <p><a href="<?php echo $host; ?>widget/">Setlistr Widget</a></p>
       </div>
     </div>
     <div style="clear:both; min-height:20px;"></div>

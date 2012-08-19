@@ -71,7 +71,7 @@ else
       
       <div id="login-area">
         <?php 
-          if ($page == "API Example") {
+          if ($page == "API Example" || $page == "Widget") {
             include('../theme/login_html.php'); 
           } else {
            include('theme/login_html.php'); 

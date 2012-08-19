@@ -423,6 +423,15 @@ width:35%;
 width:55%;
 }
 
+.code-example {
+clear:right;
+}
+pre {
+    background: none repeat scroll 0 0 #EEEEEE;
+    font-size: 0.9em;
+    padding: 0 10px 10px;
+}
+
 h3.api-option {
 font-size:1.2em;
 color:#25B0F8;
@@ -1008,6 +1017,42 @@ padding-top:33px;
 /*Make list public/private*/
 form.private, form.public {
 font-size:0.9em;
+}
+
+/*Widget*/
+#widget-text .column-left {
+width:55%;
+}
+#widget-text .column-right {
+width:35%;
+}
+
+.code-example {
+clear:right;
+margin-left:13px;
+width:95%;
+}
+pre {
+    background: none repeat scroll 0 0 #EEEEEE;
+    font-size: 0.9em;
+    padding: 0 10px 10px;
+}
+
+#widget-text {
+clear:both;
+margin-left:3px;
+padding:10px;
+}
+#widget-text ul {
+margin:15px;
+}
+#setlistr-widget-container {
+    background: none repeat scroll 0 0 #25B0F8;
+    border: 1px solid #EEEEEE;
+    border-radius: 10px 10px 10px 10px;
+    color: #FFFFFF;
+    padding: 10px;
+    width: 200px;
 }
 /*
  * h2.user-action {

@@ -1,7 +1,7 @@
 <?php
 /*
- *      api/index.php
- *      Enables users to get data remotely
+ *      widget/json.php
+ *      Code to return html to anyone calling the widget
  * 
  *      Copyright 2012 caprenter <caprenter@gmail.com>
  *      
@@ -26,10 +26,7 @@
 require_once('../settings.php');
 
 include("../functions/connect.php"); //is this needed?
-//include("../functions/is_list_public");
-//Initiate the user access script
-//require_once 'phpUserClass/access.class.beta.php';
-//$user = new flexibleAccess();
+
 
 /* API parameters
  * setlistr/api/?list=all
@@ -46,6 +43,8 @@ include("../functions/connect.php"); //is this needed?
  * songs=in/out/all - defaults to all [in=all songs in the set, out=all songs not in the set, all=both]
  * breaks=yes/no - defaults to 'yes' [include 'set break' items in the list or not]
  * format=xml,json
+ * order=oldest/newest
+ * limit=integer
  * 
  * Filter lists to a particular user (only for registered users with api key)
  * user=username&api_key=(string) (not written yet)
@@ -64,6 +63,27 @@ if (isset($_GET['list'])) {
     } else {
       $list_id = filter_var($_GET['list'], FILTER_SANITIZE_NUMBER_INT);
     }
+}
+
+//Filter API parameters
+if (isset($_GET['order'])) {
+    //can only be 'newest' or 'oldest'
+    $order = filter_var($_GET['order'],FILTER_SANITIZE_STRING);
+    if ($order === 'newest') {
+      $order = 'ASC';
+    } elseif ($order === 'oldest') {
+      $order = 'DESC';
+    } else {
+      unset($order);
+    }
+}
+
+if (isset($_GET['limit'])) {
+  //integer only
+    $limit = filter_var($_GET['limit'], FILTER_SANITIZE_NUMBER_INT);
+    if ($limit <= 0 ) {
+      unset($limit);
+    } 
 }
 
 if (isset($_GET['songs'])) {
@@ -129,7 +149,14 @@ if ($list_id == 'all') {
       $query .= " AND public = 1";
     }
   }
-  $query .= " ORDER BY  list_id";
+  if (isset($order)) {
+    $query .= " ORDER BY lists.last_updated " . $order;
+  } else {
+    $query .= " ORDER BY  list_id";
+  }
+  if (isset($limit)) {
+    $query .=" LIMIT " . $limit;
+  }
   //echo $query;
       $result = mysql_query($query);
       if (mysql_num_rows($result) !=0) {
@@ -247,21 +274,9 @@ if (!isset($data) || $data == NULL) {
   //die;
 }
 
+//We only serve json
+$format = $default_format;
 
-//Check to see if we have a requested format
-if (isset($_GET['format'])) {
-  //Sanitize input
-  $format = filter_var($_GET['format'], FILTER_SANITIZE_STRING);
-  //Check to see if the string is equal to an acceptable format. If not set it to the default
-  if (!in_array($format,$acceptable_formats)) {
-    $format = $default_format;
-  }
-}
-
-if (!isset($format)) {
-  $format = $default_format;
-}
-//echo $format;
 
 //If there are errors return the errors in the requested format and die
 if (isset($error)) {
@@ -269,58 +284,18 @@ if (isset($error)) {
   if ($format == 'json') {
       output_json($error);
       die;
-  } elseif ($format=="xml") {
-       $doc = new DomDocument('1.0','UTF-8');
-            
-        //<setlistr version="1">
-        $root = $doc->createElement('setlistr');
-        $root = $doc->appendChild($root);
-          $root->setAttribute('version', '1');
-          
-        //<generated>timestamp</generated>
-        $generated = $doc->createElement('generated');
-        $generated = $root->appendChild($generated);
-        $value = $doc->createTextNode(date("Y-m-d")."T".date("H:i:sP"));
-        $value = $generated->appendChild($value);
-        
-        
-        foreach ($error as $err) {
-          foreach ($err as $key=>$text) {
-            //<error>
-            $error_element = $doc->createElement('error');
-            $error_element = $root->appendChild($error_element);
-              $error_element->setAttribute('type',$key); 
-              $value = $doc->createTextNode($text);
-              $value = $error_element->appendChild($value);      
-          }
-        }
-        $doc->formatOutput = true;
-        echo $doc->saveXML(); 
-        die;
   }
-  
 } else { //We have some good data so we output it in the required format
 
-  //Send file for download
+  //Send file back to widget
   $filename = "setlistr-api-request." . $format;
   header("Cache-Control: public");
   header("Content-Description: File Transfer;");
-  //header("Content-Disposition: attachment; filename=" . $filename . ";");
   header("Content-Type: application/octet-stream; "); 
   header("Content-Transfer-Encoding: binary");
-  
-  //return the data in requested format
-  switch($format) {
-    case 'json':
-      output_json($data);
-      break;
-    case 'xml':
-      output_xml($data);
-      break;
-    default:
-      //what goes here?
-      break;
-  }
+
+  output_json($data);
+
 } 
 
 /*
@@ -330,90 +305,78 @@ if (isset($error)) {
  * @param array $data 
  */
 function output_json($data) {
+  global $proceed;
+  global $host;
+  global $limit;
   header('content-type: application/json; charset=utf-8');
   $data = json_encode($data);
-  echo $data;
-  
+  //echo $data;
+  //$data = array("one" => "Singular sensation",
+   //         "two" => "Beady little eyes",
+   //         "three" => "Little birds pitch by my doorstep"
+   //         );
+
+  //$data = json_encode($data);
   //JSONP - see http://www.carolinamantis.com/wordpress/?p=29
-  //header("Content-type: application/json");
-  //echo $_GET['callback'] . ' (' . $data . ');';
-}
+    //$host = "http://www.setlistr.co.uk/";
+    $limit_count = 0; //use this to limit the number of songs returned
+    $data = json_decode($data);
+    if ($proceed) { //songs 
+      $html = '<h3>' . $data[0]->title . '</h3>';
+      $html .='<p>Last Updated: ' . date("jS F Y",strtotime($data[0]->last_updated))  . '</p>';
+      if(isset($data[0]->in_set)) {
+        $html .= '<h4 class="api_demo">In set</h4>';
+        $html .='<ul class="api_demo">';
+          foreach ($data[0]->in_set as $song) {
+            $limit_count++;
+            if (!isset($limit) || $limit_count <= $limit) {
+              if ($song->type =='break') {
+                $text = $song->title . ' (break)';
+              } else {
+                $text = $song->title;
+              }
+              $html .='<li>' . htmlspecialchars($text,ENT_QUOTES).'</li>';
+            }
+          }
+        $html .='</ul>';
+      }
 
-/*
- * Echos an XML string of data converted from a php array
- * Needs to deal with different cases: List of setlists, or an actual setlist
- * 
- * name: output_json
- * @param array $data 
- */
-function output_xml($data, $return_string = false) {
-    $stream = ($return_string) ? fopen ('php://temp/maxmemory', 'w+') : fopen ('php://output', 'w');
-    $doc = new DomDocument('1.0','UTF-8');
-  
-    //We have 2 cases
-    //Either it's s list of setlist metadata about lists, or it's an actual set list
-    //'song' is unique to set lists and not in the metadata
-    //print_r($data);
-    if (array_key_exists('in_set',$data[0])) { //we have a set list
-      //Need to alter the format of the song lists to work with our export function
-      //Function accepts song data like: $data[] = array($row['text'],$in_out,$type);
-      if (isset($data[0]['in_set']) && $data[0]['in_set'] !=NULL) {
-        foreach ($data[0]['in_set'] as $song) {
-          $song_data[] = array($song['title'],"in set",$song['type']);
-        }
+      if(isset($data[0]->not_in_set)) {
+        $html .='<h4 class="api_demo">Not in set</h4>';
+        $html .='<ul class="api_demo">';
+          foreach ($data[0]->not_in_set as $song) {
+            $limit_count++;
+            if (!isset($limit) || $limit_count <= $limit) {
+              if ($song->type =='break') {
+                $text = $song->title . ' (break)';
+              } else {
+                $text = $song->title;
+              }
+              $html .='<li>' . htmlspecialchars($text,ENT_QUOTES).'</li>';
+            }
+          }
+        $html .='</ul>';
       }
-      if (isset($data[0]['not_in_set']) && $data[0]['not_in_set'] !=NULL) {
-        foreach ($data[0]['not_in_set'] as $song) {
-          $song_data[] = array($song['title'],"not in set",$song['type']);
-        }
-      }
-      //print_r($song_data);
-      include("../functions/exportXML.php");
-      exportXML($song_data, 'setlistr', $data[0]['title'], $return_string = false);
-    
+
     } else {
-      //we have a list of lists
-        
-    //<setlistr version="1">
-    $root = $doc->createElement('setlistr');
-    $root = $doc->appendChild($root);
-      $root->setAttribute('version', '1');
-      
-    //<generated>timestamp</generated>
-    $generated = $doc->createElement('generated');
-    $generated = $root->appendChild($generated);
-    $value = $doc->createTextNode(date("Y-m-d")."T".date("H:i:sP"));
-    $value = $generated->appendChild($value);
-    
-    
-    foreach ($data as $record) {
-      //<list>
-      $list = $doc->createElement('list');
-      $list = $root->appendChild($list);
-
-    
-      //<id>
-      $id= $doc->createElement('id');
-      $id = $list->appendChild($id);
-      $value = $doc->createTextNode($record['list_id']);
-      $value = $id->appendChild($value);
-      
-      //<title>
-      $title = $doc->createElement('title');
-      $title = $list->appendChild($title);
-      $value = $doc->createTextNode($record['name']);
-      $value = $title->appendChild($value);
-      
-      //<last-updated>
-      $last_updated = $doc->createElement('lastUpdated');
-      $last_updated = $list->appendChild($last_updated);
-      $value = $doc->createTextNode($record['last_updated']);
-      $value = $last_updated->appendChild($value);
-      
+      $html = '<table class="api_demo"><thead><th>id</th><th>Title</th><th>Last Updated</th></thead><tbody>';
+      foreach ($data as $list) {
+        $html .= ' <tr>
+                  <td><a href="' . $host .'list/' . $list->list_id . '">' . $list->list_id . '</a></td>
+                  <td>' . $list->name . '</td>
+                  <td>' . $list->last_updated . '</td>
+              </tr>';
+      }
+      $html .= '</tbody></table>';
     }
 
-  $doc->formatOutput = true;
-  echo $doc->saveXML(); 
+  //Tidy the HTML for javascript. From: http://stackoverflow.com/questions/227552/common-sources-of-unterminated-string-literal
+  $html = str_replace(array("\r", "\n"), '', $html);
+  
+  //Send data back to widget
+  header("Content-type: application/json");
+  echo $_GET['callback'];
+  echo " ( { html : '" . $html . "' } )";
 }
-}
+
 ?>
