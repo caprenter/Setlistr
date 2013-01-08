@@ -33,14 +33,14 @@
 
 function is_list_public ($list_id) {
   //include("connect.php");
-  $query = ("SELECT * FROM lists WHERE list_id = " . $list_id);
+  $query = ("SELECT lists.public, lists.user_id, lists.name, lists.last_updated, users.username FROM lists JOIN users ON lists.user_id = users.userID WHERE lists.list_id = " . $list_id);
   $result = mysql_query($query);
   if (mysql_num_rows($result) > 0) {
     while($row = mysql_fetch_assoc($result)){
       if ($row["public"] == TRUE) {
         //echo $row["name"];
        // mysql_close($link);
-        return array($row["name"],$row["last_updated"],$row["user_id"]);
+        return array($row["name"],$row["last_updated"],$row["username"],$row["user_id"]);
       } else {
         //mysql_close($link);
         return FALSE;

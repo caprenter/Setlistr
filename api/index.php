@@ -121,7 +121,8 @@ if (!(filter_var($list_id, FILTER_VALIDATE_INT) || $list_id == 'all' )) {
 
 if ($list_id == 'all') {
   //Get all public lists from the database;
-  $query = "SELECT list_id,user_id,name,last_updated FROM `lists` WHERE public = 1";
+ //$query = "SELECT list_id,user_id,name,last_updated FROM `lists` WHERE public = 1";
+  $query = "SELECT lists.list_id, lists.user_id, lists.name, lists.last_updated,  users.username FROM lists JOIN users ON lists.user_id = users.userID WHERE public = 1";
   if (isset($username)) {
     //echo $username;
     $query = "SELECT lists.list_id, lists.name, lists.last_updated FROM lists JOIN users ON lists.user_id = users.userID WHERE users.username =\"" . $username ."\"";
@@ -137,7 +138,8 @@ if ($list_id == 'all') {
         while ($row = mysql_fetch_assoc($result)) {
             //print_r($row);
             $data[] = array('list_id' => $row['list_id'],
-                            'name' => $row['name'],
+                            'title' => $row['name'], //changed from 'name' => for consitency. Thanks @kaerast.
+                            'username' => $row['username'], //suggested by @kaerast.
                             'last_updated' => $row['last_updated']
                             );
         }
@@ -147,7 +149,7 @@ if ($list_id == 'all') {
 if (filter_var($list_id, FILTER_VALIDATE_INT)) {
   //echo $list_id;
   //Try to get the data for the list with this id
-  include("../functions/is_list_public.php"); //if true, will also return list metadata (name, usename, last_updated)
+  include("../functions/is_list_public.php"); //if true, will also return list metadata (name, last_updated, user_id)
   $public_list = is_list_public($list_id);
   //var_dump($public_list);
 
@@ -208,6 +210,7 @@ if (filter_var($list_id, FILTER_VALIDATE_INT)) {
       //print_r($public_list);
       $title = $public_list[0];
       $last_updated =  $public_list[1];
+      $username = $public_list[2];
       //$last_updated = date("jS M, Y H:i:s",strtotime($last_updated));
       $last_updated  = date("Y-m-d",strtotime($last_updated))."T".date("H:i:sP",strtotime($last_updated));
       //$list_user_id = $public_list[2];
@@ -230,6 +233,8 @@ if (filter_var($list_id, FILTER_VALIDATE_INT)) {
       }
 
       $data[] = array('title' => $title,
+                      'list_id' => $list_id, //Added from suggestion by kaerast
+                      'username' => $username,
                       'last_updated' => $last_updated,
                       'in_set' => $in_set,
                       'not_in_set' => $not_in_set
