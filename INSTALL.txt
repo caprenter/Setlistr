@@ -8,7 +8,8 @@ Set up a MySQL database and import the database set up files from the /db direct
 
 ==Configuration==
 =Document Root/Base URL=
-settings.php
+example.settings.php
+Make a copy of example.settings.php and rename it settings.php
 Edit settings.php to reflect your server document root
 There is also a site email setting which is used in password recovery (new_pass.php)
 And a default list id for the API demo page (/api/show.php)
@@ -18,8 +19,8 @@ You might want to visit the settings in the .htaccess file.
 
 =Database=
 Update the database connection information in the following places:
-functions/connect.php
-phpUserClass/access.class.beta.php
+functions/example.connect.php - make a copy of this file and rename it funtions/connect.php then edit your database connection details
+phpUserClass/access.class.beta.php - edit this file directly (This file with the connection details still remains in version control as it is likely to change)
 
 =User Passwords=
 Passwords by default are salted with a both a site salt and a randomly genarated string.
@@ -47,3 +48,13 @@ When anyone visits the site, a new list is generated.
 To clean up old lists, set up a cron job to visit 
 clean_up_routine.php
 By default this is set to remove lists, and tracks, assigned to user 0, that are older than 2 hours.
+
+==Updating Setlistr==
+If you decide to pull files from the GitHub repository you should get conflicts in some of the files with major settings them.
+The main ones to watch are:
+phpUserClass/access.class.beta.php
+javascript/script.js
+
+settings.php and functions/connect.php used to also suffer in the same way, but are now dealt with usinf example files.
+
+Just saying - be careful until we find a way to make this better!
