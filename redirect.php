@@ -62,7 +62,7 @@ if (mysql_num_rows($result) > 0) {
         foreach ($data as $list) {
           $lists[] = array( "date" =>strtotime($list->last_updated), 
                             "id"=> $list->list_id, 
-                            "name" => $list->name);
+                            "title" => $list->title);
         }
         usort($lists, "sort_by_date");
         //print_r($lists);
@@ -70,7 +70,7 @@ if (mysql_num_rows($result) > 0) {
         foreach ($lists as $list) {
           print(' <tr>
                     <td><a class="setlist" id="list_' . $list["id"] . '" href="' . $host .'list/' . $list["id"] . '">' . $list["id"] . '</a></td>
-                    <td>' . $list["name"] . '</td>
+                    <td>' . $list["title"] . '</td>
                     <!--<td>' . date("Y-m-d H:i",$list["date"]) . '</td>-->
                   </tr>');
         }

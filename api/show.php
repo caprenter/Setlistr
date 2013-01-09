@@ -55,7 +55,7 @@ $user = new flexibleAccess();
     foreach ($data as $list) {
       print(' <tr>
                   <td><a href="' . $host .'list/' . $list->list_id . '">' . $list->list_id . '</a></td>
-                  <td>' . $list->name . '</td>
+                  <td>' . $list->title . '</td>
                   <td>' . $list->last_updated . '</td>
               </tr>');
     }

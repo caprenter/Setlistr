@@ -122,10 +122,10 @@ if (!(filter_var($list_id, FILTER_VALIDATE_INT) || $list_id == 'all' )) {
 if ($list_id == 'all') {
   //Get all public lists from the database;
  //$query = "SELECT list_id,user_id,name,last_updated FROM `lists` WHERE public = 1";
-  $query = "SELECT lists.list_id, lists.user_id, lists.name, lists.last_updated,  users.username FROM lists JOIN users ON lists.user_id = users.userID WHERE public = 1";
+  $query = "SELECT lists.list_id, lists.user_id, lists.name, lists.last_updated, users.username FROM lists JOIN users ON lists.user_id = users.userID WHERE public = 1";
   if (isset($username)) {
     //echo $username;
-    $query = "SELECT lists.list_id, lists.name, lists.last_updated FROM lists JOIN users ON lists.user_id = users.userID WHERE users.username =\"" . $username ."\"";
+    $query = "SELECT lists.list_id, lists.name, lists.last_updated, users.username FROM lists JOIN users ON lists.user_id = users.userID WHERE users.username =\"" . $username ."\"";
     if (!isset($key)) {
       $query .= " AND public = 1";
     }
