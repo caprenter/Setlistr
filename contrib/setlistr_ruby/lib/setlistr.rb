@@ -48,7 +48,7 @@ module Setlistr
 
   # An individual setlist
   class Setlist
-    attr :id, :title, :last_updated, :in_set, :not_in_set
+    attr :id, :title, :last_updated, :in_set, :not_in_set, :username
 
     # @param [Fixnum] id the id number of the setlist
     # @return [Setlistr::Setlist] a setlist object
@@ -68,6 +68,7 @@ module Setlistr
       @last_updated = body[0]['last_updated']
       @in_set = body[0]['in_set']
       @not_in_set = body[0]['not_in_set']
+      @username = body[0]['username']
     end
   end
 end

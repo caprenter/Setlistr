@@ -11,12 +11,16 @@ describe Setlistr do
     @setlist.id.should eq(686)
   end
 
-  it "loads the correct title" do
+  it "loads the correct name" do
     @setlist.title.should eq("Setlist for Friday 22nd at Shipley")
   end
 
   it "has a last updated date" do
     @setlist.last_updated.to_s.should eq("2012-03-02T18:48:35+00:00")
+  end
+  
+  it "has a username" do
+    @setlist.username.to_s.downcase.should eq("caprenter")
   end
 
   it "should have songs" do
@@ -37,13 +41,13 @@ describe Setlistr do
   it "gives at least one list" do
     lists = Setlistr.all
     lists[0].class.should eq(Hash)
-    lists[0]['name'].class.should eq(String)
+    lists[0]['title'].class.should eq(String)
   end
 
   it "limits lists by username" do
     lists = Setlistr.byuser('caprenter')
     lists[0].class.should eq(Hash)
-    lists[0]['name'].class.should eq(String)
+    lists[0]['title'].class.should eq(String)
   end
 
   it "gives details on a list in all" do
@@ -51,7 +55,7 @@ describe Setlistr do
     newlist = Setlistr::Setlist.new(lists[0]['list_id'])
     newlist.class.should eq(Setlistr::Setlist)
     newlist.id.should eq(lists[0]['list_id'])
-    newlist.title.should eq(lists[0]['name'])
+    newlist.title.should eq(lists[0]['title'])
   end
 
   it "lets me set a username and key" do
