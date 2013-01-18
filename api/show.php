@@ -24,6 +24,7 @@
  *      for more details.
  */
 require_once('../settings.php');
+require_once('../functions/pretty_json.php'); //formats json data. Thanks umbrae at gmail dot com
 //Initiate the user access script
 require_once "../phpUserClass/access.class.beta.php";
 $user = new flexibleAccess();
@@ -50,7 +51,9 @@ $user = new flexibleAccess();
     <h4><?php echo $host; ?>api/?list=all</h4><br/>
     <?php
     $url = $host . "/api/?list=all";
-    $data = json_decode(file_get_contents($url));
+    $json =  file_get_contents($url);
+    $data = json_decode($json);
+    //$data = json_decode(file_get_contents($url));
     print('<table class="api_demo"><thead><th>id</th><th>Title</th><th>Last Updated</th></thead><tbody>');
     foreach ($data as $list) {
       print(' <tr>
@@ -61,7 +64,10 @@ $user = new flexibleAccess();
     }
     print('</tbody></table>');
 
-    //print_r($data);
+    echo '<div class="json">';
+    echo '<h4>Json Response</h4>';
+    echo '<pre>' . json_format($json) . '</pre>';
+    echo '</div>';
     ?>
     </div>
 
@@ -70,7 +76,7 @@ $user = new flexibleAccess();
     <?php
     $url = $host . "/api/?list=" . $api_default_example_list_id; //$api_default_example_list_id from settings.php
     $json =  file_get_contents($url);
-    //echo $json;
+   
     $data = json_decode($json);
     //print_r($data);
     print('<h3>' . $data[0]->title . '</h3>');
@@ -103,7 +109,10 @@ $user = new flexibleAccess();
       print('</ul>');
     }
 
-
+    echo '<div class="json">';
+    echo '<h4>Json Response</h4>';
+    echo '<pre>' . json_format($json) . '</pre>';
+    echo '</div>';
     ?>
     </div>
 
