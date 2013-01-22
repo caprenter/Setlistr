@@ -29,10 +29,7 @@
 
 /* Database config */
 
-$db_host		= 'localhost';
-$db_user		= 'phpmyadmin';
-$db_pass		= 'KjYulbyF5miL';
-$db_database	= 'setlist'; 
+//uses options set in settings.php
 
 /* End config */
 
