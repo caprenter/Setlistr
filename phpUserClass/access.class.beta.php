@@ -141,12 +141,15 @@ class flexibleAccess {
         include ("settings.php"); //works relative to root apparently
       } elseif (is_file("../settings.php")) {
         include ("../settings.php"); 
+      } elseif (is_file("../../settings.php")) {
+        include ("../../settings.php"); 
       }
         
       $this->dbHost = $db_host;
       $this->dbUser = $db_user;
       $this->dbPass = $db_pass;
       $this->dbName = $db_database;
+      $this->site_salt = $site_salt;
       
 	    if ( is_array($settings) ){
 		    foreach ( $settings as $k => $v ){

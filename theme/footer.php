@@ -74,7 +74,11 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <script type="text/javascript" src="<?php echo $host; ?>javascript/jquery.jeditable.js" charset="utf-8"></script>
-<script type="text/javascript" src="<?php echo $host; ?>javascript/script.js"></script>
+<!--<script type="text/javascript" src="<?php //echo $host; ?>javascript/script.js"></script>-->
+<?php 
+  $path_to_updateTitle = $host . "functions/updateTitle.php"; //Need for edit in place for the list titles, is called in sript.js.php
+  include("javascript/script.js.php"); 
+?>
 
 
 <?php 
@@ -103,7 +107,7 @@ if (isset($user_page_javascript) && $user_page_javascript == TRUE) { ?>
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-717518-11']);
+  _gaq.push(['_setAccount', '<?php echo $google_analytics_code; ?>']);
   _gaq.push(['_trackPageview']);
 
   (function() {

@@ -7,54 +7,48 @@ Place all the files on your webserver.
 Set up a MySQL database and import the database set up files from the /db directory.
 
 ==Configuration==
-=Document Root/Base URL=
-example.settings.php
+=example.settings.php=
 Make a copy of example.settings.php and rename it settings.php
-Edit settings.php to reflect your server document root
-There is also a site email setting which is used in password recovery (new_pass.php)
-And a default list id for the API demo page (/api/show.php)
+Edit settings.php to:
+ - Reflect your server document root
+ - Update the database connection information
+ - There is also a site email setting which is used in password recovery (new_pass.php)
+ - And a default list id for the API demo page (/api/show.php)
+ - Set a 'site salt'. Passwords by default are salted with a both a site salt and a randomly generated string.
+ - Set a time zone
+ - Set your Google Analytics code
+
+=Offline Message=
+If the site fails to connect to the database, then it will redirect to offline.php
+Copy example.offline.php to offline.php to set up the default page, or customise your own.
+To receive the mysql error report edit the lines in the flexibleAccess function in access.class.beta.php
 
 =.htaccess=
 You might want to visit the settings in the .htaccess file.
 
-=Database=
-Update the database connection information in the following places:
-functions/example.connect.php - make a copy of this file and rename it funtions/connect.php then edit your database connection details
-phpUserClass/access.class.beta.php - edit this file directly (This file with the connection details still remains in version control as it is likely to change)
-
 =User Passwords=
-Passwords by default are salted with a both a site salt and a randomly genarated string.
-Set a 'site salt' in:
-phpUserClass/access.class.beta.php
-
+User passwords are generated and salted in phpUserClass/access.class.beta.php
 If you wish, in phpUserClass/access.class.beta.php you can alter the way site passwords are generated and encrypted.
 
 =Javascript=
-You need to edit 'edit in place' javascript function for the editing of set list titles. In:
+The 'edit in place' javascript function for the editing of set list titles, requires a path to the file:
+functions/updateTitle.php 
+to be hardcoded.
+To handles this we insert the value into:
 javascript/script.js
-Find the //edit-in-place function and set the url appropriately.
+when we call it in the footer.
 
 =Google Analytics=
-Google Analytics tracking javascript is set in theme/footer.php
-Edit this to your needs
+Google Analytics tracking javascript is placed in theme/footer.php
+Add your account details in settings.php
 
-=Offline Message=
-If the site fails to connect to the database, then it will redirect to offline.php
-You can customise this file to reflect your own message. 
-To receive the mysql error report edit the lines in the flexibleAccess function in access.class.beta.php
 
-==Clean up==
+==Site Maintenance==
+=Clean up=
 When anyone visits the site, a new list is generated. 
 To clean up old lists, set up a cron job to visit 
 clean_up_routine.php
 By default this is set to remove lists, and tracks, assigned to user 0, that are older than 2 hours.
 
 ==Updating Setlistr==
-If you decide to pull files from the GitHub repository you should get conflicts in some of the files with major settings them.
-The main ones to watch are:
-phpUserClass/access.class.beta.php
-javascript/script.js
-
-settings.php and functions/connect.php used to also suffer in the same way, but are now dealt with usinf example files.
-
-Just saying - be careful until we find a way to make this better!
+If you decide to pull files from the GitHub repository you should not get any conflicts.
