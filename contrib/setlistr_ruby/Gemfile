@@ -1,4 +1,5 @@
 source :rubygems
 gem "json"
 gem "rspec", :group => [:development, :test]
-gem 'simplecov', :require => false, :group => :test
+gem "simplecov", :require => false, :group => :test
+gem "activesupport"

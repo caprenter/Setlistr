@@ -1,11 +1,16 @@
 require 'json'
 require "net/http"
 require "uri"
+require 'active_support'
+require 'active_support/core_ext'
 
 # @author Alice Kaerast <alice@kaerast.info>
 # @note This library is incomplete and designed as an example implementation only
 # Module for interacting with the setlistr.co.uk api
 module Setlistr
+  mattr_accessor :site
+  self.site = 'http://www.setlistr.co.uk'
+
   # @!attr [w] key
   #  API key
   @key = nil
@@ -28,7 +33,7 @@ module Setlistr
   # @return [Array] hashes of individual setlists
   # @see byuser(user)
   def all
-    uri = URI.parse("http://www.setlistr.co.uk/api/?list=all")
+    uri = URI.parse(Setlistr.site + '/api/?list=all')
     response = Net::HTTP.get_response(uri)
     body = JSON.parse(response.body)
     return body
@@ -38,7 +43,7 @@ module Setlistr
   # @param [String] user the username to load setlists for
   # @see all
   def byuser(user)
-    uri = "http://www.setlistr.co.uk/api/?list=all&username=#{user.to_s}"
+    uri = Setlistr.site + "/api/?list=all&username=#{user.to_s}"
     uri << "&key=#{@key.to_s}" unless @key == nil
     response = Net::HTTP.get_response(URI.parse(uri))
     body = JSON.parse(response.body)
@@ -57,7 +62,7 @@ module Setlistr
     #  that way we can cheaply create many Setlist objects from all() or byuser(user)
     def initialize(id)
       @id = id
-      uri = "http://www.setlistr.co.uk/api/?list=#{@id.to_s}"
+      uri = Setlistr.site + "/api/?list=#{@id.to_s}"
       uri << "&key=#{@key.to_s}" unless @key == nil
       response = Net::HTTP.get_response(URI.parse(uri))
       body = JSON.parse(response.body)
@@ -70,5 +75,11 @@ module Setlistr
       @not_in_set = body[0]['not_in_set']
       @username = body[0]['username']
     end
+  end
+  class User
+
+  end
+  class Song
+   
   end
 end

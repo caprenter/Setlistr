@@ -5,6 +5,8 @@ require File.dirname(__FILE__) + '/../lib/setlistr.rb'
 describe Setlistr do
   before(:all) do
     @setlist = Setlistr::Setlist.new(686)
+    # Uncomment the line below to test against localhost
+    #Setlistr.site = 'http://localhost'
   end
 
   it "has an ID" do
