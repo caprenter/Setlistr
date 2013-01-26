@@ -422,10 +422,29 @@ width:35%;
 #api-text .column-right {
 width:55%;
 }
+/*Chengelog section*/
+#changelog {
+clear:both;
+padding-top:15px;
+border-top:1px solid #aaa
+}
+
+#changelog ul {
+margin-left:15px;
+}
+
+#changelog h4 {
+margin: 10px 0 8px 0;
+}
+
 
 .code-example {
 clear:right;
 }
+.json {
+padding-top:20px;
+}
+
 pre {
     background: none repeat scroll 0 0 #EEEEEE;
     font-size: 0.9em;

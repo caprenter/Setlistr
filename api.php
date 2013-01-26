@@ -87,6 +87,14 @@ $user = new flexibleAccess();
            <br/>
         </div>
       </div>
+      <div id="changelog">
+      <h3>Changelog</h3>
+      <h4>Commit <a href="https://github.com/caprenter/Setlistr/commit/659ac7fb8b989158093820e4d8390db17b3897ab">659ac7</a> 8th Jan. 2013</h4>
+      <ul>
+        <li>Changes 'name' to 'title' in all returned list data. Breaks backwards compatability</li>
+        <li>Adds 'user'name' and 'list_id' to all returned list data</li>
+      </ul>
+      </div>
     </div><!--end workspace-->
 <?php 
   $include_javascript = FALSE; //Because on some pages we don't want to include it!
