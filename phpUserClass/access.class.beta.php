@@ -38,18 +38,20 @@
  * @param string $dbTable
  */
 
-class flexibleAccess{
+class flexibleAccess {
   /*Settings*/
   /**
    * The database that we will use
    * var string
    */
-  private $dbName = 'setlist';
+  //private require_once("../settings.php");
+  //global $db_database;
+  private $dbName = 'see settings.php';
   /**
    * The database host
    * var string
    */
-  private $dbHost = 'localhost';
+  private $dbHost = 'see settings.php';
   /**
    * The database port
    * var int
@@ -59,12 +61,12 @@ class flexibleAccess{
    * The database user
    * var string
    */
-  private $dbUser = 'phpmyadmin';
+  private $dbUser = 'see settings.php';
   /**
    * The database password
    * var string
    */
-  private $dbPass = 'KjYulbyF5miL';
+  private $dbPass = 'see settings.php';
   /**
    * The database table that holds all the information
    * var string
@@ -131,6 +133,24 @@ class flexibleAccess{
    * @return void
    */
   public function flexibleAccess($dbConn = '', $settings = '') {
+      //nasty hack that fetches settings.php depending on the depth of the page within the site
+      //This currently allows for one level e.g. /widget
+      //Also probably not good in terms of private/public variables, 
+      //BUT this is also a fix to using only one settings file across the site!
+      if (is_file("settings.php")) {
+        include ("settings.php"); //works relative to root apparently
+      } elseif (is_file("../settings.php")) {
+        include ("../settings.php"); 
+      } elseif (is_file("../../settings.php")) {
+        include ("../../settings.php"); 
+      }
+        
+      $this->dbHost = $db_host;
+      $this->dbUser = $db_user;
+      $this->dbPass = $db_pass;
+      $this->dbName = $db_database;
+      $this->site_salt = $site_salt;
+      
 	    if ( is_array($settings) ){
 		    foreach ( $settings as $k => $v ){
 				    if ( !isset( $this->{$k} ) ) die('Property '.$k.' does not exists. Check your settings.');

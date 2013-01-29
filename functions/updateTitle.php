@@ -52,9 +52,9 @@ if (filter_var($list_id, FILTER_VALIDATE_INT)) { //check it is an integer
     $user_id = 0;
   }
     mysql_query("UPDATE `lists` SET name='" . $new_name . "' WHERE list_id = " . $list_id . " AND user_id = " . $user_id);
-    if(mysql_error($GLOBALS['link'])) {
-        throw new Exception("Error updating title!");
-    }
+    //if(mysql_error($GLOBALS['link'])) {
+     //   throw new Exception($link . "Error updating title!");
+   // }
   //$query = mysql_query("SELECT * FROM `tz_todo` WHERE list_id = " . $list_id . " ORDER BY `position` ASC");
   echo  $new_name;
   //mysql_fetch_assoc($query);

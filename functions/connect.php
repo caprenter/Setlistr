@@ -29,13 +29,24 @@
 
 /* Database config */
 
-$db_host		= 'localhost';
-$db_user		= 'phpmyadmin';
-$db_pass		= 'KjYulbyF5miL';
-$db_database	= 'setlist'; 
+//now set in settings.php
+//nasty hack that fetches settings.php depending on the depth of the page within the site
+//This currently allows for one level e.g. /widget
+//Also probably not good in terms of private/public variables, 
+//BUT this is also a fix to using only one settings file across the site!
+if (is_file("settings.php")) {
+  include ("settings.php"); 
+} elseif (is_file("../settings.php")) {
+  include ("../settings.php"); 
+} elseif (is_file("../../settings.php")) {
+  include ("../../settings.php"); 
+}
 
 /* End config */
-
+global $db_database;
+global $db_host;
+global $db_user;
+global $db_pass;
 
 $link = @mysql_connect($db_host,$db_user,$db_pass) or die('Unable to establish a DB connection');
 
