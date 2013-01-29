@@ -22,7 +22,7 @@ describe Setlistr do
   end
   
   it "has a username" do
-    @setlist.username.to_s.downcase.should eq("caprenter")
+    @setlist.username.to_s.downcase.should eq("davidc")
   end
 
   it "should have songs" do
