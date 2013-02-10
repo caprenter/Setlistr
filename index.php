@@ -18,7 +18,11 @@
  *      Setlistr relies on other free software products. See the README.txt file 
  *      for more details.
  */
-require_once('settings.php');
+if (file_exists('settings.php')) {
+  require_once('settings.php');
+} else {
+  die("You haven't created a settings.php file");
+}
 //Initiate the user access script
 require_once "phpUserClass/access.class.beta.php";
 $user = new flexibleAccess();
