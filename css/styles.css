@@ -239,6 +239,21 @@ a.saveChanges{
 	font-size:0.72em !important;
 }
 
+.ui-widget-header {
+border: 1px solid #25B0F8;
+background: #25B0F8;
+background-image: none;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default {
+border: 1px solid #25B0F8;
+background-image: none;
+}
+.ui-widget-content {
+border: 1px solid #25B0F8;
+background-image: none;
+}
+
 #dialog-confirm{
 	display:none;
 	font-size:0.9em;

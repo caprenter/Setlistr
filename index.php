@@ -187,7 +187,7 @@ if (isset($list_id)) {
       </div>
     </div><!--end workspace-->
     <!-- This div is used as the base for the confirmation jQuery UI POPUP. Hidden by CSS. -->
-    <div id="dialog-confirm" title="Delete TODO Item?">Are you sure you want to delete this item?</div>
+    <div id="dialog-confirm" title="Delete item?">Are you sure you want to delete this item?</div>
 
     <!--<p class="note">The todos are flushed every hour. You can add only one in 5 seconds.</p>-->
     <div id="homepage-text">
