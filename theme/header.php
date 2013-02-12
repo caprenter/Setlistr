@@ -83,7 +83,7 @@ else
         <ul class="inline">
           <li><a href="<?php echo $host; ?>">Home</a></li>
           <?php 
-            if ( $user->is_loaded() ) { 
+            if (isset($user) && $user->is_loaded() ) { 
           ?><li>
             <a href="<?php echo $host ?><?php echo $user->get_property("username");; ?>">My Lists</a>
           </li>
