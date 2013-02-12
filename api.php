@@ -78,7 +78,10 @@ $user = new flexibleAccess();
           <br/>
           
           <h3 class="api-option">Using your API key</h3>
-          <p>With an API key you can retrieve your 'non-public' setlists.</p>
+          <p>With an API key you can retrieve your 'non-public' setlists as well.</p>
+          <p>In the returned data the 'privacy' field is set to:<br/>
+           0 for private lists and<br/>
+           1 for public lists.</p>
           <p>When logged in, you will find your API key on your <a href="<?php echo $host; ?>user.php">user page</a>.</p><br/>
           <p>&amp;username=&lt;your_setlistr_username&gt;&amp;key=&lt;your_key&gt;</p>
           <br/>

@@ -13,7 +13,14 @@ if (isset($_GET['list'])) {
 ?>
 
     <?php
-    $url = $host . "/api/?list=" . $posted_list_id; //$api_default_example_list_id from settings.php
+    $url = $host . "api/?list=" . $posted_list_id; //$api_default_example_list_id from settings.php
+    
+    if ( $user->is_loaded() ) { 
+      $username = $user->get_property("username");
+      $user_api = $user->get_property("apikey");
+      $url .= "&username=" . $username . "&key=" . $user_api;
+    }
+    //echo $url;
     $json =  file_get_contents($url);
     //echo $json;
     $data = json_decode($json);

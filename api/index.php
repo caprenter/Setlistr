@@ -125,7 +125,8 @@ if ($list_id == 'all') {
   $query = "SELECT lists.list_id, lists.user_id, lists.name, lists.last_updated, users.username FROM lists JOIN users ON lists.user_id = users.userID WHERE public = 1";
   if (isset($username)) {
     //echo $username;
-    $query = "SELECT lists.list_id, lists.name, lists.last_updated, users.username FROM lists JOIN users ON lists.user_id = users.userID WHERE users.username =\"" . $username ."\"";
+    //We also return the data about whether or not a list is public if a username is supplied, but if there is no api key this won't be served
+    $query = "SELECT lists.list_id, lists.name, lists.last_updated, lists.public, users.username FROM lists JOIN users ON lists.user_id = users.userID WHERE users.username =\"" . $username ."\"";
     if (!isset($key)) {
       $query .= " AND public = 1";
     }
@@ -137,11 +138,16 @@ if ($list_id == 'all') {
         $data = array();
         while ($row = mysql_fetch_assoc($result)) {
             //print_r($row);
-            $data[] = array('list_id' => $row['list_id'],
+            $list_data = array('list_id' => $row['list_id'],
                             'title' => $row['name'], //changed from 'name' => for consitency. Thanks @kaerast.
                             'username' => $row['username'], //suggested by @kaerast.
                             'last_updated' => $row['last_updated']
                             );
+            if (isset($key)) {
+              $list_data["privacy"] = $row['public'];
+            }
+            $data[] = $list_data;
+            unset($list_data);
         }
       }
   }
@@ -154,23 +160,29 @@ if (filter_var($list_id, FILTER_VALIDATE_INT)) {
   //var_dump($public_list);
 
   //if it is then get the list data
-  if (isset($list_id) && $public_list || isset($list_id) && isset($username) && isset($key)) {
+  if ((isset($list_id) && $public_list) || isset($list_id) && isset($username) && isset($key)) {
     //either the list is public
     $proceed = TRUE;
+    //echo "go fo r it!";
     //OR
     //username and key match, so need to check the list belongs to the user
     if (isset($key)) {
       //Check list belongs to user then if it does fetch the list otherwise send error msg
       $query = ("SELECT userID, name, last_updated FROM users JOIN lists ON users.userID = lists.user_id WHERE users.username = \"" . $username ."\" AND list_id = " . $list_id);
-      echo $query;
+      //echo $query;
       $result = mysql_query($query);
       if (mysql_num_rows($result) == 1) {
         while($row = mysql_fetch_assoc($result)){
           $public_list[0] = $row["name"];
           $public_list[1] = $row["last_updated"];
+          $public_list[2] = $username;
         }
-      } else {
+      } elseif (isset($public_list)) {
+        $proceed = TRUE;
         //list does not belong to the user
+        //but it's public so serve it anyway - That's ok isn't it?
+      } else {
+        //not public
         //fail...
         $proceed = FALSE;
       }

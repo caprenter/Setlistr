@@ -961,6 +961,7 @@ form.login label {
 
 .api_demo {
 text-align:left;
+border-collapse: collapse;
 }
 .api_demo td {
 padding-right:10px;
@@ -971,6 +972,11 @@ margin-left:30px;
 }
 h4.api_demo {
 padding-top:10px;
+}
+
+tr.public:after
+{ 
+content: "*";
 }
 
 .api_key {
