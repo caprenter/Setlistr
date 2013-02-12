@@ -97,6 +97,10 @@ $user = new flexibleAccess();
         <li>Changes 'name' to 'title' in all returned list data. Breaks backwards compatability</li>
         <li>Adds 'user'name' and 'list_id' to all returned list data</li>
       </ul>
+      <h4>Commit <a href="https://github.com/caprenter/Setlistr/commit/07aff16fdbb9c83aaa781e2d384a4ad59ec1a097">c1a097</a> 12th Jan. 2013</h4>
+      <ul>
+        <li>Adds public/private information about lists to calls that send a username and api key</li>
+      </ul>
       </div>
     </div><!--end workspace-->
 <?php 
