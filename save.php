@@ -51,7 +51,8 @@ if (isset($_POST['list'])) {
 }
 
 //Process form once submitted 
-if (!empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['pwd']) && !empty($_POST['confirm'])){
+//if iamspam is set then we do not register the user
+if (!empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['pwd']) && !empty($_POST['confirm'])  &&!isset($_POST['iamspam'])) { 
   //Register user:
   
   //Sanitize the user inputed data
@@ -109,7 +110,9 @@ if (!empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['pwd'
   }
 } else {
     if($_SERVER['REQUEST_METHOD'] == "POST") {
-      $errors = "You must fill in all the fields.<br/><br/>";
+      if (!isset($_POST['iamspam'])) { //if spam don't give feedback
+        $errors = "You must fill in all the fields.<br/><br/>";
+      }
     }
 }
 
@@ -144,7 +147,8 @@ if (isset($errors)) {
   <div class="field-container">
       <label for="confirm">Confirm Password</label><br/>
       <input type="password" name="confirm" id="confirm" class="confirm" /> <div class="error-msg"></div>
-  </div>';
+  </div>
+  <input type="checkbox" name="iamspam" id="iamspam">';
 
    
    

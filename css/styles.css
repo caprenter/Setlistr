@@ -1094,6 +1094,10 @@ margin:15px;
     padding: 10px;
     width: 200px;
 }
+
+#iamspam {
+display:none;
+}
 /*
  * h2.user-action {
 font-size:1.8em;
